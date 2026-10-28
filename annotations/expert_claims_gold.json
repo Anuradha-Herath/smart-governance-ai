@@ -1,0 +1,102 @@
+[
+  {
+    "statement_id": "GOLD_001",
+    "doc_id": "CAB_2023-01-09-001-en",
+    "source_type": "CabinetDecision",
+    "date": "2023-01-09",
+    "sentence_text": "There is no alternative other than the revision of the existing electricity tariff in order to cover only the cost incurred for the supply of electricity.",
+    "gold_label": "Claim",
+    "verbatim_quote": "there is no alternative other than the revision of the existing electricity tariff in order to cover only the cost incurred for the supply of electricity",
+    "policy_topic": "Tariff Cost Reflection"
+  },
+  {
+    "statement_id": "GOLD_002",
+    "doc_id": "CAB_2023-01-09-001-en",
+    "source_type": "CabinetDecision",
+    "date": "2023-01-09",
+    "sentence_text": "The General Treasury is no longer possible to provide required funds to the Ceylon Electricity Board within the existing fiscal space.",
+    "gold_label": "Evidence",
+    "verbatim_quote": "the General Treasury is no longer possible to provide required funds to the Ceylon Electricity Board within the existing fiscal space",
+    "policy_topic": "Fiscal Subsidy Depletion"
+  },
+  {
+    "statement_id": "GOLD_003",
+    "doc_id": "CAB_2023-01-09-001-en",
+    "source_type": "CabinetDecision",
+    "date": "2023-01-09",
+    "sentence_text": "Revision of the electricity tariff is required in order to ensure an uninterrupted supply of power in the country.",
+    "gold_label": "Benefit",
+    "verbatim_quote": "in order to ensure an uninterrupted supply of power in the country",
+    "policy_topic": "Grid Reliability"
+  },
+  {
+    "statement_id": "GOLD_004",
+    "doc_id": "CAB_2023-01-09-001-en",
+    "source_type": "CabinetDecision",
+    "date": "2023-01-09",
+    "sentence_text": "The tariff adjustment must minimize the adverse economic impact caused to the vulnerable electricity consumers as much as possible.",
+    "gold_label": "Risk",
+    "verbatim_quote": "minimizing the impact caused to the electricity consumers as much as possible",
+    "policy_topic": "Consumer Burden"
+  },
+  {
+    "statement_id": "GOLD_005",
+    "doc_id": "CAB_2023-01-09-001-en",
+    "source_type": "CabinetDecision",
+    "date": "2023-01-09",
+    "sentence_text": "The Public Utilities Commission of Sri Lanka to further study the proposed electricity tariff revision and submit the same on or before 2023-02-15.",
+    "gold_label": "Recommendation",
+    "verbatim_quote": "The Public Utilities Commission of Sri Lanka to further study on the proposed electricity tariff revision submitted by the Sri Lanka Electricity Board in consultation with the relevant parties, and if any revisions are to be made, submit the same on or before 2023‑02‑15",
+    "policy_topic": "Regulatory Review"
+  },
+  {
+    "statement_id": "GOLD_006",
+    "doc_id": "HANS_2022-03-16_01",
+    "source_type": "ParliamentaryHansard",
+    "date": "2022-03-16",
+    "sentence_text": "ආනයන සීමා කිරීම සහ භාණ්ඩ මිල වැඩි කිරීම නිසා අද හැම ක්ෂේත්‍රයකම බඩු මිල දෙගුණයකින් වැඩි වී ජනතාව දැඩි පීඩාවකට පත්ව ඇත.",
+    "gold_label": "Risk",
+    "verbatim_quote": "ආනයන සීමා කරන එක. භාණ්ඩ මිල වැඩි කරන එක, බදු වර්ග වැඩි කරන එක තමයි කර තිබෙන්නේ. අද හැම ක්ෂේත්‍රයකම බොහෝ දේවල මිල දෙගුණයකින්, තුන් ගුණයකින් වැඩි",
+    "policy_topic": "Inflation & Cost of Living"
+  },
+  {
+    "statement_id": "GOLD_007",
+    "doc_id": "HANS_2022-09-20_01",
+    "source_type": "ParliamentaryHansard",
+    "date": "2022-09-20",
+    "sentence_text": "බොරතෙල් ආනයනය කර පිරිපහදු කිරීම මගින් මෙරට ඉන්ධන අවශ්‍යතාවෙන් සියයට 30 ක් සපුරා ගත හැක.",
+    "gold_label": "Evidence",
+    "verbatim_quote": "බොරතෙල් ආනයනය කර පිරිපහදු කිරීම මගින් මෙරට ඉන්ධන අවශ්‍යතාවෙන් සියයට 30 ක් සපුරා ගත හැකි නමුත්",
+    "policy_topic": "Refinery Capacity"
+  },
+  {
+    "statement_id": "GOLD_008",
+    "doc_id": "CBSL_2023_ENERGY_01",
+    "source_type": "CentralBankReport",
+    "date": "2023-04-30",
+    "sentence_text": "Cost-reflective utility pricing is essential to eliminate the quasi-fiscal burden imposed by state-owned energy enterprises on the banking system.",
+    "gold_label": "Claim",
+    "verbatim_quote": "cost-reflective utility pricing is essential to eliminate the quasi-fiscal burden",
+    "policy_topic": "Macroeconomic Stability"
+  },
+  {
+    "statement_id": "GOLD_009",
+    "doc_id": "CBSL_2023_ENERGY_02",
+    "source_type": "CentralBankReport",
+    "date": "2023-04-30",
+    "sentence_text": "The government must introduce targeted direct cash transfers under social welfare programs to insulate bottom-quintile households from utility tariff shocks.",
+    "gold_label": "Recommendation",
+    "verbatim_quote": "introduce targeted direct cash transfers under social welfare programs to insulate bottom-quintile households",
+    "policy_topic": "Social Safety Net"
+  },
+  {
+    "statement_id": "GOLD_010",
+    "doc_id": "CBSL_2023_ENERGY_03",
+    "source_type": "CentralBankReport",
+    "date": "2023-04-30",
+    "sentence_text": "Eliminating fuel and electricity subsidies restored the operating balance of the Ceylon Electricity Board in the second half of 2023.",
+    "gold_label": "Benefit",
+    "verbatim_quote": "restored the operating balance of the Ceylon Electricity Board in the second half of 2023",
+    "policy_topic": "SOE Financial Turnaround"
+  }
+]
