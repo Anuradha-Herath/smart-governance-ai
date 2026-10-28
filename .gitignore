@@ -1,0 +1,72 @@
+# ==============================================================================
+# Smart Governance AI - Git Ignore Configuration
+# ==============================================================================
+
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Python Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Environment Variables and Secrets (NEVER COMMIT)
+.env
+*.env
+*.pem
+*.key
+secrets/
+
+# Large Datasets & Storage (Preserve raw and external downloads locally)
+data/raw/
+data/interim/
+data/processed/
+data/external/
+Datasets/
+*.tsv
+*.parquet
+*.jsonl
+*.zip
+*.tar.gz
+
+# Retain tracked directory structures in Git
+!data/raw/**/.gitkeep
+!data/interim/**/.gitkeep
+!data/processed/**/.gitkeep
+!data/external/**/.gitkeep
+
+# Machine Learning Model Weights and Checkpoints
+models/*
+!models/.gitkeep
+*.pt
+*.bin
+*.safetensors
+*.onnx
+
+# Output artifacts and figures
+outputs/figures/*
+!outputs/figures/.gitkeep
+outputs/evaluation/*
+!outputs/evaluation/.gitkeep
+outputs/reports/*
+!outputs/reports/.gitkeep
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# IDE & OS-specific files
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+.idea/
+Thumbs.db
+Desktop.ini
+.DS_Store
