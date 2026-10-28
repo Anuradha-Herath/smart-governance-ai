@@ -659,19 +659,60 @@ st.markdown(
 # -----------------------------------------------------------------------------
 briefing = load_synthesis_data()
 
+# Decision catalogue: one entry drives sidebar, banner, tab titles and the P3 trajectory window.
+# Dates/ratios come from configs/case_study.yaml and the confounder registry.
+POLICIES: dict[str, dict[str, Any]] = {
+    "DEC_2023_ELEC_01": {
+        "label": "DEC_2023_ELEC_01 · Tariff Revision (Feb 2023)",
+        "title": "Cost-Reflective Electricity Tariff Revision (February 2023)",
+        "year": 2023, "date": "2023-02-15", "badge": "ACTIVE POLICY CASE STUDY",
+        "desc": "Comprehensive evaluation of Sri Lanka's <strong>66% retail power tariff restructuring</strong> approved by the Cabinet of Ministers on <strong>January 9, 2023</strong> (Directive <code>2023-01-09-001-en</code>) and enacted by PUCSL on <strong>February 15, 2023</strong> to eliminate untargeted subsidies, halt the Ceylon Electricity Board (CEB) Rs. 167B fiscal bleed, and end daily 10–14 hour islandwide blackouts.",
+        "meta": [("Enactment Date", "February 15, 2023"), ("Governing Authority", "Cabinet of Ministers & PUCSL"),
+                 ("Affected Consumer Base", "4.8M Domestic, SME & Industrial Units"), ("Stated Primary Mandate", "CEB Fiscal Solvency & IMF EFF Targets")],
+        "vline": "Tariff Revision (Feb 2023)",
+    },
+    "DEC_2022_ELEC_01": {
+        "label": "DEC_2022_ELEC_01 · Tariff Hike (Aug 2022)",
+        "title": "Initial Electricity Tariff Revision (August 2022)",
+        "year": 2022, "date": "2022-08-10", "badge": "COMPARATIVE CASE · PRECEDING DECISION",
+        "desc": "First electricity tariff increase after a <strong>9-year freeze</strong> (weighted average of about 75%), introduced at the peak of the fuel and foreign-exchange crisis to recover skyrocketing generation costs.",
+        "meta": [("Decision Date", "August 10, 2022"), ("Governing Authority", "PUCSL"),
+                 ("Relation to Primary Case", "Preceded the Feb 2023 revision"), ("Analysis Window", "2020 – 2024 (t-2 to t+2)")],
+        "vline": "Tariff Revision (Aug 2022)",
+    },
+    "DEC_2024_ELEC_01": {
+        "label": "DEC_2024_ELEC_01 · Tariff Cut (Mar 2024)",
+        "title": "Downward Electricity Tariff Revision (March 2024)",
+        "year": 2024, "date": "2024-03-04", "badge": "COMPARATIVE CASE · SUBSEQUENT DECISION",
+        "desc": "Subsequent <strong>downward</strong> tariff adjustment (about -21.9% in March 2024, followed by a further cut in July) after heavy monsoon hydro generation and lower fuel costs.",
+        "meta": [("Decision Date", "March 4, 2024"), ("Governing Authority", "PUCSL"),
+                 ("Relation to Primary Case", "Followed the Feb 2023 revision"), ("Analysis Window", "2022 – 2026 (data available to 2025)")],
+        "vline": "Tariff Cut (Mar 2024)",
+    },
+}
+
 with st.sidebar:
     st.image("https://upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Sri_Lanka.svg", width=55)
     st.markdown("### Smart Governance AI")
     st.caption("Evidence-Based National Policy Decision Support")
     st.divider()
 
-    st.markdown("#### :material/policy: Active Policy Case")
+    st.markdown("#### :material/policy: Select Policy Decision")
+    pid = st.selectbox(
+        "Policy decision under analysis",
+        options=list(POLICIES),
+        format_func=lambda k: POLICIES[k]["label"],
+        label_visibility="collapsed",
+        help="Changes the banner, titles and the historical trajectory window across the whole dashboard.",
+    )
+    pol = POLICIES[pid]
+    is_primary = pid == "DEC_2023_ELEC_01"
     st.markdown(
         f"""
         <div class="sidebar-case-card">
-            <div class="sidebar-case-row"><strong>Case ID:</strong> <code>{briefing.get('case_id', 'DEC_2023_ELEC_01')}</code></div>
-            <div class="sidebar-case-row"><strong>Policy:</strong> {briefing.get('title', 'Electricity Tariff Revision')}</div>
-            <div class="sidebar-case-row"><strong>Date:</strong> {briefing.get('implementation_date', '2023-02-15')}</div>
+            <div class="sidebar-case-row"><strong>Case ID:</strong> <code>{pid}</code></div>
+            <div class="sidebar-case-row"><strong>Policy:</strong> {pol['title']}</div>
+            <div class="sidebar-case-row"><strong>Date:</strong> {pol['date']}</div>
             <div class="sidebar-case-row" style="margin-bottom: 0;"><strong>Domain:</strong> Energy & Public Utilities</div>
         </div>
         """,
@@ -716,8 +757,7 @@ with st.sidebar:
 # -----------------------------------------------------------------------------
 # Main Header & Policy Decision Focus Bar
 # -----------------------------------------------------------------------------
-c_head, c_sel = st.columns([2.5, 1.5])
-with c_head:
+with st.container():
     st.markdown(
         """
         <div style="margin-bottom: 0.5rem;">
@@ -733,62 +773,33 @@ with c_head:
         unsafe_allow_html=True,
     )
 
-with c_sel:
-    st.markdown("<div style='height: 14px;'></div>", unsafe_allow_html=True)
-    selected_policy = st.selectbox(
-        ":material/fact_check: Select Evaluated Policy Decision:",
-        options=[
-            "DEC_2023_ELEC_01: Cost-Reflective Tariff Revision (Feb 2023) [Active Focus]",
-            "DEC_2022_ELEC_01: Emergency Electricity Tariff Hike (Aug 2022) [Preceding Case]",
-            "DEC_2024_ELEC_01: Downward Electricity Tariff Relief (Mar 2024) [Relief Revision]",
-        ],
-        index=0,
-        help="Switch between the primary evaluation case study and comparative historical tariff decisions."
-    )
-
 # -----------------------------------------------------------------------------
 # Active Policy Showcase Banner (Hero Showcase)
 # -----------------------------------------------------------------------------
+meta_html = "".join(f'<div class="policy-meta-item"><strong>{k}</strong>{v}</div>' for k, v in pol["meta"])
 st.markdown(
     f"""
     <div class="active-policy-banner">
         <div class="policy-badge-row">
-            <span class="badge-active-case"><span class="ui-icon" style="font-size: 0.9rem; color: #34D399; margin-right: 3px;">verified</span> ACTIVE POLICY CASE STUDY</span>
-            <span class="badge-case-id">DEC_2023_ELEC_01</span>
+            <span class="badge-active-case"><span class="ui-icon" style="font-size: 0.9rem; color: #34D399; margin-right: 3px;">verified</span> {pol['badge']}</span>
+            <span class="badge-case-id">{pid}</span>
             <span class="badge-domain">ENERGY & PUBLIC UTILITIES</span>
             <span class="badge-domain">SRI LANKA</span>
         </div>
-        <div class="policy-hero-title"><span class="ui-icon" style="font-size: 1.8rem; color: #38BDF8; margin-right: 6px;">bolt</span>Cost-Reflective Electricity Tariff Revision (February 2023)</div>
-        <div class="policy-hero-desc">
-            Comprehensive evaluation of Sri Lanka's <strong>66% retail power tariff restructuring</strong> approved by the Cabinet of Ministers on <strong>January 9, 2023</strong> (Directive <code>2023-01-09-001-en</code>) and enacted by PUCSL on <strong>February 15, 2023</strong> to eliminate untargeted subsidies, halt the Ceylon Electricity Board (CEB) Rs. 167B fiscal bleed, and end daily 10–14 hour islandwide blackouts.
-        </div>
-        <div class="policy-meta-grid">
-            <div class="policy-meta-item">
-                <strong>Enactment Date</strong>
-                February 15, 2023
-            </div>
-            <div class="policy-meta-item">
-                <strong>Governing Authority</strong>
-                Cabinet of Ministers & PUCSL
-            </div>
-            <div class="policy-meta-item">
-                <strong>Affected Consumer Base</strong>
-                4.8M Domestic, SME & Industrial Units
-            </div>
-            <div class="policy-meta-item">
-                <strong>Stated Primary Mandate</strong>
-                CEB Fiscal Solvency & IMF EFF Targets
-            </div>
-        </div>
+        <div class="policy-hero-title"><span class="ui-icon" style="font-size: 1.8rem; color: #38BDF8; margin-right: 6px;">bolt</span>{pol['title']}</div>
+        <div class="policy-hero-desc">{pol['desc']}</div>
+        <div class="policy-meta-grid">{meta_html}</div>
     </div>
     """,
     unsafe_allow_html=True,
 )
 
-if "DEC_2022" in selected_policy:
-    st.info(":material/history: **Historical Comparative Mode (DEC_2022_ELEC_01)**: Examining the August 2022 tariff revision (first hike in 9 years, ~75% increase). Trajectory indicators and Hansard debates reflect the peak fuel crisis period.")
-elif "DEC_2024" in selected_policy:
-    st.info(":material/trending_down: **Historical Comparative Mode (DEC_2024_ELEC_01)**: Examining the subsequent downward tariff revision in March 2024 (-21.9% reduction) following heavy monsoon hydro generation and lower global fuel costs.")
+if not is_primary:
+    st.info(
+        f":material/info: **Comparative case ({pid})**: the *Macro Trajectories* tab and the historical retrieval are recomputed live "
+        f"around **{pol['year']}**. The synthesized briefing, public-opinion and expert-evidence tabs are built for the primary case "
+        "(DEC_2023_ELEC_01); their source corpora are not split by individual decision date."
+    )
 
 # -----------------------------------------------------------------------------
 # Navigation Tabs
@@ -797,7 +808,7 @@ tab_exec, tab_p1, tab_p2, tab_p3, tab_sim = st.tabs([
     ":material/dashboard: Executive Synthesis",
     ":material/record_voice_over: Public Voice (66% Tariff Hike)",
     ":material/menu_book: Expert Evidence (CEB & Treasury)",
-    ":material/trending_up: Macro Trajectories (2021-2025)",
+    f":material/trending_up: Macro Trajectories ({pol['year']-2}-{pol['year']+2})",
     ":material/tune: Live Stance Simulator",
 ])
 
@@ -805,91 +816,95 @@ tab_exec, tab_p1, tab_p2, tab_p3, tab_sim = st.tabs([
 # TAB 1: Executive Synthesis & Policy Briefing
 # =============================================================================
 with tab_exec:
-    st.subheader(":material/overview: Policy Decision Briefing: DEC_2023_ELEC_01 (Feb 2023 Tariff Revision)")
+    st.subheader(f":material/overview: Policy Decision Briefing: {pid} ({pol['title']})")
 
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.metric(label="Public Policy Stance", value="85% Opposed", delta="-66% Living Cost Impact")
-    with col2:
-        st.metric(label="CEB Financial Bleed (2022)", value="Rs. 167 Billion", delta="Fiscal Emergency")
-    with col3:
-        st.metric(label="Source Grounding", value="99.88%", delta="Zero Hallucination")
-    with col4:
-        st.metric(label="Inflation Trajectory", value="49.7% → 16.5%", delta="-33.2% Deceleration")
+    if not is_primary:
+        st.warning(f"No synthesized briefing exists for {pid}. Tensions, recommendations and the public/expert evidence are generated only for DEC_2023_ELEC_01. Open the **Macro Trajectories** tab to see this decision's live before/after indicators.")
+    else:
 
-    st.markdown("### :material/article: Executive Summary")
-    exec_text = briefing.get("executive_summary", "")
-    st.markdown(
-        f"""
-        <div class="exec-summary-card">
-            {exec_text}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric(label="Public Policy Stance", value="85% Opposed", delta="-66% Living Cost Impact")
+        with col2:
+            st.metric(label="CEB Financial Bleed (2022)", value="Rs. 167 Billion", delta="Fiscal Emergency")
+        with col3:
+            st.metric(label="Source Grounding", value="99.88%", delta="Zero Hallucination")
+        with col4:
+            st.metric(label="Inflation Trajectory", value="49.7% → 16.5%", delta="-33.2% Deceleration")
 
-    st.divider()
+        st.markdown("### :material/article: Executive Summary")
+        exec_text = briefing.get("executive_summary", "")
+        st.markdown(
+            f"""
+            <div class="exec-summary-card">
+                {exec_text}
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
-    # Policy Tensions
-    st.subheader(":material/balance: Core Policy Tensions & Resolved Trade-Offs")
-    st.caption("How the platform resolves sharp contradictions between public distress, fiscal reality, and systemic survival.")
+        st.divider()
 
-    for t in briefing.get("cross_pipeline_tensions", []):
-        with st.container(border=True):
-            st.markdown(f"#### :material/balance: {t['tension_name']}")
-            c_pub, c_exp = st.columns(2)
-            with c_pub:
-                st.markdown(
-                    f"""
-                    <div class="tension-pillar-box tension-public">
-                        <div class="tension-pillar-title"><span class="ui-icon" style="font-size: 1.05rem; color: #FCA5A5; margin-right: 4px;">record_voice_over</span> Citizen Grievance (Public Voice)</div>
-                        <div class="tension-pillar-text">{t['public_perspective']}</div>
-                    </div>
-                    """,
-                    unsafe_allow_html=True,
-                )
-            with c_exp:
-                st.markdown(
-                    f"""
-                    <div class="tension-pillar-box tension-expert">
-                        <div class="tension-pillar-title"><span class="ui-icon" style="font-size: 1.05rem; color: #93C5FD; margin-right: 4px;">verified_user</span> Official & Expert Justification</div>
-                        <div class="tension-pillar-text">{t['expert_perspective']}</div>
-                    </div>
-                    """,
-                    unsafe_allow_html=True,
-                )
-            st.markdown(
-                f"""
-                <div class="resolution-callout">
-                    <span class="resolution-badge"><span class="ui-icon" style="font-size: 1.15rem; color: #34D399; margin-right: 4px;">lightbulb</span> RECOMMENDED GOVERNANCE RESOLUTION</span>
-                    <div class="resolution-text">{t['governance_resolution']}</div>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
+        # Policy Tensions
+        st.subheader(":material/balance: Core Policy Tensions & Resolved Trade-Offs")
+        st.caption("How the platform resolves sharp contradictions between public distress, fiscal reality, and systemic survival.")
 
-    st.divider()
-
-    # Evidence-Based Recommendations
-    st.subheader(":material/fact_check: Actionable Decision Recommendations")
-    rec_cols = st.columns(2)
-    recs = briefing.get("evidence_based_recommendations", [])
-    for idx, r in enumerate(recs):
-        with rec_cols[idx % 2]:
+        for t in briefing.get("cross_pipeline_tensions", []):
             with st.container(border=True):
+                st.markdown(f"#### :material/balance: {t['tension_name']}")
+                c_pub, c_exp = st.columns(2)
+                with c_pub:
+                    st.markdown(
+                        f"""
+                        <div class="tension-pillar-box tension-public">
+                            <div class="tension-pillar-title"><span class="ui-icon" style="font-size: 1.05rem; color: #FCA5A5; margin-right: 4px;">record_voice_over</span> Citizen Grievance (Public Voice)</div>
+                            <div class="tension-pillar-text">{t['public_perspective']}</div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True,
+                    )
+                with c_exp:
+                    st.markdown(
+                        f"""
+                        <div class="tension-pillar-box tension-expert">
+                            <div class="tension-pillar-title"><span class="ui-icon" style="font-size: 1.05rem; color: #93C5FD; margin-right: 4px;">verified_user</span> Official & Expert Justification</div>
+                            <div class="tension-pillar-text">{t['expert_perspective']}</div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True,
+                    )
                 st.markdown(
                     f"""
-                    <div>
-                        <span class="rec-number">#{idx+1:02d}</span>
-                        <span class="rec-title">{r['action_title']}</span>
-                    </div>
-                    <div class="rec-detail">{r['detail']}</div>
-                    <div class="rec-backing">
-                        <strong style="color: #38BDF8;"><span class="ui-icon" style="font-size: 1.05rem; color: #38BDF8; margin-right: 4px;">query_stats</span> Empirical Backing:</strong> {r['evidence_backing']}
+                    <div class="resolution-callout">
+                        <span class="resolution-badge"><span class="ui-icon" style="font-size: 1.15rem; color: #34D399; margin-right: 4px;">lightbulb</span> RECOMMENDED GOVERNANCE RESOLUTION</span>
+                        <div class="resolution-text">{t['governance_resolution']}</div>
                     </div>
                     """,
                     unsafe_allow_html=True,
                 )
+
+        st.divider()
+
+        # Evidence-Based Recommendations
+        st.subheader(":material/fact_check: Actionable Decision Recommendations")
+        rec_cols = st.columns(2)
+        recs = briefing.get("evidence_based_recommendations", [])
+        for idx, r in enumerate(recs):
+            with rec_cols[idx % 2]:
+                with st.container(border=True):
+                    st.markdown(
+                        f"""
+                        <div>
+                            <span class="rec-number">#{idx+1:02d}</span>
+                            <span class="rec-title">{r['action_title']}</span>
+                        </div>
+                        <div class="rec-detail">{r['detail']}</div>
+                        <div class="rec-backing">
+                            <strong style="color: #38BDF8;"><span class="ui-icon" style="font-size: 1.05rem; color: #38BDF8; margin-right: 4px;">query_stats</span> Empirical Backing:</strong> {r['evidence_backing']}
+                        </div>
+                        """,
+                        unsafe_allow_html=True,
+                    )
 
 
 # =============================================================================
@@ -1176,8 +1191,11 @@ with tab_p3:
 
     st.divider()
 
-    st.markdown("### :material/monitoring: Macroeconomic & Sector Trajectories (2021–2025)")
-    traj_dict = p3.get("indicator_trajectories", {})
+    st.markdown(f"### :material/monitoring: Macroeconomic & Sector Trajectories ({pol['year']-2}-{pol['year']+2})")
+    # Recompute around the selected decision year (data is cached on the analyzer, cheap)
+    from src.pipeline3_historical_analysis.trajectory import IndicatorTrajectoryAnalyzer
+    _traj = IndicatorTrajectoryAnalyzer().analyze_trajectory(decision_year=pol["year"], window_years=2)
+    traj_dict = _traj["trajectories"]
 
     if traj_dict:
         selected_code = st.selectbox(
@@ -1203,11 +1221,11 @@ with tab_p3:
             ))
 
             fig_traj.add_vline(
-                x=2023,
+                x=pol["year"],
                 line_width=2,
                 line_dash="dash",
                 line_color="#EF4444",
-                annotation_text="Tariff Revision (Feb 2023)",
+                annotation_text=pol["vline"],
                 annotation_position="top left",
                 annotation_font=dict(size=12, color="#FCA5A5"),
             )
@@ -1234,14 +1252,14 @@ with tab_p3:
 
             c_info1, c_info2, c_info3 = st.columns(3)
             with c_info1:
-                st.metric("Baseline (2022)", f"{curr_traj.get('baseline_value', 'N/A')}")
+                st.metric(f"Baseline ({curr_traj.get('baseline_year')})", f"{curr_traj.get('baseline_value', 'N/A')}")
             with c_info2:
-                st.metric("Implementation (2023)", f"{curr_traj.get('event_value', 'N/A')}")
+                st.metric(f"Decision Year ({pol['year']})", f"{curr_traj.get('event_value', 'N/A')}")
             with c_info3:
                 st.metric("Trend Classification", curr_traj.get("trend_direction", "N/A"), f"{curr_traj.get('pct_change', 0):+.2f}%")
 
-    st.markdown("### :material/warning_amber: Verified Confounding Macroeconomic Shocks (2021–2025)")
-    conf_events = p3.get("confounding_events", [])
+    st.markdown(f"### :material/warning_amber: Verified Confounding Macroeconomic Shocks ({pol['year']-2}-{pol['year']+2})")
+    conf_events = _traj["confounding_events"]
     for c in conf_events:
         st.markdown(
             f"""
@@ -1285,7 +1303,7 @@ with tab_sim:
     if st.button("Analyze Sentiment & Stance", icon=":material/play_arrow:", type="primary", use_container_width=True):
         if user_text.strip():
             from src.pipeline1_public_opinion.predict import analyze_comment
-            res = analyze_comment(user_text, target_decision="DEC_2023_ELEC_01")
+            res = analyze_comment(user_text, target_decision=pid)
 
             sim_col1, sim_col2 = st.columns(2)
 
