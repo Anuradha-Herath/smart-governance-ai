@@ -94,19 +94,13 @@ def load_p3_trajectories() -> dict[str, Any]:
 
 
 # -----------------------------------------------------------------------------
-# Custom Styling
+# Custom Styling (Theme-Adaptive)
 # -----------------------------------------------------------------------------
 st.markdown(
     """
     <style>
-    .main-header { font-size: 2.2rem; font-weight: 700; color: #1E293B; margin-bottom: 0.2rem; }
-    .sub-header { font-size: 1.05rem; color: #64748B; margin-bottom: 1.5rem; }
-    .metric-card { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
-    .tension-card { background: #FFFFFF; border-left: 4px solid #3B82F6; border-radius: 6px; padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 16px; }
-    .quote-box { background: #F1F5F9; border-radius: 6px; padding: 12px; font-style: italic; margin-top: 8px; color: #334155; }
-    .badge-grounded { background-color: #DCFCE7; color: #166534; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }
-    .badge-oppose { background-color: #FEE2E2; color: #991B1B; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }
-    .badge-support { background-color: #DCFCE7; color: #166534; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }
+    .badge-oppose { background-color: #FEE2E2; color: #991B1B; padding: 3px 10px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; }
+    .badge-support { background-color: #DCFCE7; color: #166534; padding: 3px 10px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -148,11 +142,8 @@ with st.sidebar:
 # -----------------------------------------------------------------------------
 # Header
 # -----------------------------------------------------------------------------
-st.markdown('<div class="main-header">🏛️ Smart Governance Decision Support Platform</div>', unsafe_allow_html=True)
-st.markdown(
-    '<div class="sub-header">Multilingual Public Sentiment, Verifiable Expert Evidence & Pre/Post Historical Outcome Synthesis for National Policy Decisions</div>',
-    unsafe_allow_html=True,
-)
+st.title("🏛️ Smart Governance Decision Support Platform")
+st.markdown("*Multilingual Public Sentiment, Verifiable Expert Evidence & Pre/Post Historical Outcome Synthesis for National Policy Decisions*")
 
 # -----------------------------------------------------------------------------
 # Navigation Tabs
@@ -191,18 +182,11 @@ with tab_exec:
     st.caption("How the system resolves sharp contradictions between public distress, fiscal reality, and systemic survival.")
 
     for t in briefing.get("cross_pipeline_tensions", []):
-        with st.container():
-            st.markdown(
-                f"""
-                <div class="tension-card">
-                    <h4>{t['tension_name']}</h4>
-                    <p><strong>🗣️ Public Grievance:</strong> {t['public_perspective']}</p>
-                    <p><strong>📜 Official / Expert Justification:</strong> {t['expert_perspective']}</p>
-                    <p style="color: #1E40AF;"><strong>💡 Recommended Governance Resolution:</strong> <em>{t['governance_resolution']}</em></p>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
+        with st.container(border=True):
+            st.markdown(f"#### ⚖️ {t['tension_name']}")
+            st.markdown(f"**🗣️ Public Grievance:** {t['public_perspective']}")
+            st.markdown(f"**📜 Official / Expert Justification:** {t['expert_perspective']}")
+            st.info(f"**💡 Recommended Governance Resolution:** {t['governance_resolution']}")
 
     st.divider()
 
@@ -212,16 +196,10 @@ with tab_exec:
     recs = briefing.get("evidence_based_recommendations", [])
     for idx, r in enumerate(recs):
         with rec_cols[idx % 2]:
-            st.markdown(
-                f"""
-                <div class="metric-card">
-                    <h5>#{idx+1}. {r['action_title']}</h5>
-                    <p>{r['detail']}</p>
-                    <small><strong>Empirical Backing:</strong> {r['evidence_backing']}</small>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
+            with st.container(border=True):
+                st.markdown(f"##### #{idx+1}. {r['action_title']}")
+                st.write(r['detail'])
+                st.caption(f"**Empirical Backing:** {r['evidence_backing']}")
 
 
 # =============================================================================
@@ -265,15 +243,7 @@ with tab_p1:
     for g in p1.get("grievance_themes", []):
         with st.expander(f"📌 {g['theme']} — Prevalence: {g['prevalence']}"):
             st.markdown(f"**Description**: {g['description']}")
-            st.markdown(
-                f"""
-                <div class="quote-box">
-                    "{g['sample_quote']}"<br>
-                    <small>Language: {g['language']}</small>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
+            st.info(f"🗣️ *\"{g['sample_quote']}\"*\n\n*(Language: {g['language']})*")
 
     st.markdown("### 💬 Multilingual Public Comments Explorer")
     comments_df = load_p1_sample_comments()
@@ -321,17 +291,10 @@ with tab_p2:
     selected_cits = top_cits.get(key, [])
 
     for cit in selected_cits:
-        st.markdown(
-            f"""
-            <div class="metric-card">
-                <span class="badge-grounded">✓ 100% Verbatim Grounded</span>
-                <span style="float: right; color: #64748B; font-size: 0.85rem;">Document: <code>{cit['doc_id']}</code></span>
-                <p style="font-size: 1.05rem; margin-top: 8px;"><strong>"{cit['quote']}"</strong></p>
-                <small style="color: #475569;">Speaker / Entity: <strong>{cit['speaker_title']}</strong></small>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        with st.container(border=True):
+            st.caption(f"Document: `{cit['doc_id']}` | Speaker / Entity: **{cit['speaker_title']}**")
+            st.markdown(f"#### \"{cit['quote']}\"")
+            st.caption("✅ 100% Verbatim Grounded (Verified from official records)")
 
     st.markdown("### 🗄️ Full Evidence Corpus Explorer")
     all_stmts = load_p2_statements()
@@ -374,18 +337,10 @@ with tab_p3:
         from src.pipeline3_historical_analysis.retrieval import search_historical_decisions
         retrieved = search_historical_decisions(search_query, top_k=3)
         for r in retrieved:
-            tier_color = "#10B981" if r["relevance_tier"] == "High" else "#3B82F6"
-            st.markdown(
-                f"""
-                <div class="metric-card">
-                    <span style="color: {tier_color}; font-weight: 700;">Relevance: {r['relevance_tier']} (Score: {r['similarity_score']})</span>
-                    <span style="float: right; color: #64748B;">Date: <strong>{r['date_str']}</strong> | ID: <code>{r['doc_id']}</code></span>
-                    <h5 style="margin-top: 6px;">{r['title']}</h5>
-                    <p style="color: #475569; font-size: 0.95rem;">{r['body_snippet']}</p>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
+            with st.container(border=True):
+                st.caption(f"Relevance: **{r['relevance_tier']}** (Score: {r['similarity_score']}) | Date: **{r['date_str']}** | ID: `{r['doc_id']}`")
+                st.markdown(f"#### {r['title']}")
+                st.write(r['body_snippet'])
 
     st.divider()
 
