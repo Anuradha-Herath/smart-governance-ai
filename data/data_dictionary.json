@@ -1,0 +1,146 @@
+{
+  "pipeline1_public_opinion": {
+    "file": "data/interim/p1_public_opinion_interim.parquet",
+    "description": "Standardized multi-source public opinion comments.",
+    "fields": {
+      "comment_id": {
+        "type": "string",
+        "description": "Unique identifier (e.g. SI_NEWS_00001, SING_YT_00001)."
+      },
+      "text": {
+        "type": "string",
+        "description": "Preprocessed comment text with normalized whitespace."
+      },
+      "language": {
+        "type": "string",
+        "allowed_values": [
+          "si",
+          "singlish",
+          "si_en_codemixed"
+        ],
+        "description": "Linguistic classification."
+      },
+      "sentiment_label": {
+        "type": "string",
+        "allowed_values": [
+          "Positive",
+          "Negative",
+          "Neutral"
+        ],
+        "description": "Harmonized 3-class sentiment."
+      },
+      "source_dataset": {
+        "type": "string",
+        "description": "Originating research corpus."
+      },
+      "char_length": {
+        "type": "integer",
+        "description": "Character count of cleaned text."
+      },
+      "word_count": {
+        "type": "integer",
+        "description": "Token count based on whitespace splitting."
+      }
+    }
+  },
+  "pipeline2_expert_documents": {
+    "file": "data/interim/p2_expert_documents_interim.parquet",
+    "description": "Policy-relevant expert passages and debates filtered for target decision keywords.",
+    "fields": {
+      "doc_id": {
+        "type": "string",
+        "description": "Unique document or speech identifier."
+      },
+      "source_type": {
+        "type": "string",
+        "allowed_values": [
+          "ParliamentaryHansard",
+          "CabinetDecision",
+          "CentralBankReport"
+        ],
+        "description": "Document authority."
+      },
+      "date_str": {
+        "type": "string",
+        "description": "Publication or debate date."
+      },
+      "speaker_or_title": {
+        "type": "string",
+        "description": "Speaker name or document section title."
+      },
+      "text_chunk": {
+        "type": "string",
+        "description": "Verbatim text chunk containing matched arguments."
+      },
+      "char_length": {
+        "type": "integer",
+        "description": "Character count of chunk."
+      },
+      "word_count": {
+        "type": "integer",
+        "description": "Token count of chunk."
+      },
+      "matched_keywords": {
+        "type": "string",
+        "description": "Comma-separated policy keywords detected in chunk."
+      },
+      "keyword_match_count": {
+        "type": "integer",
+        "description": "Number of unique target keywords present."
+      }
+    }
+  },
+  "pipeline3_indicators": {
+    "file": "data/interim/p3_indicators_interim.csv",
+    "description": "Sri Lanka macroeconomic and energy indicators aligned around the 2023 reform window.",
+    "fields": {
+      "indicator_code": {
+        "type": "string",
+        "description": "World Bank / CBSL indicator code (e.g., FP.CPI.TOTL.ZG)."
+      },
+      "indicator_name": {
+        "type": "string",
+        "description": "Human-readable indicator description."
+      },
+      "impact_category": {
+        "type": "string",
+        "allowed_values": [
+          "Economic",
+          "Social",
+          "Sector-specific"
+        ],
+        "description": "Governance outcome domain."
+      },
+      "year": {
+        "type": "integer",
+        "description": "Observation year (1980-2025)."
+      },
+      "value": {
+        "type": "float",
+        "description": "Recorded indicator measurement."
+      },
+      "policy_window": {
+        "type": "string",
+        "allowed_values": [
+          "Historical Pre-Crisis",
+          "Pre-Implementation (2021-2022)",
+          "Implementation Year (2023)",
+          "Post-Implementation (2024-2025)"
+        ],
+        "description": "Temporal categorization relative to February 2023."
+      },
+      "baseline_2022_value": {
+        "type": "float",
+        "description": "Indicator value in pre-reform base year 2022."
+      },
+      "delta_from_baseline": {
+        "type": "float",
+        "description": "Absolute delta (value - baseline_2022_value)."
+      },
+      "pct_change_from_baseline": {
+        "type": "float",
+        "description": "Percentage change relative to 2022."
+      }
+    }
+  }
+}
