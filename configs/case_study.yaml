@@ -1,0 +1,64 @@
+# ==============================================================================
+# Smart Governance AI - Case Study Configuration: Target Decision DEC_2023_ELEC_01
+# ==============================================================================
+
+decision:
+  id: "DEC_2023_ELEC_01"
+  domain: "Electricity Tariffs & Energy Pricing"
+  title: "Cost-Reflective Electricity Tariff Revision (February 2023)"
+  country: "Sri Lanka"
+  announcement_date: "2023-01-09"
+  implementation_date: "2023-02-15"
+  status: "Implemented"
+  stated_objective: >
+    Restore the financial viability of the Ceylon Electricity Board (CEB),
+    eliminate untargeted state subsidies on electricity generation, and align
+    domestic utility tariffs with cost-reflective pricing under the IMF Extended
+    Fund Facility (EFF) framework.
+
+related_decisions:
+  - id: "DEC_2022_ELEC_01"
+    title: "Initial Electricity Tariff Revision (August 2022)"
+    date: "2022-08-10"
+    relation: "Preceding tariff hike after a 9-year freeze"
+  - id: "DEC_2024_ELEC_01"
+    title: "Downward Electricity Tariff Revision (March 2024)"
+    date: "2024-03-04"
+    relation: "Subsequent cost reduction adjustment"
+
+keywords:
+  en:
+    - "electricity tariff"
+    - "electricity bill"
+    - "CEB"
+    - "tariff hike"
+    - "PUCSL"
+    - "power tariff"
+    - "Ceylon Electricity Board"
+  si:
+    - "විදුලි ගාස්තු"
+    - "විදුලි බිල"
+    - "ලංවිම"
+    - "විදුලිබල මණ්ඩලය"
+    - "ගාස්තු සංශෝධනය"
+    - "විදුලි අර්බුදය"
+  ta:
+    - "மின்சாரக் கட்டணம்"
+    - "மின்சார சபை"
+    - "கட்டண திருத்தம்"
+
+target_populations:
+  - "Domestic / Low-income households"
+  - "Commercial and retail consumers"
+  - "Industrial manufacturers and export enterprises"
+  - "Hotel and tourism sector"
+
+indicators:
+  pre_post_window_years: 2
+  target_codes:
+    - "FP.CPI.TOTL.ZG"      # Inflation, consumer prices (annual %)
+    - "FP.CPI.TOTL"         # Consumer price index
+    - "EG.USE.ELEC.KH.PC"   # Electric power consumption (kWh per capita)
+    - "EG.ELC.ACCS.ZS"      # Access to electricity (% of population)
+    - "NE.CON.PRVT.ZS"      # Households final consumption expenditure (% of GDP)
+    - "GC.DOD.TOTL.GD.ZS"   # Central government debt (% of GDP)
