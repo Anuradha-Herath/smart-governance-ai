@@ -650,7 +650,7 @@ st.markdown(
         margin-bottom: 0.2rem;
     }
     </style>
-    """,
+    """.replace("\r", "").replace("\n\n", "\n").replace("\n    \n", "\n"),  # blank lines end the HTML block in markdown, leaking CSS as text
     unsafe_allow_html=True,
 )
 
@@ -896,13 +896,13 @@ with tab_exec:
 # TAB 2: Public Voice & Stance Mining (Pipeline 1)
 # =============================================================================
 with tab_p1:
-    st.subheader("🗣️ Multilingual Citizen Voice: Public Reaction to the 66% Electricity Tariff Hike")
+    st.subheader(":material/record_voice_over: Multilingual Citizen Voice: Public Reaction to the 66% Electricity Tariff Hike")
     p1 = briefing.get("pillar1_public_opinion", {})
 
     st.markdown(
         f"""
         <div class="disclaimer-banner">
-            <strong style="color: #F59E0B;">⚠️ Sampling Limitation:</strong> {p1.get('sampling_disclaimer', '')}
+            <strong style="color: #F59E0B;"><span class="ui-icon" style="font-size: 1.2rem; color: #F59E0B; margin-right: 4px;">warning</span> Sampling Limitation:</strong> {p1.get('sampling_disclaimer', '')}
         </div>
         """,
         unsafe_allow_html=True,
@@ -911,7 +911,7 @@ with tab_p1:
     c1, c2 = st.columns([1, 1])
 
     with c1:
-        st.markdown("#### Policy Stance Distribution")
+        st.markdown("#### :material/pie_chart: Policy Stance Distribution")
         stance_data = p1.get("stance_distribution_pct", {"Oppose": 85.0, "Support": 12.0, "Neutral_or_Unclear": 3.0})
         fig_stance = px.pie(
             names=list(stance_data.keys()),
@@ -938,7 +938,7 @@ with tab_p1:
         st.plotly_chart(fig_stance, use_container_width=True)
 
     with c2:
-        st.markdown("#### Sentiment Polarity")
+        st.markdown("#### :material/bar_chart: Sentiment Polarity")
         sent_data = p1.get("sentiment_distribution_pct", {"Negative": 78.5, "Neutral": 14.5, "Positive": 7.0})
         fig_sent = px.bar(
             x=list(sent_data.keys()),
@@ -972,21 +972,21 @@ with tab_p1:
         )
         st.plotly_chart(fig_sent, use_container_width=True)
 
-    st.markdown("### 🔍 Citizen Grievance Theme Clusters")
+    st.markdown("### :material/bubble_chart: Citizen Grievance Theme Clusters")
     for g in p1.get("grievance_themes", []):
-        with st.expander(f"📌 {g['theme']}  •  Prevalence: {g['prevalence']}"):
+        with st.expander(f":material/bookmark: {g['theme']}  •  Prevalence: {g['prevalence']}"):
             st.markdown(f"**Description**: {g['description']}")
             st.markdown(
                 f"""
                 <div style="background: rgba(15, 23, 42, 0.6); border-left: 3px solid #38BDF8; padding: 0.8rem 1rem; border-radius: 6px; margin-top: 0.5rem;">
-                    <div style="font-size: 1.05rem; font-style: italic; color: #F8FAFC;">🗣️ "{g['sample_quote']}"</div>
+                    <div style="font-size: 1.05rem; font-style: italic; color: #F8FAFC;"><span class="ui-icon" style="font-size: 1.1rem; color: #38BDF8; margin-right: 4px;">format_quote</span> "{g['sample_quote']}"</div>
                     <div style="font-size: 0.88rem; color: #94A3B8; margin-top: 0.4rem;">Source Language: <strong>{g['language']}</strong></div>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
 
-    st.markdown("### 💬 Multilingual Public Comments Explorer")
+    st.markdown("### :material/chat: Multilingual Public Comments Explorer")
     comments_df = load_p1_sample_comments()
     if not comments_df.empty:
         col_f1, col_f2, col_f3 = st.columns([1, 2, 1])
@@ -1027,7 +1027,7 @@ with tab_p1:
                     f"""
                     <div style="background: #1E293B; border: 1px solid #334155; border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 0.75rem;">
                         <div style="font-size: 1.05rem; line-height: 1.6; color: #F8FAFC; margin-bottom: 0.5rem;">
-                            "{row['text']}"
+                            <span class="ui-icon" style="font-size: 1.1rem; color: #38BDF8; margin-right: 4px;">format_quote</span> "{row['text']}"
                         </div>
                         <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; color: #94A3B8;">
                             <span>ID: <code>{row['comment_id']}</code> &nbsp;|&nbsp; Language: <strong>{row['language']}</strong></span>
@@ -1043,14 +1043,14 @@ with tab_p1:
 # TAB 3: Grounded Expert Evidence (Pipeline 2)
 # =============================================================================
 with tab_p2:
-    st.subheader("📜 Grounded Expert Evidence: Parliamentary Debates, CEB Losses & Treasury Limits")
+    st.subheader(":material/menu_book: Grounded Expert Evidence: Parliamentary Debates, CEB Losses & Treasury Limits")
     p2 = briefing.get("pillar2_expert_evidence", {})
 
     st.markdown(
         f"""
         <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
             <div>
-                <span style="font-size: 1.15rem; font-weight: 700; color: #34D399;">✅ Verbatim Grounding Rate: {p2.get('verbatim_grounding_rate', '99.88%')}</span>
+                <span style="font-size: 1.15rem; font-weight: 700; color: #34D399;"><span class="ui-icon" style="font-size: 1.3rem; color: #34D399; margin-right: 4px;">verified</span> Verbatim Grounding Rate: {p2.get('verbatim_grounding_rate', '99.88%')}</span>
                 <p style="margin: 0.3rem 0 0 0; font-size: 0.98rem; color: #E2E8F0;">
                     Synthesized from <strong>{p2.get('policy_relevant_statements', 866):,}</strong> policy statements extracted from official Hansard debates, Cabinet decisions, and Central Bank reports.
                 </p>
@@ -1086,14 +1086,14 @@ with tab_p2:
                 <div class="quote-text">"{cit['quote']}"</div>
                 <div class="quote-meta">
                     <span>Speaker / Entity: <strong>{cit['speaker_title']}</strong> &nbsp;|&nbsp; Document: <code>{cit['doc_id']}</code></span>
-                    <span style="color: #34D399; font-weight: 600;">✅ 100% Verbatim Grounded</span>
+                    <span style="color: #34D399; font-weight: 600;"><span class="ui-icon" style="font-size: 1rem; color: #34D399; margin-right: 3px;">verified</span> 100% Verbatim Grounded</span>
                 </div>
             </div>
             """,
             unsafe_allow_html=True,
         )
 
-    st.markdown("### 🗄️ Full Evidence Corpus Explorer")
+    st.markdown("### :material/database: Full Evidence Corpus Explorer")
     all_stmts = load_p2_statements()
     if all_stmts:
         c_corp1, c_corp2 = st.columns([1, 2])
@@ -1136,19 +1136,19 @@ with tab_p2:
 # TAB 4: Historical Decisions & Indicator Trajectories (Pipeline 3)
 # =============================================================================
 with tab_p3:
-    st.subheader("📈 Historical Cabinet Precedents & Economic Indicator Trajectories (2021–2025)")
+    st.subheader(":material/trending_up: Historical Cabinet Precedents & Economic Indicator Trajectories (2021–2025)")
     p3 = briefing.get("pillar3_historical_indicators", {})
 
     st.markdown(
         f"""
         <div class="disclaimer-banner">
-            <strong style="color: #F59E0B;">⚠️ Causal Inference Boundary:</strong> {p3.get('causal_disclaimer', '')}
+            <strong style="color: #F59E0B;"><span class="ui-icon" style="font-size: 1.2rem; color: #F59E0B; margin-right: 4px;">gavel</span> Causal Inference Boundary:</strong> {p3.get('causal_disclaimer', '')}
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    st.markdown("### 🔎 Live Historical Cabinet Decision Retrieval Engine")
+    st.markdown("### :material/manage_search: Live Historical Cabinet Decision Retrieval Engine")
     st.caption("Search across 11,175 Sri Lanka Cabinet Decisions (2010–2026) using semantic TF-IDF scoring.")
 
     search_query = st.text_input(
@@ -1176,7 +1176,7 @@ with tab_p3:
 
     st.divider()
 
-    st.markdown("### 📊 Macroeconomic & Sector Trajectories (2021–2025)")
+    st.markdown("### :material/monitoring: Macroeconomic & Sector Trajectories (2021–2025)")
     traj_dict = p3.get("indicator_trajectories", {})
 
     if traj_dict:
@@ -1240,7 +1240,7 @@ with tab_p3:
             with c_info3:
                 st.metric("Trend Classification", curr_traj.get("trend_direction", "N/A"), f"{curr_traj.get('pct_change', 0):+.2f}%")
 
-    st.markdown("### ⚠️ Verified Confounding Macroeconomic Shocks (2021–2025)")
+    st.markdown("### :material/warning_amber: Verified Confounding Macroeconomic Shocks (2021–2025)")
     conf_events = p3.get("confounding_events", [])
     for c in conf_events:
         st.markdown(
@@ -1261,7 +1261,7 @@ with tab_p3:
 # TAB 5: Live Policy Stance & Sentiment Simulator
 # =============================================================================
 with tab_sim:
-    st.subheader("🧪 Live Multilingual Comment & Policy Stance Simulator")
+    st.subheader(":material/tune: Live Multilingual Comment & Policy Stance Simulator")
     st.caption("Test citizen statements in Sinhala, Singlish, or English against the trained policy stance and sentiment models.")
 
     sample_prompt = st.selectbox(
@@ -1282,7 +1282,7 @@ with tab_sim:
         height=120,
     )
 
-    if st.button("🚀 Analyze Sentiment & Stance", type="primary", use_container_width=True):
+    if st.button("Analyze Sentiment & Stance", icon=":material/play_arrow:", type="primary", use_container_width=True):
         if user_text.strip():
             from src.pipeline1_public_opinion.predict import analyze_comment
             res = analyze_comment(user_text, target_decision="DEC_2023_ELEC_01")
@@ -1291,7 +1291,7 @@ with tab_sim:
 
             with sim_col1:
                 with st.container(border=True):
-                    st.markdown("#### Stance Classification")
+                    st.markdown("#### :material/how_to_vote: Stance Classification")
                     st_label = res["stance"]
                     badge_class = "badge-oppose" if st_label == "Oppose" else ("badge-support" if st_label == "Support" else "")
                     st.markdown(f'<div style="margin: 0.5rem 0;"><span class="{badge_class}">{st_label}</span></div>', unsafe_allow_html=True)
@@ -1299,7 +1299,7 @@ with tab_sim:
 
             with sim_col2:
                 with st.container(border=True):
-                    st.markdown("#### Sentiment Polarity")
+                    st.markdown("#### :material/sentiment_satisfied: Sentiment Polarity")
                     sent_label = res["sentiment"]
                     sent_color = "#EF4444" if sent_label == "Negative" else ("#10B981" if sent_label == "Positive" else "#94A3B8")
                     st.markdown(
@@ -1308,6 +1308,6 @@ with tab_sim:
                     )
                     st.markdown(f"**Confidence**: `{res['sentiment_confidence'] * 100:.1f}%`")
 
-            st.caption(f"ℹ️ {res['sampling_disclaimer']}")
+            st.caption(f":material/info: {res['sampling_disclaimer']}")
         else:
             st.warning("Please enter a comment to analyze.")
