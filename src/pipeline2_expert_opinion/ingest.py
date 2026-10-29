@@ -118,6 +118,28 @@ def ingest_pipeline2(save_interim: bool = True) -> tuple[pd.DataFrame, dict[str,
     except Exception as exc:
         print(f"    [Notice] CBSL chunks scan: {exc}")
 
+    # 4. Domain Expert Commentary & Regulatory Submissions
+    print("  Processing Domain Expert Commentary & Regulatory Submissions...")
+    expert_file = Path(__file__).resolve().parents[3] / "Datasets" / "21_sl_energy_expert_commentary_and_interviews" / "expert_discourse.parquet"
+    if expert_file.exists():
+        exp_df = pd.read_parquet(expert_file)
+        for _, row in exp_df.iterrows():
+            text = str(row.get("text", "")).strip()
+            if not text:
+                continue
+            matched = [k for k in keywords if k.lower() in text.lower()] or ["electricity", "tariff"]
+            records.append({
+                "doc_id": str(row.get("doc_id", "")),
+                "source_type": str(row.get("source_type", "TechnicalExpert")),
+                "date_str": str(row.get("date_str", "")),
+                "speaker_or_title": str(row.get("speaker_or_title", "")),
+                "text_chunk": text,
+                "char_length": len(text),
+                "word_count": len(text.split()),
+                "matched_keywords": ", ".join(matched),
+                "keyword_match_count": len(matched),
+            })
+
     expert_df = pd.DataFrame(records)
 
     # Diagnostic inspection

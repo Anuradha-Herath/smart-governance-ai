@@ -78,3 +78,10 @@ def test_p2_extracted_evidence_file() -> None:
     assert "doc_id" in first
     assert "grounding_verified" in first
     assert "confidence" in first
+
+    # Verify domain expert coverage across technical experts, think tanks, and regulators
+    source_types = set(s.get("source_type") for s in data)
+    assert "TechnicalExpert" in source_types
+    assert "ThinkTankAnalysis" in source_types
+    assert "RegulatoryAuthority" in source_types
+    assert "IndustryStakeholder" in source_types
