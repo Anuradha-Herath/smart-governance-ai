@@ -54,6 +54,15 @@ LEXICAL_CUES = {
     ],
 }
 
+# Policy vertical domain keywords to prevent off-topic parliamentary debate noise
+POLICY_DOMAIN_KEYWORDS = [
+    "electricity", "tariff", "tariffs", "power", "ceb", "pucsl", "energy", "utility", "utilities",
+    "generation", "fuel", "coal", "diesel", "solar", "renewable", "blackout", "blackouts", "power cut",
+    "power cuts", "subsidy", "subsidies", "kilowatt", "kwh", "unit cost", "cost-reflective",
+    "විදුලි", "ගාස්තු", "බිල", "මණ්ඩල", "බලාගාර", "ඉන්ධන", "අය ක්‍රම", "සූර්ය", "පුනර්ජනනීය",
+    "විසන්ධි", "අලාභ", "පරිභෝජන", "කප්පාදු", "සහනාධාර"
+]
+
 
 def split_into_sentences(text: str) -> list[str]:
     """Segment raw text chunk into sentences handling Latin and Sinhala delimiters."""
@@ -123,6 +132,12 @@ def extract_grounded_evidence(
     extracted: list[dict[str, Any]] = []
 
     for idx, sent in enumerate(sentences):
+        # Prevent off-topic parliamentary debate noise (sports equipment, non-utility local issues)
+        if source_type == "ParliamentaryHansard":
+            sent_lower = sent.lower()
+            if not any(k in sent_lower for k in POLICY_DOMAIN_KEYWORDS):
+                continue
+
         stmt_type, confidence = classify_sentence(sent)
         if stmt_type == "None" or confidence < 0.55:
             continue
