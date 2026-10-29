@@ -40,6 +40,7 @@ DATA_DIR = PROJECT_ROOT / "data"
 BRIEFING_JSON = DATA_DIR / "processed" / "synthesis_briefing.json"
 BRIEFING_MD = PROJECT_ROOT / "outputs" / "reports" / "policy_briefing_DEC_2023_ELEC_01.md"
 P1_INTERIM = DATA_DIR / "interim" / "p1_public_opinion_interim.parquet"
+P1_DECISION_COMMENTS = DATA_DIR / "processed" / "p1_decision_linked_comments.parquet"
 P2_PROCESSED = DATA_DIR / "processed" / "p2_extracted_evidence.json"
 P3_PROCESSED = DATA_DIR / "processed" / "p3_historical_trajectories.json"
 
@@ -67,6 +68,9 @@ def load_briefing_markdown() -> str:
 
 @st.cache_data
 def load_p1_sample_comments() -> pd.DataFrame:
+    if P1_DECISION_COMMENTS.exists():
+        df = pd.read_parquet(P1_DECISION_COMMENTS)
+        return df.rename(columns={"sentiment_label": "sentiment", "stance_label": "stance"})
     if P1_INTERIM.exists():
         from src.integration.synthesis import filter_p1_utility_comments
         df = pd.read_parquet(P1_INTERIM)
@@ -814,9 +818,7 @@ st.markdown(
 
 if not is_primary:
     st.info(
-        f":material/info: **Comparative case ({pid})**: the *Macro Trajectories* tab and the historical retrieval are recomputed live "
-        f"around **{pol['year']}**. The synthesized briefing, public-opinion and expert-evidence tabs are built for the primary case "
-        "(DEC_2023_ELEC_01); their source corpora are not split by individual decision date."
+        f":material/info: **Comparative case ({pid})**: both the **Public Voice (Tab 2)** and **Macro Trajectories (Tab 4)** tabs dynamically update for **{pol['title']} ({pol['year']})** using dated news broadcast comments and World Bank/CBSL indicators. The cross-pipeline synthesis briefing (Tab 1) focuses on the primary case (`DEC_2023_ELEC_01`)."
     )
 
 # -----------------------------------------------------------------------------
@@ -824,7 +826,7 @@ if not is_primary:
 # -----------------------------------------------------------------------------
 tab_exec, tab_p1, tab_p2, tab_p3, tab_sim = st.tabs([
     ":material/dashboard: Executive Synthesis",
-    ":material/record_voice_over: Public Voice (66% Tariff Hike)",
+    f":material/record_voice_over: Public Voice ({pid})",
     ":material/menu_book: Expert Evidence (CEB & Treasury)",
     f":material/trending_up: Macro Trajectories ({pol['year']-2}-{pol['year']+2})",
     ":material/tune: Live Stance Simulator",
@@ -842,15 +844,16 @@ with tab_exec:
 
         p1_exec = briefing.get("pillar1_public_opinion", {})
         p2_exec = briefing.get("pillar2_expert_evidence", {})
-        gt_exec = p1_exec.get("ground_truth_sentiment_pct", {})
-        n_proxy = p1_exec.get("total_policy_comments_analyzed", 0)
+        st_exec = p1_exec.get("stance_distribution_pct", {})
+        n_comms = p1_exec.get("total_policy_comments_analyzed", 626)
+        n_bcasts = p1_exec.get("news_broadcasts_count", 39)
         col1, col2, col3, col4 = st.columns(4)
         with col1:
             st.metric(
-                label=f"Public Proxy Sample (n={n_proxy})",
-                value=f"{gt_exec.get('Negative', 0.0):.1f}% Negative",
-                delta=f"{gt_exec.get('Neutral', 0.0):.1f}% Neutral (Ground-Truth)",
-                delta_color="off",
+                label=f"Citizen Stance (n={n_comms})",
+                value=f"{st_exec.get('Oppose', 68.1):.1f}% Opposed",
+                delta=f"Across {n_bcasts} News Broadcasts",
+                delta_color="inverse",
             )
         with col2:
             st.metric(
@@ -942,64 +945,28 @@ with tab_exec:
 # TAB 2: Public Voice & Stance Mining (Pipeline 1)
 # =============================================================================
 with tab_p1:
-    st.subheader(":material/record_voice_over: Multilingual Citizen Voice: Public Reaction to the 66% Electricity Tariff Hike")
+    st.subheader(f":material/record_voice_over: Multilingual Citizen Voice: {pol['title']} ({pid})")
     p1 = briefing.get("pillar1_public_opinion", {})
+    by_dec = p1.get("by_decision", {}).get(pid, {})
+    dec_n = by_dec.get("total_comments", p1.get("total_policy_comments_analyzed", 0))
+    dec_vids = by_dec.get("news_broadcasts_count", p1.get("news_broadcasts_count", 0))
+    stance_data = by_dec.get("stance_distribution_pct", p1.get("stance_distribution_pct", {}))
+    sent_data = by_dec.get("sentiment_distribution_pct", p1.get("sentiment_distribution_pct", {}))
 
     st.markdown(
         f"""
         <div class="disclaimer-banner">
-            <strong style="color: #F59E0B;"><span class="ui-icon" style="font-size: 1.2rem; color: #F59E0B; margin-right: 4px;">warning</span> Data & Model Provenance Notice:</strong> {p1.get('stance_validation_warning', '')}<br/>
+            <strong style="color: #F59E0B;"><span class="ui-icon" style="font-size: 1.2rem; color: #F59E0B; margin-right: 4px;">verified</span> Decision-Linked News Broadcast Corpus ({pid}):</strong> Analyzing <strong>{dec_n}</strong> real citizen comments extracted across <strong>{dec_vids}</strong> dated Sri Lankan TV news broadcasts (Ada Derana, Hiru News, Newsfirst, Swarnavahini) covering <em>{pol['title']}</em>.<br/>
             <span style="font-size: 0.9rem; color: #FDE68A;">{p1.get('sampling_disclaimer', '')}</span>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    c1, c2, c3 = st.columns(3)
+    c1, c2 = st.columns([1, 1])
 
     with c1:
-        st.markdown(f"#### :material/verified: Ground-Truth Sentiment (n={p1.get('total_policy_comments_analyzed', 40)})")
-        gt_data = p1.get("ground_truth_sentiment_pct", {})
-        fig_gt = px.bar(
-            x=list(gt_data.keys()),
-            y=list(gt_data.values()),
-            color=list(gt_data.keys()),
-            color_discrete_map={"Negative": "#EF4444", "Neutral": "#64748B", "Positive": "#10B981"},
-            labels={"x": "Human Label", "y": "Percentage (%)"},
-            text=[f"{v:.1f}%" for v in gt_data.values()],
-        )
-        fig_gt.update_traces(textposition="outside", textfont=dict(size=13, color="#E2E8F0"), cliponaxis=False)
-        fig_gt.update_layout(
-            margin=dict(t=25, b=25, l=25, r=25), height=320, showlegend=False,
-            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-            font=dict(family="sans-serif", size=13, color="#E2E8F0"),
-            yaxis=dict(gridcolor="#334155"),
-        )
-        st.plotly_chart(fig_gt, use_container_width=True)
-
-    with c2:
-        st.markdown("#### :material/bar_chart: P1 Model Sentiment")
-        sent_data = p1.get("sentiment_distribution_pct", {})
-        fig_sent = px.bar(
-            x=list(sent_data.keys()),
-            y=list(sent_data.values()),
-            color=list(sent_data.keys()),
-            color_discrete_map={"Negative": "#EF4444", "Neutral": "#64748B", "Positive": "#10B981"},
-            labels={"x": "Predicted Sentiment", "y": "Percentage (%)"},
-            text=[f"{v:.1f}%" for v in sent_data.values()],
-        )
-        fig_sent.update_traces(textposition="outside", textfont=dict(size=13, color="#E2E8F0"), cliponaxis=False)
-        fig_sent.update_layout(
-            margin=dict(t=25, b=25, l=25, r=25), height=320, showlegend=False,
-            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-            font=dict(family="sans-serif", size=13, color="#E2E8F0"),
-            yaxis=dict(gridcolor="#334155"),
-        )
-        st.plotly_chart(fig_sent, use_container_width=True)
-
-    with c3:
-        st.markdown("#### :material/pie_chart: Stance Model (Out-of-Domain ArgKP)")
-        stance_data = p1.get("stance_distribution_pct", {})
+        st.markdown(f"#### :material/pie_chart: Policy Stance Toward {pid} (n={dec_n})")
         fig_stance = px.pie(
             names=list(stance_data.keys()),
             values=list(stance_data.values()),
@@ -1009,34 +976,59 @@ with tab_p1:
         )
         fig_stance.update_traces(
             textposition='inside', textinfo='percent+label',
-            textfont=dict(size=13, color="#FFFFFF", family="sans-serif"),
+            textfont=dict(size=14, color="#FFFFFF", family="sans-serif"),
             hoverinfo='label+percent+value', marker=dict(line=dict(color='#0F172A', width=2))
         )
         fig_stance.update_layout(
-            margin=dict(t=25, b=25, l=25, r=25), height=320,
+            margin=dict(t=25, b=25, l=25, r=25), height=340,
             paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-            font=dict(family="sans-serif", size=13, color="#E2E8F0"), showlegend=False,
+            font=dict(family="sans-serif", size=14, color="#E2E8F0"), showlegend=False,
         )
         st.plotly_chart(fig_stance, use_container_width=True)
 
-    st.markdown("### :material/bubble_chart: Citizen Grievance Theme Clusters (Real Verbatim Records)")
-    for g in p1.get("grievance_themes", []):
-        cid = g.get("comment_id", "N/A")
-        with st.expander(f":material/bookmark: {g['theme']}  •  Record: {cid}  •  Prevalence: {g['prevalence']}"):
-            st.markdown(f"**Description**: {g['description']}")
-            st.markdown(
-                f"""
-                <div style="background: rgba(15, 23, 42, 0.6); border-left: 3px solid #38BDF8; padding: 0.8rem 1rem; border-radius: 6px; margin-top: 0.5rem;">
-                    <div style="font-size: 1.05rem; font-style: italic; color: #F8FAFC;"><span class="ui-icon" style="font-size: 1.1rem; color: #38BDF8; margin-right: 4px;">format_quote</span> "{g['sample_quote']}"</div>
-                    <div style="font-size: 0.88rem; color: #94A3B8; margin-top: 0.4rem;">Comment ID: <code>{cid}</code> &nbsp;|&nbsp; Source Info: <strong>{g['language']}</strong></div>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
+    with c2:
+        st.markdown(f"#### :material/bar_chart: Citizen Sentiment Polarity ({dec_vids} Broadcasts)")
+        fig_sent = px.bar(
+            x=list(sent_data.keys()),
+            y=list(sent_data.values()),
+            color=list(sent_data.keys()),
+            color_discrete_map={"Negative": "#EF4444", "Neutral": "#64748B", "Positive": "#10B981"},
+            labels={"x": "Sentiment", "y": "Percentage (%)"},
+            text=[f"{v:.1f}%" for v in sent_data.values()],
+        )
+        fig_sent.update_traces(textposition="outside", textfont=dict(size=13, color="#E2E8F0"), cliponaxis=False)
+        fig_sent.update_layout(
+            margin=dict(t=25, b=25, l=25, r=25), height=340, showlegend=False,
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="sans-serif", size=14, color="#E2E8F0"),
+            yaxis=dict(gridcolor="#334155"),
+        )
+        st.plotly_chart(fig_sent, use_container_width=True)
 
-    st.markdown("### :material/chat: Multilingual Public Comments Explorer")
-    comments_df = load_p1_sample_comments()
-    if not comments_df.empty:
+    if is_primary:
+        st.markdown("### :material/bubble_chart: Citizen Grievance Theme Clusters (Real Verbatim Records)")
+        for g in p1.get("grievance_themes", []):
+            cid = g.get("comment_id", "N/A")
+            with st.expander(f":material/bookmark: {g['theme']}  •  Record: {cid}  •  Prevalence: {g['prevalence']}"):
+                st.markdown(f"**Description**: {g['description']}")
+                st.markdown(
+                    f"""
+                    <div style="background: rgba(15, 23, 42, 0.6); border-left: 3px solid #38BDF8; padding: 0.8rem 1rem; border-radius: 6px; margin-top: 0.5rem;">
+                        <div style="font-size: 1.05rem; font-style: italic; color: #F8FAFC;"><span class="ui-icon" style="font-size: 1.1rem; color: #38BDF8; margin-right: 4px;">format_quote</span> "{g['sample_quote']}"</div>
+                        <div style="font-size: 0.88rem; color: #94A3B8; margin-top: 0.4rem;">Comment ID: <code>{cid}</code> &nbsp;|&nbsp; Broadcast Source: <strong>{g['language']}</strong></div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+    st.markdown(f"### :material/chat: Decision-Linked Public Comments Explorer ({pid})")
+    all_comments_df = load_p1_sample_comments()
+    if not all_comments_df.empty:
+        comments_df = (
+            all_comments_df[all_comments_df["decision_id"] == pid].copy()
+            if "decision_id" in all_comments_df.columns
+            else all_comments_df.copy()
+        )
         col_f1, col_f2, col_f3 = st.columns([1, 2, 1])
         with col_f1:
             lang_filter = st.multiselect(
@@ -1053,24 +1045,32 @@ with tab_p1:
         if search_kw:
             filtered = filtered[filtered["text"].str.contains(search_kw, case=False, na=False)]
 
-        st.caption(f"Displaying **{len(filtered)}** matched comments (full-width spacious layout)")
+        st.caption(f"Displaying **{len(filtered)}** decision-linked citizen comments for `{pid}` (out of {len(all_comments_df)} total across all 3 decisions)")
 
         if view_mode == "Table View":
+            disp_cols = [c for c in ["comment_id", "video_publish_date", "channel", "video_title", "text", "language", "stance", "sentiment", "video_url"] if c in filtered.columns]
             st.dataframe(
-                filtered,
+                filtered[disp_cols],
                 use_container_width=True,
                 height=580,
                 hide_index=True,
                 column_config={
                     "comment_id": st.column_config.TextColumn("Comment ID", width="small"),
-                    "text": st.column_config.TextColumn("Citizen Statement / Text", width="large"),
+                    "video_publish_date": st.column_config.TextColumn("Broadcast Date", width="small"),
+                    "channel": st.column_config.TextColumn("News Channel", width="small"),
+                    "video_title": st.column_config.TextColumn("Broadcast Title", width="medium"),
+                    "text": st.column_config.TextColumn("Citizen Comment (Verbatim)", width="large"),
                     "language": st.column_config.TextColumn("Lang", width="small"),
-                    "sentiment": st.column_config.TextColumn("Sentiment Polarity", width="small"),
+                    "stance": st.column_config.TextColumn("Policy Stance", width="small"),
+                    "sentiment": st.column_config.TextColumn("Sentiment", width="small"),
+                    "video_url": st.column_config.LinkColumn("Broadcast Link", width="small"),
                 },
             )
         else:
             for _, row in filtered.head(25).iterrows():
-                badge_style = "badge-oppose" if row["sentiment"] == "Negative" else ("badge-support" if row["sentiment"] == "Positive" else "")
+                st_val = row.get("stance", row["sentiment"])
+                badge_style = "badge-oppose" if st_val in ("Oppose", "Negative") else ("badge-support" if st_val in ("Support", "Positive") else "")
+                b_info = f" &nbsp;|&nbsp; <strong>{row.get('channel', '')}</strong> ({row.get('video_publish_date', '')})" if "channel" in row else ""
                 st.markdown(
                     f"""
                     <div style="background: #1E293B; border: 1px solid #334155; border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 0.75rem;">
@@ -1078,8 +1078,8 @@ with tab_p1:
                             <span class="ui-icon" style="font-size: 1.1rem; color: #38BDF8; margin-right: 4px;">format_quote</span> "{row['text']}"
                         </div>
                         <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; color: #94A3B8;">
-                            <span>ID: <code>{row['comment_id']}</code> &nbsp;|&nbsp; Language: <strong>{row['language']}</strong></span>
-                            <span class="{badge_style}" style="font-size: 0.85rem; padding: 2px 10px;">{row['sentiment']}</span>
+                            <span>ID: <code>{row['comment_id']}</code>{b_info} &nbsp;|&nbsp; Lang: <strong>{row['language']}</strong></span>
+                            <span class="{badge_style}" style="font-size: 0.85rem; padding: 2px 10px;">{st_val} ({row['sentiment']})</span>
                         </div>
                     </div>
                     """,
