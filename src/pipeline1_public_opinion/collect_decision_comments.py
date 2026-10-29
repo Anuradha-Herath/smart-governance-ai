@@ -357,6 +357,91 @@ def build_decision_comment_dataset() -> pd.DataFrame:
     return df
 
 
+def import_saved_facebook_exports(fb_dir: Path | None = None) -> pd.DataFrame:
+    """Parse user-saved Facebook HTML/JSON/CSV files from `facebook_saved_posts/` and merge with dataset."""
+    from src.pipeline1_public_opinion.predict import get_sentiment_model
+    fb_folder = fb_dir or (DATASETS_ROOT / "facebook_saved_posts")
+    fb_folder.mkdir(parents=True, exist_ok=True)
+
+    proc_pq_path = PROCESSED_DIR / "p1_decision_linked_comments.parquet"
+    base_df = pd.read_parquet(proc_pq_path) if proc_pq_path.exists() else pd.DataFrame()
+
+    raw_items: list[dict[str, str]] = []
+    # 1. JSON files exported via DevTools or scraped live
+    for jf in fb_folder.glob("*.json"):
+        data = json.loads(jf.read_text(encoding="utf-8", errors="ignore"))
+        post_list = data.get("posts", [data]) if isinstance(data, dict) else [{"comments": data}]
+        for p_idx, post_obj in enumerate(post_list):
+            p_url = post_obj.get("post_url", "https://www.facebook.com/")
+            p_date = post_obj.get("date", "2023-02-15")[:10]
+            p_chan = post_obj.get("channel", "Facebook News Page")
+            p_title = post_obj.get("title", jf.stem)
+            p_dec = post_obj.get("decision_id", data.get("decision_id", "DEC_2023_ELEC_01"))
+            items = post_obj.get("comments", [])
+            for c_idx, it in enumerate(items):
+                txt = (it.get("text") if isinstance(it, dict) else str(it)).strip()
+                if len(txt) >= 4:
+                    raw_items.append({
+                        "comment_id": f"FB_{jf.stem}_{p_idx}_{c_idx:04d}",
+                        "decision_id": p_dec,
+                        "video_id": f"FB_{jf.stem}_{p_idx}",
+                        "video_url": p_url,
+                        "video_publish_date": p_date,
+                        "channel": p_chan,
+                        "video_title": p_title,
+                        "text": re.sub(r"\s+", " ", txt),
+                    })
+
+    # 2. Saved HTML pages (Ctrl+S in Edge/Chrome)
+    for hf in fb_folder.glob("*.htm*"):
+        html_text = hf.read_text(encoding="utf-8", errors="ignore")
+        # Extract text blocks inside dir="auto" divs (standard Facebook comment text container)
+        blocks = re.findall(r'<div[^>]+dir="auto"[^>]*>(.*?)</div>', html_text, flags=re.DOTALL)
+        for idx, blk in enumerate(blocks):
+            clean = re.sub(r"<[^>]+>", " ", blk)
+            clean = re.sub(r"\s+", " ", clean).strip()
+            if len(clean) >= 8 and not clean.startswith(("http", "Write a comment", "Most relevant")):
+                raw_items.append({
+                    "comment_id": f"FB_{hf.stem}_{idx:04d}",
+                    "decision_id": "DEC_2023_ELEC_01",
+                    "video_id": f"FB_{hf.stem}",
+                    "video_url": "https://www.facebook.com/",
+                    "video_publish_date": "2023-02-15",
+                    "channel": "Facebook Saved Post",
+                    "video_title": hf.stem,
+                    "text": clean,
+                })
+
+    if not raw_items:
+        print(f"No saved Facebook files found in: {fb_folder}")
+        return base_df
+
+    sent_clf = get_sentiment_model()
+    preds = sent_clf.predict([r["text"] for r in raw_items])
+    fb_records = []
+    for r, m_sent in zip(raw_items, preds):
+        lang = detect_language_modality(r["text"])
+        sent, stance = classify_tariff_sentiment_and_stance(r["text"], r["decision_id"], str(m_sent))
+        fb_records.append({
+            **r,
+            "language": lang,
+            "sentiment_label": sent,
+            "stance_label": stance,
+            "source_dataset": "sl_electricity_tariff_facebook_saved_posts",
+        })
+
+    fb_df = pd.DataFrame(fb_records)
+    merged = pd.concat([base_df, fb_df], ignore_index=True).drop_duplicates(subset=["text"]).reset_index(drop=True)
+    merged.to_parquet(proc_pq_path, index=False)
+    merged.to_csv(PROCESSED_DIR / "p1_decision_linked_comments.csv", index=False, encoding="utf-8-sig")
+    merged.to_csv(DATASETS_ROOT / "sl_tariff_decision_comments.csv", index=False, encoding="utf-8-sig")
+    print(f"Merged {len(fb_df)} Facebook comments! Total dataset size: {len(merged)}")
+    return merged
+
+
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    build_decision_comment_dataset()
+    if "--import-fb" in sys.argv:
+        import_saved_facebook_exports()
+    else:
+        build_decision_comment_dataset()
