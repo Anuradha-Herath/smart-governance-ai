@@ -28,14 +28,23 @@ def test_synthesizer_pillars_integrity(synthesizer: PolicyDecisionSynthesizer) -
     # Pillar 1 checks
     p1 = briefing["pillar1_public_opinion"]
     assert "stance_distribution_pct" in p1
+    assert "ground_truth_sentiment_pct" in p1
+    assert "stance_validation_warning" in p1
     assert "grievance_themes" in p1
     assert len(p1["grievance_themes"]) >= 3
+    for g in p1["grievance_themes"]:
+        assert g.get("comment_id"), "Every grievance quote must have a real comment_id"
+        assert len(g.get("sample_quote", "")) > 10
 
     # Pillar 2 checks
     p2 = briefing["pillar2_expert_evidence"]
     assert p2["verbatim_grounding_rate"] == "99.88%"
     assert "top_citations" in p2
     assert len(p2["top_citations"]["empirical_evidence"]) >= 2
+    for cat_items in p2["top_citations"].values():
+        for cit in cat_items:
+            assert cit.get("statement_id"), "Every top citation must trace to a real statement_id"
+            assert cit.get("grounded") is True
 
     # Pillar 3 checks
     p3 = briefing["pillar3_historical_indicators"]

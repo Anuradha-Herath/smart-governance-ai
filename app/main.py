@@ -68,15 +68,12 @@ def load_briefing_markdown() -> str:
 @st.cache_data
 def load_p1_sample_comments() -> pd.DataFrame:
     if P1_INTERIM.exists():
+        from src.integration.synthesis import filter_p1_utility_comments
         df = pd.read_parquet(P1_INTERIM)
-        keywords = ["bill", "ceb", "current", "power", "electric", "tariff", "gahanna", "mila", "බිල", "විදුලි", "මිල"]
-        mask = df["text"].str.lower().apply(lambda t: any(k in t for k in keywords))
-        sub = df[mask].copy()
-        if len(sub) > 0:
-            return sub[["comment_id", "text", "language", "sentiment_label"]].rename(
-                columns={"sentiment_label": "sentiment"}
-            )
-        return df.head(100)[["comment_id", "text", "language", "sentiment_label"]]
+        sub = filter_p1_utility_comments(df)
+        return sub[["comment_id", "text", "language", "sentiment_label"]].rename(
+            columns={"sentiment_label": "sentiment"}
+        )
     return pd.DataFrame()
 
 
@@ -323,6 +320,27 @@ st.markdown(
     [data-testid="stDataFrame"] {
         font-size: 0.96rem !important;
         border-radius: 8px !important;
+    }
+
+    /* ---------------- Fullscreen & Expanded Table Polish ---------------- */
+    [data-testid="stFullScreenFrame"] {
+        padding: 1.25rem !important;
+        background-color: #0B0F19 !important;
+    }
+
+    /* Force expanded/fullscreen dataframe to stretch down the full viewport */
+    [data-testid="stFullScreenFrame"] [data-testid="stDataFrame"],
+    [data-testid="stFullScreenFrame"] [data-testid="stDataFrameResizable"] {
+        height: calc(100vh - 4.5rem) !important;
+        max-height: calc(100vh - 4.5rem) !important;
+        min-height: calc(100vh - 4.5rem) !important;
+        width: 100% !important;
+    }
+
+    [data-testid="stFullScreenFrame"] .stDataFrameGlideDataEditor,
+    [data-testid="stFullScreenFrame"] .dvn-stack {
+        height: 100% !important;
+        min-height: 100% !important;
     }
 
     /* ---------------- Expanders Polish ---------------- */
@@ -822,13 +840,26 @@ with tab_exec:
         st.warning(f"No synthesized briefing exists for {pid}. Tensions, recommendations and the public/expert evidence are generated only for DEC_2023_ELEC_01. Open the **Macro Trajectories** tab to see this decision's live before/after indicators.")
     else:
 
+        p1_exec = briefing.get("pillar1_public_opinion", {})
+        p2_exec = briefing.get("pillar2_expert_evidence", {})
+        gt_exec = p1_exec.get("ground_truth_sentiment_pct", {})
+        n_proxy = p1_exec.get("total_policy_comments_analyzed", 0)
         col1, col2, col3, col4 = st.columns(4)
         with col1:
-            st.metric(label="Public Policy Stance", value="85% Opposed", delta="-66% Living Cost Impact")
+            st.metric(
+                label=f"Public Proxy Sample (n={n_proxy})",
+                value=f"{gt_exec.get('Negative', 0.0):.1f}% Negative",
+                delta=f"{gt_exec.get('Neutral', 0.0):.1f}% Neutral (Ground-Truth)",
+                delta_color="off",
+            )
         with col2:
-            st.metric(label="CEB Financial Bleed (2022)", value="Rs. 167 Billion", delta="Fiscal Emergency")
+            st.metric(
+                label="Official Policy Statements",
+                value=f"{p2_exec.get('policy_relevant_statements', 898):,} Extracted",
+                delta="Cabinet 2023-01-09 & Hansards",
+            )
         with col3:
-            st.metric(label="Source Grounding", value="99.88%", delta="Zero Hallucination")
+            st.metric(label="Source Grounding", value=p2_exec.get("verbatim_grounding_rate", "99.88%"), delta="Zero Hallucination")
         with col4:
             st.metric(label="Inflation Trajectory", value="49.7% → 16.5%", delta="-33.2% Deceleration")
 
@@ -917,17 +948,58 @@ with tab_p1:
     st.markdown(
         f"""
         <div class="disclaimer-banner">
-            <strong style="color: #F59E0B;"><span class="ui-icon" style="font-size: 1.2rem; color: #F59E0B; margin-right: 4px;">warning</span> Sampling Limitation:</strong> {p1.get('sampling_disclaimer', '')}
+            <strong style="color: #F59E0B;"><span class="ui-icon" style="font-size: 1.2rem; color: #F59E0B; margin-right: 4px;">warning</span> Data & Model Provenance Notice:</strong> {p1.get('stance_validation_warning', '')}<br/>
+            <span style="font-size: 0.9rem; color: #FDE68A;">{p1.get('sampling_disclaimer', '')}</span>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    c1, c2 = st.columns([1, 1])
+    c1, c2, c3 = st.columns(3)
 
     with c1:
-        st.markdown("#### :material/pie_chart: Policy Stance Distribution")
-        stance_data = p1.get("stance_distribution_pct", {"Oppose": 85.0, "Support": 12.0, "Neutral_or_Unclear": 3.0})
+        st.markdown(f"#### :material/verified: Ground-Truth Sentiment (n={p1.get('total_policy_comments_analyzed', 40)})")
+        gt_data = p1.get("ground_truth_sentiment_pct", {})
+        fig_gt = px.bar(
+            x=list(gt_data.keys()),
+            y=list(gt_data.values()),
+            color=list(gt_data.keys()),
+            color_discrete_map={"Negative": "#EF4444", "Neutral": "#64748B", "Positive": "#10B981"},
+            labels={"x": "Human Label", "y": "Percentage (%)"},
+            text=[f"{v:.1f}%" for v in gt_data.values()],
+        )
+        fig_gt.update_traces(textposition="outside", textfont=dict(size=13, color="#E2E8F0"), cliponaxis=False)
+        fig_gt.update_layout(
+            margin=dict(t=25, b=25, l=25, r=25), height=320, showlegend=False,
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="sans-serif", size=13, color="#E2E8F0"),
+            yaxis=dict(gridcolor="#334155"),
+        )
+        st.plotly_chart(fig_gt, use_container_width=True)
+
+    with c2:
+        st.markdown("#### :material/bar_chart: P1 Model Sentiment")
+        sent_data = p1.get("sentiment_distribution_pct", {})
+        fig_sent = px.bar(
+            x=list(sent_data.keys()),
+            y=list(sent_data.values()),
+            color=list(sent_data.keys()),
+            color_discrete_map={"Negative": "#EF4444", "Neutral": "#64748B", "Positive": "#10B981"},
+            labels={"x": "Predicted Sentiment", "y": "Percentage (%)"},
+            text=[f"{v:.1f}%" for v in sent_data.values()],
+        )
+        fig_sent.update_traces(textposition="outside", textfont=dict(size=13, color="#E2E8F0"), cliponaxis=False)
+        fig_sent.update_layout(
+            margin=dict(t=25, b=25, l=25, r=25), height=320, showlegend=False,
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="sans-serif", size=13, color="#E2E8F0"),
+            yaxis=dict(gridcolor="#334155"),
+        )
+        st.plotly_chart(fig_sent, use_container_width=True)
+
+    with c3:
+        st.markdown("#### :material/pie_chart: Stance Model (Out-of-Domain ArgKP)")
+        stance_data = p1.get("stance_distribution_pct", {})
         fig_stance = px.pie(
             names=list(stance_data.keys()),
             values=list(stance_data.values()),
@@ -936,66 +1008,27 @@ with tab_p1:
             color_discrete_map={"Oppose": "#EF4444", "Support": "#10B981", "Neutral_or_Unclear": "#64748B"},
         )
         fig_stance.update_traces(
-            textposition='inside',
-            textinfo='percent+label',
-            textfont=dict(size=14, color="#FFFFFF", family="sans-serif"),
-            hoverinfo='label+percent+value',
-            marker=dict(line=dict(color='#0F172A', width=2))
+            textposition='inside', textinfo='percent+label',
+            textfont=dict(size=13, color="#FFFFFF", family="sans-serif"),
+            hoverinfo='label+percent+value', marker=dict(line=dict(color='#0F172A', width=2))
         )
         fig_stance.update_layout(
-            margin=dict(t=25, b=25, l=25, r=25),
-            height=340,
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
-            font=dict(family="sans-serif", size=14, color="#E2E8F0"),
-            showlegend=False,
+            margin=dict(t=25, b=25, l=25, r=25), height=320,
+            paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="sans-serif", size=13, color="#E2E8F0"), showlegend=False,
         )
         st.plotly_chart(fig_stance, use_container_width=True)
 
-    with c2:
-        st.markdown("#### :material/bar_chart: Sentiment Polarity")
-        sent_data = p1.get("sentiment_distribution_pct", {"Negative": 78.5, "Neutral": 14.5, "Positive": 7.0})
-        fig_sent = px.bar(
-            x=list(sent_data.keys()),
-            y=list(sent_data.values()),
-            color=list(sent_data.keys()),
-            color_discrete_map={"Negative": "#EF4444", "Neutral": "#64748B", "Positive": "#10B981"},
-            labels={"x": "Sentiment", "y": "Percentage (%)"},
-            text=[f"{v:.1f}%" for v in sent_data.values()],
-        )
-        fig_sent.update_traces(
-            textposition="outside",
-            textfont=dict(size=13, color="#E2E8F0"),
-            cliponaxis=False,
-        )
-        fig_sent.update_layout(
-            margin=dict(t=25, b=25, l=25, r=25),
-            height=340,
-            showlegend=False,
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
-            font=dict(family="sans-serif", size=14, color="#E2E8F0"),
-            xaxis=dict(
-                tickfont=dict(size=13, color="#E2E8F0"),
-                title_font=dict(size=14, color="#94A3B8"),
-            ),
-            yaxis=dict(
-                tickfont=dict(size=13, color="#E2E8F0"),
-                title_font=dict(size=14, color="#94A3B8"),
-                gridcolor="#334155",
-            ),
-        )
-        st.plotly_chart(fig_sent, use_container_width=True)
-
-    st.markdown("### :material/bubble_chart: Citizen Grievance Theme Clusters")
+    st.markdown("### :material/bubble_chart: Citizen Grievance Theme Clusters (Real Verbatim Records)")
     for g in p1.get("grievance_themes", []):
-        with st.expander(f":material/bookmark: {g['theme']}  •  Prevalence: {g['prevalence']}"):
+        cid = g.get("comment_id", "N/A")
+        with st.expander(f":material/bookmark: {g['theme']}  •  Record: {cid}  •  Prevalence: {g['prevalence']}"):
             st.markdown(f"**Description**: {g['description']}")
             st.markdown(
                 f"""
                 <div style="background: rgba(15, 23, 42, 0.6); border-left: 3px solid #38BDF8; padding: 0.8rem 1rem; border-radius: 6px; margin-top: 0.5rem;">
                     <div style="font-size: 1.05rem; font-style: italic; color: #F8FAFC;"><span class="ui-icon" style="font-size: 1.1rem; color: #38BDF8; margin-right: 4px;">format_quote</span> "{g['sample_quote']}"</div>
-                    <div style="font-size: 0.88rem; color: #94A3B8; margin-top: 0.4rem;">Source Language: <strong>{g['language']}</strong></div>
+                    <div style="font-size: 0.88rem; color: #94A3B8; margin-top: 0.4rem;">Comment ID: <code>{cid}</code> &nbsp;|&nbsp; Source Info: <strong>{g['language']}</strong></div>
                 </div>
                 """,
                 unsafe_allow_html=True,
@@ -1020,11 +1053,11 @@ with tab_p1:
         if search_kw:
             filtered = filtered[filtered["text"].str.contains(search_kw, case=False, na=False)]
 
-        st.caption(f"Displaying **{min(len(filtered), 60)}** of **{len(filtered)}** matched comments (full-width spacious layout)")
+        st.caption(f"Displaying **{len(filtered)}** matched comments (full-width spacious layout)")
 
         if view_mode == "Table View":
             st.dataframe(
-                filtered.head(60),
+                filtered,
                 use_container_width=True,
                 height=580,
                 hide_index=True,
@@ -1100,7 +1133,7 @@ with tab_p2:
             <div class="quote-card">
                 <div class="quote-text">"{cit['quote']}"</div>
                 <div class="quote-meta">
-                    <span>Speaker / Entity: <strong>{cit['speaker_title']}</strong> &nbsp;|&nbsp; Document: <code>{cit['doc_id']}</code></span>
+                    <span>Speaker / Entity: <strong>{cit['speaker_title']}</strong> &nbsp;|&nbsp; Doc: <code>{cit['doc_id']}</code> &nbsp;|&nbsp; Stmt ID: <code>{cit.get('statement_id', 'N/A')}</code></span>
                     <span style="color: #34D399; font-weight: 600;"><span class="ui-icon" style="font-size: 1rem; color: #34D399; margin-right: 3px;">verified</span> 100% Verbatim Grounded</span>
                 </div>
             </div>
@@ -1126,10 +1159,16 @@ with tab_p2:
         if search_ev:
             filtered_stmts = [s for s in filtered_stmts if search_ev.lower() in s.get("extracted_statement", "").lower()]
 
-        stmts_df = pd.DataFrame(filtered_stmts[:80])[
-            ["statement_id", "statement_type", "doc_id", "speaker_or_title", "extracted_statement", "confidence", "grounding_verified"]
-        ]
-        st.caption(f"Displaying **{min(len(stmts_df), 80)}** of **{len(filtered_stmts)}** official policy statements")
+        stmts_df = (
+            pd.DataFrame(filtered_stmts)[
+                ["statement_id", "statement_type", "doc_id", "speaker_or_title", "extracted_statement", "confidence", "grounding_verified"]
+            ]
+            if filtered_stmts
+            else pd.DataFrame(
+                columns=["statement_id", "statement_type", "doc_id", "speaker_or_title", "extracted_statement", "confidence", "grounding_verified"]
+            )
+        )
+        st.caption(f"Displaying **{len(stmts_df)}** official policy statements")
         st.dataframe(
             stmts_df,
             use_container_width=True,

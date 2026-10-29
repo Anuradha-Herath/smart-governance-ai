@@ -34,6 +34,29 @@ P3_PROCESSED_FILE = PROJECT_ROOT / "data" / "processed" / "p3_historical_traject
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 REPORTS_DIR = PROJECT_ROOT / "outputs" / "reports"
 
+# Word-boundary regex for electricity/utility/cost-of-living comments (avoids matching 'ceb' in 'facebook' or telecom/radio/elephant-fence terms)
+P1_UTILITY_INCLUDE_RE = (
+    r"(?:\bceb\b|\belectricity\b|\bpower\s*cut|\bcurrent\s*bila?|\blight\s*bill"
+    r"|විදුලි\s*බිල|විදුලි\s*ගාස්තු|විදුලි\s*බල|විදුලිය|කරන්ට්|බඩු\s*මිල|බඩුමිල|\bbadu\s*mila|\bmila\s*wadi)"
+)
+P1_UTILITY_EXCLUDE_RE = r"(?:විදුලි\s*සංදේශ|විදුලිසන්දේශ|විදුලි\s*වැට|ගුවන්\s*විදුලි)"
+STANCE_VALIDATION_WARNING = (
+    "PROXY CORPUS & OUT-OF-DOMAIN MODEL WARNING: The 6 public-opinion datasets contain no timestamps "
+    "or policy-thread links; comments below are matched via utility/cost-of-living keywords. Furthermore, "
+    "the stance classifier was trained on English IBM Debater (ArgKP) arguments and is unvalidated on "
+    "Sri Lankan Sinhala/Singlish tariff comments. Rely on the human-annotated Ground-Truth Sentiment "
+    "labels rather than the automated stance percentages."
+)
+
+
+def filter_p1_utility_comments(df: pd.DataFrame) -> pd.DataFrame:
+    """Filter P1 corpus for true electricity, power-cut, and cost-of-living comments."""
+    s = df["text"].fillna("")
+    inc = s.str.contains(P1_UTILITY_INCLUDE_RE, case=False, regex=True)
+    exc = s.str.contains(P1_UTILITY_EXCLUDE_RE, case=False, regex=True)
+    sub = df[inc & ~exc].copy()
+    return sub if not sub.empty else df.head(100).copy()
+
 
 class PolicyDecisionSynthesizer:
     """Orchestrates cross-pipeline evidence synthesis for smart governance decision support."""
@@ -60,53 +83,86 @@ class PolicyDecisionSynthesizer:
             return {"status": "unavailable", "disclaimer": SAMPLING_DISCLAIMER}
 
         df = pd.read_parquet(P1_INTERIM_FILE)
-        # Filter for energy/cost/utility relevant comments
-        keywords = ["bill", "ceb", "current", "power", "electric", "tariff", "gahanna", "mila", "බිල", "විදුලි", "මිල"]
-        mask = df["text"].str.lower().apply(lambda t: any(k in t for k in keywords))
-        relevant_df = df[mask] if mask.any() else df.head(1000)
+        relevant_df = filter_p1_utility_comments(df)
+
+        # Ground-truth human sentiment labels on the filtered proxy subset
+        gt_counts = (
+            relevant_df["sentiment_label"]
+            .value_counts(normalize=True)
+            .mul(100)
+            .round(2)
+            .to_dict()
+        )
 
         # Sample representative texts for batch inference
         sample_texts = relevant_df["text"].dropna().sample(min(len(relevant_df), 400), random_state=42).tolist()
         batch_results = analyze_comment_batch(sample_texts, target_decision="DEC_2023_ELEC_01")
 
-        # Top qualitative grievance clusters
+        # Pull real verbatim comments by comment_id from the dataset
+        by_id = df.set_index("comment_id")
+        def _real_comment(cid: str, fallback_lang: str) -> tuple[str, str, str]:
+            if cid in by_id.index:
+                row = by_id.loc[cid]
+                if isinstance(row, pd.DataFrame):
+                    row = row.iloc[0]
+                return str(row["text"]), str(row["language"]), str(row["sentiment_label"])
+            return "", fallback_lang, "Unknown"
+
+        q1, l1, s1 = _real_comment("SI_NEWS_06252", "si")
+        q2, l2, s2 = _real_comment("SI_NEWS_03169", "si")
+        q3, l3, s3 = _real_comment("SI_NEWS_05221", "si")
+        q4, l4, s4 = _real_comment("UOM_CM_00834", "si_en_codemixed")
+
         grievance_themes = [
             {
-                "theme": "Cost of Living & Household Affordability",
-                "prevalence": "High (Dominant grievance)",
-                "description": "Sudden 66% tariff increase sharply inflates basic household expenditure, severely squeezing disposable income of low- and middle-income families.",
-                "sample_quote": "විදුලි බිල වැඩි කරපු එක ජනතාවට දරාගන්න බෑ. කන්න බොන්නවත් සල්ලි නෑ.",
-                "language": "Sinhala",
+                "theme": "Direct Outrage at Electricity Bill Increases",
+                "prevalence": "High (Explicit Electricity Bill Mentions)",
+                "description": "Citizens react sharply to steep electricity bill revisions following official economic reports.",
+                "comment_id": "SI_NEWS_06252",
+                "sample_quote": q1,
+                "language": f"Sinhala ({l1}) · Ground-Truth: {s1}",
             },
             {
-                "theme": "CEB Inefficiency & Governance Grievance",
-                "prevalence": "Moderate to High",
-                "description": "Citizens question paying higher rates while state utility CEB maintains high allowances, staffing excesses, and delayed lower-cost renewable procurements.",
-                "sample_quote": "CEB eke horu nisa api mokatada gewanne? Clean up CEB waste first before doubling bills.",
-                "language": "Singlish / Code-mixed",
+                "theme": "Compounded Utility & Daily Living Expenses",
+                "prevalence": "High (Electricity, Water & Commuter Costs)",
+                "description": "Households highlight the cumulative pressure of doubled electricity tariffs alongside water bills and daily transport expenses.",
+                "comment_id": "SI_NEWS_03169",
+                "sample_quote": q2,
+                "language": f"Sinhala ({l2}) · Ground-Truth: {s2}",
             },
             {
-                "theme": "Small Business & SME Closure Threat",
-                "prevalence": "Moderate",
-                "description": "Bakeries, retail shops, and small workshops express inability to pass power costs to struggling consumers, threatening closures and layoffs.",
-                "sample_quote": "Small industries cannot survive with this commercial tariff hike. Will have to shut down.",
-                "language": "English",
+                "theme": "Tax Burden, Debt & Essential Commodity Prices",
+                "prevalence": "Moderate to High (Cost-of-Living Squeeze)",
+                "description": "Commenters argue that while infrastructure development is needed, public debt, taxes, and high commodity prices must be eased for citizens to survive.",
+                "comment_id": "SI_NEWS_05221",
+                "sample_quote": q3,
+                "language": f"Sinhala ({l3}) · Ground-Truth: {s3}",
             },
             {
-                "theme": "Conditional Acceptance for 24/7 Power",
-                "prevalence": "Low to Moderate",
-                "description": "Minority of consumers reluctantly concede that paying higher bills is preferable to returning to daily 10-13 hour blackouts.",
-                "sample_quote": "Wadi una eka awul thamai, eth power cuts nathi eka loku sahanayak.",
-                "language": "Singlish",
+                "theme": "CEB Power Outages & Connectivity Disruption",
+                "prevalence": "Moderate (Service Reliability & Outages)",
+                "description": "Code-mixed comments report immediate disruption to internet and remote work whenever CEB power cuts occur.",
+                "comment_id": "UOM_CM_00834",
+                "sample_quote": q4,
+                "language": f"Code-Mixed ({l4}) · Ground-Truth: {s4}",
             },
         ]
+
+        neg_gt = gt_counts.get("Negative", 0.0)
+        neu_gt = gt_counts.get("Neutral", 0.0)
+        pos_gt = gt_counts.get("Positive", 0.0)
 
         return {
             "total_policy_comments_analyzed": len(relevant_df),
             "sample_evaluated": len(sample_texts),
+            "ground_truth_sentiment_pct": gt_counts,
             "stance_distribution_pct": batch_results["stance_distribution_pct"],
             "sentiment_distribution_pct": batch_results["sentiment_distribution_pct"],
-            "primary_public_stance": "Predominantly Opposed (High Price Burden)",
+            "primary_public_stance": (
+                f"Keyword-Matched Proxy Subset (n={len(relevant_df)}; "
+                f"Ground-Truth Sentiment: {neg_gt:.1f}% Negative, {neu_gt:.1f}% Neutral, {pos_gt:.1f}% Positive)"
+            ),
+            "stance_validation_warning": STANCE_VALIDATION_WARNING,
             "grievance_themes": grievance_themes,
             "sampling_disclaimer": SAMPLING_DISCLAIMER,
         }
@@ -126,82 +182,36 @@ class PolicyDecisionSynthesizer:
             if any(k in s["extracted_statement"].lower() for k in keywords)
         ]
 
-        # Categorize by statement type
-        by_type: dict[str, list[dict[str, Any]]] = {
-            "Evidence": [],
-            "Recommendation": [],
-            "Risk": [],
-            "Benefit": [],
-            "Claim": [],
-        }
-        for s in relevant:
-            t = s.get("statement_type", "Claim")
-            if t in by_type:
-                by_type[t].append(s)
+        def _pick_real_stmt(doc_id: str, needle: str) -> dict[str, Any]:
+            for s in statements:
+                if s.get("doc_id") == doc_id and needle.lower() in s.get("extracted_statement", "").lower():
+                    return {
+                        "statement_id": s["statement_id"],
+                        "quote": s["verbatim_quote"],
+                        "doc_id": s["doc_id"],
+                        "speaker_title": f"{s['speaker_or_title']} ({s['source_type']}, {s['date']})",
+                        "grounded": bool(s.get("grounding_verified", False)),
+                    }
+            raise KeyError(f"Missing expected statement in p2_extracted_evidence.json: {doc_id} / {needle}")
 
-        # Curate top grounded citations with verbatim quotes
+        # Curate top grounded citations strictly from real verified records in p2_extracted_evidence.json
         top_citations = {
             "empirical_evidence": [
-                {
-                    "quote": "Ceylon Electricity Board accumulated operating losses exceeding Rs. 167 billion in 2022, creating severe fiscal vulnerabilities.",
-                    "doc_id": "CBSL_AR_2022_P48",
-                    "speaker_title": "Central Bank of Sri Lanka Annual Report",
-                    "grounded": True,
-                },
-                {
-                    "quote": "Average generation cost per unit reached Rs. 52.80 in late 2022 while average selling tariff remained below Rs. 30.00 per unit.",
-                    "doc_id": "PUCSL_DEC_2022_ANX",
-                    "speaker_title": "Public Utilities Commission of Sri Lanka",
-                    "grounded": True,
-                },
-                {
-                    "quote": "The General Treasury is no longer possible to provide required funds within existing fiscal space.",
-                    "doc_id": "2023-01-09-001-en",
-                    "speaker_title": "Cabinet of Ministers (Decision 2023-01-09)",
-                    "grounded": True,
-                },
+                _pick_real_stmt("2023-01-09-003-en", "General Treasury is no longer possible"),
+                _pick_real_stmt("SP_15195", "cost-reflective tariff"),
+                _pick_real_stmt("SP_12038", "Rooftop solar power systems"),
             ],
             "systemic_risks": [
-                {
-                    "quote": "Failure to align tariffs with generation costs threatens immediate fuel and coal procurement default, risking islandwide 10-14 hour blackouts.",
-                    "doc_id": "HANSARD_2022_09_20_MW",
-                    "speaker_title": "Minister of Power and Energy (Parliament)",
-                    "grounded": True,
-                },
-                {
-                    "quote": "Higher electricity tariffs impose a heavy burden on low-income consumers and small businesses.",
-                    "doc_id": "HANSARD_2022_03_16_VH",
-                    "speaker_title": "Opposition Member of Parliament",
-                    "grounded": True,
-                },
+                _pick_real_stmt("SP_15304", "මෙම ගාස්තු වැඩිකිරීම"),
+                _pick_real_stmt("SP_14944", "වසර 9කින්"),
             ],
             "expected_benefits": [
-                {
-                    "quote": "Cost-reflective tariffs ensure uninterrupted electricity supply and eliminate regressive universal subsidies benefiting high-end consumers.",
-                    "doc_id": "2023-01-09-001-en",
-                    "speaker_title": "Cabinet of Ministers",
-                    "grounded": True,
-                },
-                {
-                    "quote": "Restoring financial viability allows CEB to service outstanding debt to independent renewable power producers.",
-                    "doc_id": "CBSL_AR_2023_P52",
-                    "speaker_title": "Central Bank of Sri Lanka",
-                    "grounded": True,
-                },
+                _pick_real_stmt("SP_18116", "cost-recovery level"),
+                _pick_real_stmt("2024-07-01-007-en", "Committee comprising of representatives"),
             ],
             "recommendations": [
-                {
-                    "quote": "Implement automatic cost-reflective quarterly tariff adjustments while safeguarding lifeline domestic consumption below 60 units.",
-                    "doc_id": "2023-01-09-001-en",
-                    "speaker_title": "Cabinet of Ministers Directive",
-                    "grounded": True,
-                },
-                {
-                    "quote": "Accelerate the procurement of low-cost utility-scale solar and wind projects to permanently lower long-term average generation costs.",
-                    "doc_id": "CBSL_AR_2023_REC",
-                    "speaker_title": "Central Bank Policy Recommendations",
-                    "grounded": True,
-                },
+                _pick_real_stmt("2023-01-09-003-en", "Public Utilities Commission of Sri Lanka to further study"),
+                _pick_real_stmt("2024-07-01-007-en", "Standardized Power Purchase Agreement"),
             ],
         }
 
@@ -357,18 +367,24 @@ class PolicyDecisionSynthesizer:
             b["executive_summary"],
             "",
             "## 2. Pillar 1: Public Opinion & Citizen Stance",
-            f"- **Analyzed Corpus**: {p1.get('total_policy_comments_analyzed', 0):,} multilingual comments (Sinhala, Singlish, English)",
-            f"- **Public Stance Assessment**: **{p1.get('primary_public_stance', 'Opposed')}**",
-            f"- **Sentiment Polarity**: {p1.get('sentiment_distribution_pct', {})}",
+            f"- **Analyzed Proxy Subset**: {p1.get('total_policy_comments_analyzed', 0):,} keyword-matched comments (Sinhala, Singlish, Code-mixed)",
+            f"- **Public Opinion Summary**: **{p1.get('primary_public_stance', '')}**",
+            f"- **Ground-Truth Human Sentiment Polarity (%)**: {p1.get('ground_truth_sentiment_pct', {})}",
+            f"- **Model-Predicted Sentiment Polarity (%)**: {p1.get('sentiment_distribution_pct', {})}",
+            f"- **Out-of-Domain Stance Classifier Output (%)**: {p1.get('stance_distribution_pct', {})}",
             "",
-            "### Core Citizen Grievance Themes",
+            "### Core Citizen Grievance Themes (Real Verbatim Records)",
         ]
 
         for g in p1.get("grievance_themes", []):
+            cid = g.get("comment_id", "N/A")
             md.append(f"- **{g['theme']}** ({g['prevalence']}): {g['description']}")
-            md.append(f"  *Verbatim Citizen Quote ({g['language']})*: \"{g['sample_quote']}\"")
+            md.append(f"  *Verbatim Citizen Quote (`{cid}`, {g['language']})*: \"{g['sample_quote']}\"")
 
         md.extend([
+            "",
+            "> [!WARNING]",
+            f"> **Stance & Proxy Corpus Caveat**: {p1.get('stance_validation_warning', '')}",
             "",
             "> [!NOTE]",
             f"> **Public Opinion Limitation**: {p1.get('sampling_disclaimer', '')}",
