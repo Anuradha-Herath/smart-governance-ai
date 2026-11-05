@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import pandas as pd
 import pytest
 
 from src.pipeline2_expert_opinion.extractor import (
@@ -14,6 +15,7 @@ from src.pipeline2_expert_opinion.extractor import (
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 PROCESSED_FILE = PROJECT_ROOT / "data" / "processed" / "p2_extracted_evidence.json"
+MULTIDOMAIN_EXPERT_PQ = PROJECT_ROOT / "data" / "processed" / "p2_multidomain_expert_opinions.parquet"
 
 
 def test_sentence_segmentation() -> None:
@@ -85,3 +87,33 @@ def test_p2_extracted_evidence_file() -> None:
     assert "ThinkTankAnalysis" in source_types
     assert "RegulatoryAuthority" in source_types
     assert "IndustryStakeholder" in source_types
+
+
+def test_multidomain_expert_opinion_dataset() -> None:
+    assert MULTIDOMAIN_EXPERT_PQ.exists(), f"Multi-domain expert dataset missing at {MULTIDOMAIN_EXPERT_PQ}"
+    df = pd.read_parquet(MULTIDOMAIN_EXPERT_PQ)
+    assert len(df) >= 800
+    assert set(df["domain_id"].unique()) == {1, 2, 3, 4, 5, 6}
+    assert len(df["policy_case_id"].unique()) == 9
+
+    # Verify zero Tamil script leakage per research scope
+    assert not df["core_argument"].astype(str).str.contains(r"[\u0B80-\u0BFF]", regex=True).any()
+    assert not df["text_full_passage"].astype(str).str.contains(r"[\u0B80-\u0BFF]", regex=True).any()
+
+    # Verify 100% verbatim source grounding
+    assert df["grounding_verified"].all()
+    for _, row in df.iterrows():
+        assert str(row["core_argument"]) in str(row["text_full_passage"])
+
+    required_cols = {
+        "expert_opinion_id", "domain_id", "domain_name", "sub_focus", "policy_case_id",
+        "legal_anchor", "expert_name", "primary_affiliation", "stakeholder_category",
+        "primary_discipline", "source_type", "source_url_or_doc_id", "publication_date",
+        "temporal_window", "language", "text_full_passage", "core_argument", "char_span",
+        "grounding_verified", "statement_type", "stance_label", "aspect_category",
+        "expert_mechanism", "confidence", "annotation_method",
+    }
+    assert required_cols.issubset(set(df.columns))
+
+    gold_file = PROJECT_ROOT.parent / "Datasets" / "23_sl_multidomain_expert_opinion" / "gold_expert_annotation_sample_300.csv"
+    assert gold_file.exists(), "300-row Gold expert verification sample sheet missing"

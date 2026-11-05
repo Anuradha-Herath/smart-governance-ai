@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+import pandas as pd
 import pytest
 
 from src.pipeline3_historical_analysis.confounders import (
@@ -10,6 +12,11 @@ from src.pipeline3_historical_analysis.confounders import (
 )
 from src.pipeline3_historical_analysis.retrieval import search_historical_decisions
 from src.pipeline3_historical_analysis.trajectory import IndicatorTrajectoryAnalyzer
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PREC_PQ = PROJECT_ROOT / "data" / "processed" / "p3_multidomain_precedents.parquet"
+TRAJ_PQ = PROJECT_ROOT / "data" / "processed" / "p3_multidomain_trajectories.parquet"
+PANEL_PQ = PROJECT_ROOT / "data" / "processed" / "p3_multidomain_indicator_panel.parquet"
 
 
 def test_historical_decision_retrieval() -> None:
@@ -80,3 +87,29 @@ def test_confounder_registry_and_disclaimer() -> None:
 
     # Ensure mandatory disclaimer text is defined
     assert "CAUSAL INFERENCE DISCLAIMER" in MANDATORY_CORRELATION_DISCLAIMER
+
+
+def test_multidomain_precedents_and_trajectories_datasets() -> None:
+    """Verify Pipeline 3 multi-domain historical precedents and macro trajectory datasets."""
+    assert PREC_PQ.exists(), f"Missing precedents dataset at {PREC_PQ}"
+    assert TRAJ_PQ.exists(), f"Missing trajectories dataset at {TRAJ_PQ}"
+    assert PANEL_PQ.exists(), f"Missing indicator panel dataset at {PANEL_PQ}"
+
+    df_prec = pd.read_parquet(PREC_PQ)
+    df_traj = pd.read_parquet(TRAJ_PQ)
+    df_panel = pd.read_parquet(PANEL_PQ)
+
+    assert len(df_prec) >= 200
+    assert set(df_prec["domain_id"].unique()) == {1, 2, 3, 4, 5, 6}
+    assert len(df_prec["policy_case_id"].unique()) == 9
+    assert not df_prec["historical_text_summary"].astype(str).str.contains(r"[\u0B80-\u0BFF]", regex=True).any()
+
+    assert len(df_traj) == 72  # 9 policies x 8 indicators per domain
+    assert set(df_traj["domain_id"].unique()) == {1, 2, 3, 4, 5, 6}
+    assert len(df_traj["policy_case_id"].unique()) == 9
+    assert df_traj["baseline_value"].notna().all()
+    assert df_traj["event_year_value"].notna().all()
+    assert df_traj["post_year_1_value"].notna().all()
+    assert (df_traj["confounders_count"] >= 3).all()
+
+    assert len(df_panel) == 360  # 72 trajectories x 5 symmetric window steps (t-2..t+2)
