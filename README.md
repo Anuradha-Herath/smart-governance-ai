@@ -108,14 +108,27 @@ Set-Location "I:\A_Research Project\Project folder"
 .\.venv\Scripts\Activate.ps1
 ```
 
-### Step 3: Run Automated Test Suite (37 Tests)
+### Step 3: Run Automated Test Suite (45 Tests)
 ```powershell
 $env:PYTHONPATH="."
 .\.venv\Scripts\pytest.exe tests
 ```
-*(Expected output: `37 passed in ~14s` across data loaders, pipelines 1–3, integration, UI, and end-to-end harnesses).*
+*(Expected output: `45 passed in ~17s` across data loaders, pipelines 1–3, FastAPI endpoints, integration, UI, and end-to-end harnesses).*
 
-### Step 4: Launch Interactive Streamlit Dashboard
+### Step 4: Launch Modern React & FastAPI Dashboard (Recommended)
+
+Start the unified server with a single command (serves both API & modern React UI at `http://localhost:8000`):
+```powershell
+.\.venv\Scripts\uvicorn.exe src.api.main:app --host 127.0.0.1 --port 8000
+```
+
+*(Optional: For frontend UI development with live hot-reloading on port 5173)*:
+```powershell
+Set-Location frontend
+npm run dev
+```
+
+### Step 5: (Legacy Fallback) Launch Streamlit Dashboard
 ```powershell
 .\.venv\Scripts\streamlit.exe run app/main.py
 ```

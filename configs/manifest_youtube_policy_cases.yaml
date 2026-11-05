@@ -1,0 +1,260 @@
+# Multi-Domain YouTube Broadcast Manifest for Pipeline 1 (Public Opinion Mining)
+# Grounded in Official Sri Lankan Gazettes & Acts across the 6 Research Domains
+
+schema_version: "1.0"
+target_attributes:
+  - comment_id
+  - domain_id
+  - domain_name
+  - sub_focus
+  - policy_case_id
+  - legal_anchor
+  - text_raw
+  - text_clean
+  - language
+  - source_platform
+  - video_id
+  - video_url
+  - channel
+  - video_title
+  - post_publish_date
+  - temporal_window
+  - comment_relative_time
+  - sentiment_label
+  - stance_label
+  - aspect_category
+  - engagement_likes
+  - annotation_method
+
+domains:
+  - domain_id: 1
+    domain_name: "Electricity and Fuel"
+    main_focus: "Energy pricing, fuel taxes, electricity tariffs, and production costs"
+    policies:
+      - policy_case_id: "DEC_2022_ELEC_01"
+        sub_focus: "Electricity tariffs (Initial 75% revision)"
+        legal_anchor: "PUCSL Tariff Determination - August 2022"
+        enactment_date: "2022-08-10"
+        direction: "hike_or_restriction"
+        date_range: ["2022-01-01", "2022-12-15"]
+        title_keywords: ["විදුලි", "electricity", "ceb", "tariff", "බිල", "ගාස්තු"]
+        search_queries:
+          - "විදුලි බිල වැඩි 2022 අගෝස්තු Ada Derana"
+          - "විදුලි ගාස්තු සංශෝධනය 2022 Hiru News"
+          - "හෙට සිට වැඩි වන විදුලි බිල 2022 Hiru News"
+
+      - policy_case_id: "DEC_2023_ELEC_01"
+        sub_focus: "Electricity tariffs (66% cost-reflective hike)"
+        legal_anchor: "Cabinet Directive 2023-01-09-001 & Gazette No. 2318/52"
+        enactment_date: "2023-02-15"
+        direction: "hike_or_restriction"
+        date_range: ["2022-12-16", "2023-12-31"]
+        title_keywords: ["විදුලි", "electricity", "ceb", "tariff", "බිල", "ගාස්තු"]
+        search_queries:
+          - "විදුලි බිල 66% 2023 Ada Derana"
+          - "66% කින් විදුලි බිල වැඩි වන හැටි Hiru News"
+          - "විදුලි ගාස්තු සංශෝධනය අද සිට 2023 Hiru News"
+
+      - policy_case_id: "DEC_2024_ELEC_01"
+        sub_focus: "Electricity tariffs (21.9% downward tariff cut)"
+        legal_anchor: "PUCSL Tariff Determination - March 2024"
+        enactment_date: "2024-03-04"
+        direction: "relief_or_subsidy"
+        date_range: ["2024-01-01", "2024-12-31"]
+        title_keywords: ["විදුලි", "electricity", "ceb", "tariff", "බිල", "ගාස්තු"]
+        search_queries:
+          - "විදුලි බිල අඩු කරයි 2024 මාර්තු Ada Derana"
+          - "විදුලි බිල 21.9% අඩු 2024 Hiru News"
+
+      - policy_case_id: "DEC_2022_FUEL_01"
+        sub_focus: "Fuel pricing, taxes, and National Fuel Pass QR quota"
+        legal_anchor: "Petroleum Products (Special Provisions) Act & QR Quota Directive (July 2022)"
+        enactment_date: "2022-07-21"
+        direction: "hike_or_restriction"
+        date_range: ["2022-03-01", "2023-09-30"]
+        title_keywords: ["ඉන්ධන", "පෙට්‍රල්", "ඩීසල්", "fuel", "petrol", "qr", "තෙල්"]
+        search_queries:
+          - "ඉන්ධන මිල ඉහළට 2022 Ada Derana"
+          - "QR ක්‍රමයට ඉන්ධන Hiru News 2022"
+          - "පෙට්‍රල් ඩීසල් මිල වැඩි වෙයි 2022 Hiru News"
+          - "ඉන්ධන මිල සූත්‍රය Ada Derana"
+
+  - domain_id: 2
+    domain_name: "Agriculture"
+    main_focus: "Fertilizer policies, farming subsidies, crop production, and farmer income"
+    policies:
+      - policy_case_id: "DEC_2021_AGRI_01"
+        sub_focus: "Chemical fertilizer & agrochemical import ban and organic transition"
+        legal_anchor: "Imports and Exports (Control) Regulations Gazette No. 2226/48 (May 6, 2021)"
+        enactment_date: "2021-05-06"
+        direction: "hike_or_restriction"
+        date_range: ["2021-01-01", "2024-12-31"]
+        title_keywords: ["පොහොර", "කාබනික", "ගොව", "වගා", "fertilizer", "අස්වැන්", "වී", "කෘෂි", "යූරියා", "farmer", "organic", "paddy", "tea", "කුඹුර"]
+        search_queries:
+          - "රසායනික පොහොර තහනම Ada Derana"
+          - "කාබනික පොහොර ගොවි විරෝධතා Hiru News"
+          - "පොහොර ගැටලුව ගොවීන් Ada Derana"
+          - "පොහොර සහනාධාරය ගොවි ජනතාව Hiru News"
+          - "පොහොර නැතිව ගොවීන් අසරණයි Sirasa News"
+          - "පොහොර ඉල්ලා ගොවීන් පාරට බසී Hiru News"
+          - "චීන පොහොර නැව Hiru News"
+          - "යූරියා පොහොර ගොවීන්ට Ada Derana"
+          - "වී මිල ගොවි ගැටලු Hiru News"
+          - "ගොවි උද්ඝෝෂණ පොහොර Hiru News"
+          - "පොහොර හිඟය වගාව Hiru News"
+          - "කාබනික පොහොර ව්‍යාපෘතිය Ada Derana"
+          - "ගොවියා අසරණයි පොහොර Sirasa News"
+          - "වී මිලදී ගැනීම ගොවීන් Hiru News"
+          - "තේ වගාවට පොහොර නැතිව Hiru News"
+          - "Sri Lanka fertilizer ban farmers protest"
+          - "Sri Lanka organic farming crisis news"
+          - "කෘෂිකර්ම අමාත්‍යාංශය පොහොර Hiru News"
+          - "නැනෝ නයිට්‍රජන් දියර පොහොර Hiru News"
+          - "නැනෝ පොහොර ගොවීන් Ada Derana"
+
+  - domain_id: 3
+    domain_name: "Customs, Imports and Exports"
+    main_focus: "Import restrictions, customs duties, export policies, and trade volumes"
+    policies:
+      - policy_case_id: "DEC_2022_CUST_01"
+        sub_focus: "Temporary suspension of 300+ imported goods, vehicles, and customs duties"
+        legal_anchor: "Imports and Exports Control Gazette No. 2296/30 (August 23, 2022)"
+        enactment_date: "2022-08-23"
+        direction: "hike_or_restriction"
+        date_range: ["2020-03-01", "2025-02-28"]
+        title_keywords: ["ආනයන", "වාහන", "රේගු", "බද", "import", "vehicle", "customs", "භාණ්ඩ", "ඩොලර්", "කන්ටේනර", "export", "අපනයන", "ටයිල්", "අමතර කොටස්"]
+        search_queries:
+          - "භාණ්ඩ 300ක ආනයන තහනම් කරමින් ගැසට් Ada Derana"
+          - "වාහන ආනයනය තහනම Hiru News"
+          - "ආනයන සීමා දැඩි කරයි Ada Derana"
+          - "රේගු බදු ඉහළට Hiru News"
+          - "වාහන ආනයනය ගැන රජයේ තීරණය Ada Derana"
+          - "වාහන මිල අහසට Hiru News"
+          - "වාහන ගෙන්වීමට අවසර Hiru News"
+          - "ආනයන සීමා ලිහිල් කරයි Ada Derana"
+          - "කන්ටේනර් රේගුවේ හිරවෙයි Hiru News"
+          - "වාහන අමතර කොටස් මිල ඉහළට Hiru News"
+          - "වාහන ආනයන සීමා ඉවත් කිරීම Ada Derana"
+          - "ආනයන තහනම නිසා ව්‍යාපාරිකයන් Hiru News"
+          - "ටයිල් සහ නාන කාමර උපකරණ ආනයන තහනම Hiru News"
+          - "වාහන ආනයනය යළි අරඹයි Hiru News"
+          - "රේගුවේ සිරවූ භාණ්ඩ නිදහස් Hiru News"
+          - "Sri Lanka vehicle import ban news"
+          - "Sri Lanka import restrictions customs"
+          - "ඩොලර් හිඟය ආනයන සීමා Hiru News"
+          - "විදේශ විනිමය ආනයන තහනම Ada Derana"
+          - "වාහන සිහිනය බොඳ වෙයි Hiru News"
+
+  - domain_id: 4
+    domain_name: "Food Security and Food Prices"
+    main_focus: "Food inflation, essential food prices, affordability, and food availability"
+    policies:
+      - policy_case_id: "DEC_2021_FOOD_01"
+        sub_focus: "Maximum Retail Price (MRP) gazettes on rice, sugar, eggs & food inflation"
+        legal_anchor: "Consumer Affairs Authority Gazette No. 2243/13 & Essential Food MRP Orders"
+        enactment_date: "2021-09-02"
+        direction: "hike_or_restriction"
+        date_range: ["2021-01-01", "2024-12-31"]
+        title_keywords: ["සහල්", "හාල්", "සීනි", "බිත්තර", "පාලන මිල", "ආහාර", "බඩු", "පාන්", "කිරිපිටි", "ගෑස්", "මිල", "එළවළු", "food", "rice", "ජීවන"]
+        search_queries:
+          - "සහල් පාලන මිල ඉවත් කරයි Ada Derana"
+          - "අත්‍යවශ්‍ය භාණ්ඩ මිල ඉහළට Hiru News"
+          - "බඩු මිල වැඩි වීම ගැන ජනතාව Ada Derana"
+          - "බිත්තර සහල් පාලන මිල Hiru News"
+          - "කිරිපිටි සහ ගෑස් මිල ඉහළට Ada Derana"
+          - "සහල් මිල යළිත් ඉහළට Hiru News"
+          - "කිරිපිටි මිල වැඩි වෙයි Hiru News"
+          - "පාන් ගෙඩියක මිල ඉහළට Hiru News"
+          - "එළවළු මිල අහසට Hiru News"
+          - "ජීවන වියදම බඩු මිල ජනතාව Hiru News"
+          - "හාල් මෝල් හිමියන් සහල් මිල Ada Derana"
+          - "සීනි සහ සහල් හිඟය Hiru News"
+          - "කිරිපිටි පෝලිම් Hiru News"
+          - "බිත්තර මිල ගැසට් නිවේදනය Ada Derana"
+          - "හාල් මිල වැඩි කළ මෝල් හිමියෝ Hiru News"
+          - "ජනතාවට දරාගත නොහැකි බඩු මිල Sirasa News"
+          - "Sri Lanka food inflation crisis news"
+
+  - domain_id: 5
+    domain_name: "Government Finance and Taxation"
+    main_focus: "VAT, other taxes, public expenditure, subsidies, and government revenue"
+    policies:
+      - policy_case_id: "DEC_2024_TAX_01"
+        sub_focus: "Value Added Tax (VAT) hike to 18% and PAYE income tax restructuring"
+        legal_anchor: "Value Added Tax (Amendment) Act No. 32 of 2023 & Inland Revenue Act No. 45 of 2022"
+        enactment_date: "2023-01-01"
+        direction: "hike_or_restriction"
+        date_range: ["2022-01-01", "2025-02-28"]
+        title_keywords: ["වැට්", "බද", "vat", "tax", "paye", "ආදායම", "18%", "අයවැය", "imf", "tin", "වෘත්තික", "වැටුප", "පඩි", "සහන", "අස්වැසුම"]
+        search_queries:
+          - "වැට් බද්ද 18% දක්වා ඉහළට Ada Derana"
+          - "ජනවාරි සිට වැට් බදු වැඩි වෙන හැටි Hiru News"
+          - "උපයන විට ගෙවීමේ බද්ද PAYE Ada Derana"
+          - "අලුත් බදු පනත ගැන ජනතා අදහස් Hiru News"
+          - "VAT 18% බඩු මිල වැඩි වෙන හැටි Ada Derana"
+          - "ආදායම් බදු පනතට එරෙහිව වෘත්තිකයන් Hiru News"
+          - "බදු වැඩි කිරීම ගැන ජනතාව කියන කතා Hiru News"
+          - "වැට් බද්දෙන් වැඩිවන භාණ්ඩ ලැයිස්තුව Hiru News"
+          - "TIN අංකය බදු ගෙවීම Hiru News"
+          - "IMF කොන්දේසි සහ බදු වැඩි කිරීම Ada Derana"
+          - "බදු බර ජනතාව මත Hiru News"
+          - "වෘත්තිකයන්ගේ බදු විරෝධය Hiru News"
+          - "වැට් බද්ද වැඩි කළේ ඇයි Ada Derana"
+          - "ජනවාරි 1 සිට VAT වැඩි වෙයි Hiru News"
+          - "අලුත් බද්ද නිසා වැඩි වන මිල ගණන් Hiru News"
+          - "උපයන විට ගෙවන බද්දට එරෙහිව වෛද්‍යවරු Hiru News"
+          - "Sri Lanka 18% VAT hike news"
+          - "Sri Lanka PAYE tax professionals protest"
+          - "දේශීය ආදායම් බදු TIN අංකය Ada Derana"
+          - "බදු ගැහිල්ල ගැන ජනතාව කියන කතා Sirasa News"
+          - "අයවැය බදු යෝජනා Hiru News"
+          - "වැට් බදු සංශෝධනය පාර්ලිමේන්තුවේ Hiru News"
+          - "වයස 18ට වැඩි සැමට බදු ලිපිගොනු Hiru News"
+          - "TIN අංකය ගන්නම ඕනෙද Ada Derana"
+          - "රජයේ සේවක වැටුප් සහ බදු Hiru News"
+          - "අස්වැසුම සහනාධාරය ගැන ජනතාව Hiru News"
+          - "අයවැය ගැන ජනතාව කියන කතා Hiru News"
+          - "බදු වැඩි කරලා ජීවත් වෙන්නේ කොහොමද Hiru News"
+          - "වැට් බද්දට එරෙහිව විරෝධතා Hiru News"
+          - "රනිල්ගේ බදු ප්‍රතිපත්තිය Hiru News"
+
+  - domain_id: 6
+    domain_name: "Healthcare and Public Health"
+    main_focus: "Medicine pricing, drug shortages, hospital allocations, and public health"
+    policies:
+      - policy_case_id: "DEC_2023_HLTH_01"
+        sub_focus: "NMRA medicine price revisions and acute public hospital drug shortages"
+        legal_anchor: "NMRA Medicines Pricing Gazette No. 2341/37 & Emergency Procurement Directives"
+        enactment_date: "2022-09-01"
+        direction: "hike_or_restriction"
+        date_range: ["2021-06-01", "2025-02-28"]
+        title_keywords: ["ඖෂධ", "බෙහෙත", "බෙහෙත්", "රෝහල", "රෝහල්", "සෞඛ්‍ය", "medicine", "drug", "nmra", "වෛද්‍ය", "රෝගී", "ඉමියුනො", "කෙහෙළිය", "සැත්කම", "ෆාමසි"]
+        search_queries:
+          - "ඖෂධ මිල ඉහළට Ada Derana"
+          - "රෝහල්වල උග්‍ර ඖෂධ හිඟයක් Hiru News"
+          - "බෙහෙත් මිල වැඩි වීම ගැන ජනතාව Ada Derana"
+          - "බාල ඖෂධ ගැටලුව Hiru News"
+          - "රජයේ රෝහල්වල බෙහෙත් හිඟය Sirasa News"
+          - "බෙහෙත් මිල 40%කින් ඉහළට Hiru News"
+          - "ප්‍රමිතියෙන් තොර ඖෂධ Hiru News"
+          - "රෝහල්වල බෙහෙත් නෑ රෝගීන් අසරණයි Hiru News"
+          - "වෛද්‍යවරු රට හැර යති සෞඛ්‍ය අර්බුදය Ada Derana"
+          - "ඉමියුනොග්ලොබියුලින් බාල බෙහෙත් Hiru News"
+          - "කෙහෙළිය රඹුක්වැල්ල බාල ඖෂධ Hiru News"
+          - "කෙහෙළිය බාල බෙහෙත් නඩුව Ada Derana"
+          - "ඖෂධ මිල සූත්‍රය Hiru News"
+          - "ෆාමසි බෙහෙත් මිල ඉහළට Hiru News"
+          - "රෝගීන් බිල්ලට දුන් බාල ඖෂධ Hiru News"
+          - "සෞඛ්‍ය අමාත්‍යාංශය ඖෂධ ගෙන්වීම Hiru News"
+          - "වකුගඩු සහ පිළිකා රෝගීන්ට බෙහෙත් නෑ Hiru News"
+          - "Sri Lanka medicine shortage hospitals news"
+          - "Sri Lanka immunoglobulin scandal Keheliya"
+          - "රජයේ වෛද්‍ය නිලධාරීන්ගේ සංගමය ඖෂධ හිඟය Ada Derana"
+          - "කෙහෙළිය රිමාන්ඩ් බාල ඖෂධ Hiru News"
+          - "සෞඛ්‍ය සේවක වර්ජනය රෝගීන් අසරණයි Hiru News"
+          - "වෛද්‍ය වර්ජනය රෝහල් Hiru News"
+          - "බෙහෙත් ගන්න සල්ලි නෑ රෝගීන් Hiru News"
+          - "ඖෂධ නියාමන අධිකාරිය NMRA Hiru News"
+          - "බෙහෙත් මිල අඩු කරනවා Hiru News"
+          - "රෝහල්වල සැත්කම් නතර වෙයි Hiru News"
+          - "ළමා රෝහලේ බෙහෙත් හිඟය Hiru News"

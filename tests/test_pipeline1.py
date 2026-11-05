@@ -75,3 +75,22 @@ def test_batch_aggregation_and_disclaimer() -> None:
     # Check that sentiment percentages sum to ~100%
     sent_sum = sum(batch["sentiment_distribution_pct"].values())
     assert abs(sent_sum - 100.0) < 1.0
+
+
+def test_multidomain_public_opinion_dataset() -> None:
+    md_file = PROCESSED_DIR / "p1_multidomain_comments.parquet"
+    assert md_file.exists(), f"Multi-domain dataset missing at {md_file}"
+    df = pd.read_parquet(md_file)
+    assert len(df) >= 5000
+    assert set(df["domain_id"].unique()) == {1, 2, 3, 4, 5, 6}
+    # Verify Tamil script excluded per research scope
+    assert not df["text_clean"].astype(str).str.contains(r"[\u0B80-\u0BFF]", regex=True).any()
+    required_cols = {
+        "comment_id", "domain_id", "domain_name", "sub_focus", "policy_case_id",
+        "legal_anchor", "text_raw", "text_clean", "language", "source_platform",
+        "video_id", "post_publish_date", "temporal_window", "sentiment_label",
+        "stance_label", "aspect_category", "engagement_likes", "annotation_method",
+    }
+    assert required_cols.issubset(set(df.columns))
+    gold_file = PROJECT_ROOT.parent / "Datasets" / "22_sl_multidomain_public_opinion" / "gold_annotation_sample_600.csv"
+    assert gold_file.exists(), "600-row Gold verification sample sheet missing"
