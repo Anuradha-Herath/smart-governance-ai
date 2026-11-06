@@ -1,0 +1,361 @@
+﻿panel_obs_id,trajectory_id,domain_id,domain_name,policy_case_id,indicator_code,indicator_name,impact_category,unit_of_measurement,relative_window_step,year,value,delta_from_baseline,pct_from_baseline
+TRAJ_MD_0001_2020,TRAJ_MD_0001,1,Electricity and Fuel,DEC_2022_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t-2 (Pre-Policy),2020,682.6,-31.07,-4.35
+TRAJ_MD_0001_2021,TRAJ_MD_0001,1,Electricity and Fuel,DEC_2022_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t-1 (Baseline),2021,713.67,0.0,0.0
+TRAJ_MD_0001_2022,TRAJ_MD_0001,1,Electricity and Fuel,DEC_2022_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t0 (Enactment),2022,650.2,-63.47,-8.89
+TRAJ_MD_0001_2023,TRAJ_MD_0001,1,Electricity and Fuel,DEC_2022_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t+1 (Post-Year 1),2023,636.75,-76.92,-10.78
+TRAJ_MD_0001_2024,TRAJ_MD_0001,1,Electricity and Fuel,DEC_2022_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t+2 (Post-Year 2),2024,695.11,-18.56,-2.6
+TRAJ_MD_0002_2020,TRAJ_MD_0002,1,Electricity and Fuel,DEC_2022_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t-2 (Pre-Policy),2020,13.42,-2.4,-15.17
+TRAJ_MD_0002_2021,TRAJ_MD_0002,1,Electricity and Fuel,DEC_2022_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t-1 (Baseline),2021,15.82,0.0,0.0
+TRAJ_MD_0002_2022,TRAJ_MD_0002,1,Electricity and Fuel,DEC_2022_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t0 (Enactment),2022,22.7,6.88,43.49
+TRAJ_MD_0002_2023,TRAJ_MD_0002,1,Electricity and Fuel,DEC_2022_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t+1 (Post-Year 1),2023,24.84,9.02,57.02
+TRAJ_MD_0002_2024,TRAJ_MD_0002,1,Electricity and Fuel,DEC_2022_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t+2 (Post-Year 2),2024,21.52,5.7,36.03
+TRAJ_MD_0003_2020,TRAJ_MD_0003,1,Electricity and Fuel,DEC_2022_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-2 (Pre-Policy),2020,6.15,-0.86,-12.27
+TRAJ_MD_0003_2021,TRAJ_MD_0003,1,Electricity and Fuel,DEC_2022_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-1 (Baseline),2021,7.01,0.0,0.0
+TRAJ_MD_0003_2022,TRAJ_MD_0003,1,Electricity and Fuel,DEC_2022_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t0 (Enactment),2022,49.72,42.71,609.27
+TRAJ_MD_0003_2023,TRAJ_MD_0003,1,Electricity and Fuel,DEC_2022_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+1 (Post-Year 1),2023,16.54,9.53,135.95
+TRAJ_MD_0003_2024,TRAJ_MD_0003,1,Electricity and Fuel,DEC_2022_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+2 (Post-Year 2),2024,-0.43,-7.44,-106.13
+TRAJ_MD_0004_2020,TRAJ_MD_0004,1,Electricity and Fuel,DEC_2022_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t-2 (Pre-Policy),2020,165.1,-11.58,-6.55
+TRAJ_MD_0004_2021,TRAJ_MD_0004,1,Electricity and Fuel,DEC_2022_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t-1 (Baseline),2021,176.68,0.0,0.0
+TRAJ_MD_0004_2022,TRAJ_MD_0004,1,Electricity and Fuel,DEC_2022_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t0 (Enactment),2022,264.53,87.85,49.72
+TRAJ_MD_0004_2023,TRAJ_MD_0004,1,Electricity and Fuel,DEC_2022_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t+1 (Post-Year 1),2023,308.29,131.61,74.49
+TRAJ_MD_0004_2024,TRAJ_MD_0004,1,Electricity and Fuel,DEC_2022_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t+2 (Post-Year 2),2024,306.96,130.28,73.74
+TRAJ_MD_0005_2020,TRAJ_MD_0005,1,Electricity and Fuel,DEC_2022_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-2 (Pre-Policy),2020,-4.62,-8.83,-209.74
+TRAJ_MD_0005_2021,TRAJ_MD_0005,1,Electricity and Fuel,DEC_2022_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-1 (Baseline),2021,4.21,0.0,0.0
+TRAJ_MD_0005_2022,TRAJ_MD_0005,1,Electricity and Fuel,DEC_2022_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t0 (Enactment),2022,-7.35,-11.56,-274.58
+TRAJ_MD_0005_2023,TRAJ_MD_0005,1,Electricity and Fuel,DEC_2022_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+1 (Post-Year 1),2023,-2.03,-6.24,-148.22
+TRAJ_MD_0005_2024,TRAJ_MD_0005,1,Electricity and Fuel,DEC_2022_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+2 (Post-Year 2),2024,4.99,0.78,18.53
+TRAJ_MD_0006_2020,TRAJ_MD_0006,1,Electricity and Fuel,DEC_2022_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t-2 (Pre-Policy),2020,101.0,-3.6,-3.44
+TRAJ_MD_0006_2021,TRAJ_MD_0006,1,Electricity and Fuel,DEC_2022_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t-1 (Baseline),2021,104.6,0.0,0.0
+TRAJ_MD_0006_2022,TRAJ_MD_0006,1,Electricity and Fuel,DEC_2022_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t0 (Enactment),2022,114.2,9.6,9.18
+TRAJ_MD_0006_2023,TRAJ_MD_0006,1,Electricity and Fuel,DEC_2022_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t+1 (Post-Year 1),2023,103.9,-0.7,-0.67
+TRAJ_MD_0006_2024,TRAJ_MD_0006,1,Electricity and Fuel,DEC_2022_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t+2 (Post-Year 2),2024,100.8,-3.8,-3.63
+TRAJ_MD_0007_2020,TRAJ_MD_0007,1,Electricity and Fuel,DEC_2022_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-2 (Pre-Policy),2020,-5.76,-8.46,-313.33
+TRAJ_MD_0007_2021,TRAJ_MD_0007,1,Electricity and Fuel,DEC_2022_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-1 (Baseline),2021,2.7,0.0,0.0
+TRAJ_MD_0007_2022,TRAJ_MD_0007,1,Electricity and Fuel,DEC_2022_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t0 (Enactment),2022,1.2,-1.5,-55.56
+TRAJ_MD_0007_2023,TRAJ_MD_0007,1,Electricity and Fuel,DEC_2022_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+1 (Post-Year 1),2023,-1.03,-3.73,-138.15
+TRAJ_MD_0007_2024,TRAJ_MD_0007,1,Electricity and Fuel,DEC_2022_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+2 (Post-Year 2),2024,4.78,2.08,77.04
+TRAJ_MD_0008_2020,TRAJ_MD_0008,1,Electricity and Fuel,DEC_2022_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-2 (Pre-Policy),2020,12.7,-0.4,-3.05
+TRAJ_MD_0008_2021,TRAJ_MD_0008,1,Electricity and Fuel,DEC_2022_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-1 (Baseline),2021,13.1,0.0,0.0
+TRAJ_MD_0008_2022,TRAJ_MD_0008,1,Electricity and Fuel,DEC_2022_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t0 (Enactment),2022,25.0,11.9,90.84
+TRAJ_MD_0008_2023,TRAJ_MD_0008,1,Electricity and Fuel,DEC_2022_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+1 (Post-Year 1),2023,25.9,12.8,97.71
+TRAJ_MD_0008_2024,TRAJ_MD_0008,1,Electricity and Fuel,DEC_2022_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+2 (Post-Year 2),2024,23.4,10.3,78.63
+TRAJ_MD_0009_2021,TRAJ_MD_0009,1,Electricity and Fuel,DEC_2023_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t-2 (Pre-Policy),2021,713.67,63.47,9.76
+TRAJ_MD_0009_2022,TRAJ_MD_0009,1,Electricity and Fuel,DEC_2023_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t-1 (Baseline),2022,650.2,0.0,0.0
+TRAJ_MD_0009_2023,TRAJ_MD_0009,1,Electricity and Fuel,DEC_2023_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t0 (Enactment),2023,636.75,-13.45,-2.07
+TRAJ_MD_0009_2024,TRAJ_MD_0009,1,Electricity and Fuel,DEC_2023_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t+1 (Post-Year 1),2024,695.11,44.91,6.91
+TRAJ_MD_0009_2025,TRAJ_MD_0009,1,Electricity and Fuel,DEC_2023_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t+2 (Post-Year 2),2025,724.5,74.3,11.43
+TRAJ_MD_0010_2021,TRAJ_MD_0010,1,Electricity and Fuel,DEC_2023_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t-2 (Pre-Policy),2021,15.82,-6.88,-30.31
+TRAJ_MD_0010_2022,TRAJ_MD_0010,1,Electricity and Fuel,DEC_2023_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t-1 (Baseline),2022,22.7,0.0,0.0
+TRAJ_MD_0010_2023,TRAJ_MD_0010,1,Electricity and Fuel,DEC_2023_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t0 (Enactment),2023,24.84,2.14,9.43
+TRAJ_MD_0010_2024,TRAJ_MD_0010,1,Electricity and Fuel,DEC_2023_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t+1 (Post-Year 1),2024,21.52,-1.18,-5.2
+TRAJ_MD_0010_2025,TRAJ_MD_0010,1,Electricity and Fuel,DEC_2023_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t+2 (Post-Year 2),2025,17.79,-4.91,-21.63
+TRAJ_MD_0011_2021,TRAJ_MD_0011,1,Electricity and Fuel,DEC_2023_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-2 (Pre-Policy),2021,7.01,-42.71,-85.9
+TRAJ_MD_0011_2022,TRAJ_MD_0011,1,Electricity and Fuel,DEC_2023_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-1 (Baseline),2022,49.72,0.0,0.0
+TRAJ_MD_0011_2023,TRAJ_MD_0011,1,Electricity and Fuel,DEC_2023_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t0 (Enactment),2023,16.54,-33.18,-66.73
+TRAJ_MD_0011_2024,TRAJ_MD_0011,1,Electricity and Fuel,DEC_2023_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+1 (Post-Year 1),2024,-0.43,-50.15,-100.86
+TRAJ_MD_0011_2025,TRAJ_MD_0011,1,Electricity and Fuel,DEC_2023_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+2 (Post-Year 2),2025,-4.76,-54.48,-109.57
+TRAJ_MD_0012_2021,TRAJ_MD_0012,1,Electricity and Fuel,DEC_2023_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t-2 (Pre-Policy),2021,176.68,-87.85,-33.21
+TRAJ_MD_0012_2022,TRAJ_MD_0012,1,Electricity and Fuel,DEC_2023_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t-1 (Baseline),2022,264.53,0.0,0.0
+TRAJ_MD_0012_2023,TRAJ_MD_0012,1,Electricity and Fuel,DEC_2023_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t0 (Enactment),2023,308.29,43.76,16.54
+TRAJ_MD_0012_2024,TRAJ_MD_0012,1,Electricity and Fuel,DEC_2023_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t+1 (Post-Year 1),2024,306.96,42.43,16.04
+TRAJ_MD_0012_2025,TRAJ_MD_0012,1,Electricity and Fuel,DEC_2023_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t+2 (Post-Year 2),2025,292.34,27.81,10.51
+TRAJ_MD_0013_2021,TRAJ_MD_0013,1,Electricity and Fuel,DEC_2023_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-2 (Pre-Policy),2021,4.21,11.56,157.28
+TRAJ_MD_0013_2022,TRAJ_MD_0013,1,Electricity and Fuel,DEC_2023_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-1 (Baseline),2022,-7.35,0.0,0.0
+TRAJ_MD_0013_2023,TRAJ_MD_0013,1,Electricity and Fuel,DEC_2023_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t0 (Enactment),2023,-2.03,5.32,72.38
+TRAJ_MD_0013_2024,TRAJ_MD_0013,1,Electricity and Fuel,DEC_2023_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+1 (Post-Year 1),2024,4.99,12.34,167.89
+TRAJ_MD_0013_2025,TRAJ_MD_0013,1,Electricity and Fuel,DEC_2023_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+2 (Post-Year 2),2025,4.95,12.3,167.35
+TRAJ_MD_0014_2021,TRAJ_MD_0014,1,Electricity and Fuel,DEC_2023_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t-2 (Pre-Policy),2021,104.6,-9.6,-8.41
+TRAJ_MD_0014_2022,TRAJ_MD_0014,1,Electricity and Fuel,DEC_2023_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t-1 (Baseline),2022,114.2,0.0,0.0
+TRAJ_MD_0014_2023,TRAJ_MD_0014,1,Electricity and Fuel,DEC_2023_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t0 (Enactment),2023,103.9,-10.3,-9.02
+TRAJ_MD_0014_2024,TRAJ_MD_0014,1,Electricity and Fuel,DEC_2023_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t+1 (Post-Year 1),2024,100.8,-13.4,-11.73
+TRAJ_MD_0014_2025,TRAJ_MD_0014,1,Electricity and Fuel,DEC_2023_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t+2 (Post-Year 2),2025,96.4,-17.8,-15.59
+TRAJ_MD_0015_2021,TRAJ_MD_0015,1,Electricity and Fuel,DEC_2023_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-2 (Pre-Policy),2021,2.7,1.5,125.0
+TRAJ_MD_0015_2022,TRAJ_MD_0015,1,Electricity and Fuel,DEC_2023_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-1 (Baseline),2022,1.2,0.0,0.0
+TRAJ_MD_0015_2023,TRAJ_MD_0015,1,Electricity and Fuel,DEC_2023_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t0 (Enactment),2023,-1.03,-2.23,-185.83
+TRAJ_MD_0015_2024,TRAJ_MD_0015,1,Electricity and Fuel,DEC_2023_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+1 (Post-Year 1),2024,4.78,3.58,298.33
+TRAJ_MD_0015_2025,TRAJ_MD_0015,1,Electricity and Fuel,DEC_2023_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+2 (Post-Year 2),2025,6.26,5.06,421.67
+TRAJ_MD_0016_2021,TRAJ_MD_0016,1,Electricity and Fuel,DEC_2023_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-2 (Pre-Policy),2021,13.1,-11.9,-47.6
+TRAJ_MD_0016_2022,TRAJ_MD_0016,1,Electricity and Fuel,DEC_2023_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-1 (Baseline),2022,25.0,0.0,0.0
+TRAJ_MD_0016_2023,TRAJ_MD_0016,1,Electricity and Fuel,DEC_2023_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t0 (Enactment),2023,25.9,0.9,3.6
+TRAJ_MD_0016_2024,TRAJ_MD_0016,1,Electricity and Fuel,DEC_2023_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+1 (Post-Year 1),2024,23.4,-1.6,-6.4
+TRAJ_MD_0016_2025,TRAJ_MD_0016,1,Electricity and Fuel,DEC_2023_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+2 (Post-Year 2),2025,20.8,-4.2,-16.8
+TRAJ_MD_0017_2021,TRAJ_MD_0017,1,Electricity and Fuel,DEC_2024_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t-2 (Pre-Policy),2021,713.67,63.47,9.76
+TRAJ_MD_0017_2022,TRAJ_MD_0017,1,Electricity and Fuel,DEC_2024_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t-1 (Baseline),2022,650.2,0.0,0.0
+TRAJ_MD_0017_2023,TRAJ_MD_0017,1,Electricity and Fuel,DEC_2024_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t0 (Enactment),2023,636.75,-13.45,-2.07
+TRAJ_MD_0017_2024,TRAJ_MD_0017,1,Electricity and Fuel,DEC_2024_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t+1 (Post-Year 1),2024,695.11,44.91,6.91
+TRAJ_MD_0017_2025,TRAJ_MD_0017,1,Electricity and Fuel,DEC_2024_ELEC_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t+2 (Post-Year 2),2025,724.5,74.3,11.43
+TRAJ_MD_0018_2021,TRAJ_MD_0018,1,Electricity and Fuel,DEC_2024_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t-2 (Pre-Policy),2021,15.82,-6.88,-30.31
+TRAJ_MD_0018_2022,TRAJ_MD_0018,1,Electricity and Fuel,DEC_2024_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t-1 (Baseline),2022,22.7,0.0,0.0
+TRAJ_MD_0018_2023,TRAJ_MD_0018,1,Electricity and Fuel,DEC_2024_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t0 (Enactment),2023,24.84,2.14,9.43
+TRAJ_MD_0018_2024,TRAJ_MD_0018,1,Electricity and Fuel,DEC_2024_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t+1 (Post-Year 1),2024,21.52,-1.18,-5.2
+TRAJ_MD_0018_2025,TRAJ_MD_0018,1,Electricity and Fuel,DEC_2024_ELEC_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t+2 (Post-Year 2),2025,17.79,-4.91,-21.63
+TRAJ_MD_0019_2021,TRAJ_MD_0019,1,Electricity and Fuel,DEC_2024_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-2 (Pre-Policy),2021,7.01,-42.71,-85.9
+TRAJ_MD_0019_2022,TRAJ_MD_0019,1,Electricity and Fuel,DEC_2024_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-1 (Baseline),2022,49.72,0.0,0.0
+TRAJ_MD_0019_2023,TRAJ_MD_0019,1,Electricity and Fuel,DEC_2024_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t0 (Enactment),2023,16.54,-33.18,-66.73
+TRAJ_MD_0019_2024,TRAJ_MD_0019,1,Electricity and Fuel,DEC_2024_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+1 (Post-Year 1),2024,-0.43,-50.15,-100.86
+TRAJ_MD_0019_2025,TRAJ_MD_0019,1,Electricity and Fuel,DEC_2024_ELEC_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+2 (Post-Year 2),2025,-4.76,-54.48,-109.57
+TRAJ_MD_0020_2021,TRAJ_MD_0020,1,Electricity and Fuel,DEC_2024_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t-2 (Pre-Policy),2021,176.68,-87.85,-33.21
+TRAJ_MD_0020_2022,TRAJ_MD_0020,1,Electricity and Fuel,DEC_2024_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t-1 (Baseline),2022,264.53,0.0,0.0
+TRAJ_MD_0020_2023,TRAJ_MD_0020,1,Electricity and Fuel,DEC_2024_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t0 (Enactment),2023,308.29,43.76,16.54
+TRAJ_MD_0020_2024,TRAJ_MD_0020,1,Electricity and Fuel,DEC_2024_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t+1 (Post-Year 1),2024,306.96,42.43,16.04
+TRAJ_MD_0020_2025,TRAJ_MD_0020,1,Electricity and Fuel,DEC_2024_ELEC_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t+2 (Post-Year 2),2025,292.34,27.81,10.51
+TRAJ_MD_0021_2021,TRAJ_MD_0021,1,Electricity and Fuel,DEC_2024_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-2 (Pre-Policy),2021,4.21,11.56,157.28
+TRAJ_MD_0021_2022,TRAJ_MD_0021,1,Electricity and Fuel,DEC_2024_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-1 (Baseline),2022,-7.35,0.0,0.0
+TRAJ_MD_0021_2023,TRAJ_MD_0021,1,Electricity and Fuel,DEC_2024_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t0 (Enactment),2023,-2.03,5.32,72.38
+TRAJ_MD_0021_2024,TRAJ_MD_0021,1,Electricity and Fuel,DEC_2024_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+1 (Post-Year 1),2024,4.99,12.34,167.89
+TRAJ_MD_0021_2025,TRAJ_MD_0021,1,Electricity and Fuel,DEC_2024_ELEC_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+2 (Post-Year 2),2025,4.95,12.3,167.35
+TRAJ_MD_0022_2021,TRAJ_MD_0022,1,Electricity and Fuel,DEC_2024_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t-2 (Pre-Policy),2021,104.6,-9.6,-8.41
+TRAJ_MD_0022_2022,TRAJ_MD_0022,1,Electricity and Fuel,DEC_2024_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t-1 (Baseline),2022,114.2,0.0,0.0
+TRAJ_MD_0022_2023,TRAJ_MD_0022,1,Electricity and Fuel,DEC_2024_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t0 (Enactment),2023,103.9,-10.3,-9.02
+TRAJ_MD_0022_2024,TRAJ_MD_0022,1,Electricity and Fuel,DEC_2024_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t+1 (Post-Year 1),2024,100.8,-13.4,-11.73
+TRAJ_MD_0022_2025,TRAJ_MD_0022,1,Electricity and Fuel,DEC_2024_ELEC_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t+2 (Post-Year 2),2025,96.4,-17.8,-15.59
+TRAJ_MD_0023_2021,TRAJ_MD_0023,1,Electricity and Fuel,DEC_2024_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-2 (Pre-Policy),2021,2.7,1.5,125.0
+TRAJ_MD_0023_2022,TRAJ_MD_0023,1,Electricity and Fuel,DEC_2024_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-1 (Baseline),2022,1.2,0.0,0.0
+TRAJ_MD_0023_2023,TRAJ_MD_0023,1,Electricity and Fuel,DEC_2024_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t0 (Enactment),2023,-1.03,-2.23,-185.83
+TRAJ_MD_0023_2024,TRAJ_MD_0023,1,Electricity and Fuel,DEC_2024_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+1 (Post-Year 1),2024,4.78,3.58,298.33
+TRAJ_MD_0023_2025,TRAJ_MD_0023,1,Electricity and Fuel,DEC_2024_ELEC_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+2 (Post-Year 2),2025,6.26,5.06,421.67
+TRAJ_MD_0024_2021,TRAJ_MD_0024,1,Electricity and Fuel,DEC_2024_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-2 (Pre-Policy),2021,13.1,-11.9,-47.6
+TRAJ_MD_0024_2022,TRAJ_MD_0024,1,Electricity and Fuel,DEC_2024_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-1 (Baseline),2022,25.0,0.0,0.0
+TRAJ_MD_0024_2023,TRAJ_MD_0024,1,Electricity and Fuel,DEC_2024_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t0 (Enactment),2023,25.9,0.9,3.6
+TRAJ_MD_0024_2024,TRAJ_MD_0024,1,Electricity and Fuel,DEC_2024_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+1 (Post-Year 1),2024,23.4,-1.6,-6.4
+TRAJ_MD_0024_2025,TRAJ_MD_0024,1,Electricity and Fuel,DEC_2024_ELEC_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+2 (Post-Year 2),2025,20.8,-4.2,-16.8
+TRAJ_MD_0025_2020,TRAJ_MD_0025,1,Electricity and Fuel,DEC_2022_FUEL_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t-2 (Pre-Policy),2020,682.6,-31.07,-4.35
+TRAJ_MD_0025_2021,TRAJ_MD_0025,1,Electricity and Fuel,DEC_2022_FUEL_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t-1 (Baseline),2021,713.67,0.0,0.0
+TRAJ_MD_0025_2022,TRAJ_MD_0025,1,Electricity and Fuel,DEC_2022_FUEL_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t0 (Enactment),2022,650.2,-63.47,-8.89
+TRAJ_MD_0025_2023,TRAJ_MD_0025,1,Electricity and Fuel,DEC_2022_FUEL_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t+1 (Post-Year 1),2023,636.75,-76.92,-10.78
+TRAJ_MD_0025_2024,TRAJ_MD_0025,1,Electricity and Fuel,DEC_2022_FUEL_01,EG.USE.ELEC.KH.PC,Electric power consumption (kWh per capita),Sector-specific,kWh per capita,t+2 (Post-Year 2),2024,695.11,-18.56,-2.6
+TRAJ_MD_0026_2020,TRAJ_MD_0026,1,Electricity and Fuel,DEC_2022_FUEL_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t-2 (Pre-Policy),2020,13.42,-2.4,-15.17
+TRAJ_MD_0026_2021,TRAJ_MD_0026,1,Electricity and Fuel,DEC_2022_FUEL_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t-1 (Baseline),2021,15.82,0.0,0.0
+TRAJ_MD_0026_2022,TRAJ_MD_0026,1,Electricity and Fuel,DEC_2022_FUEL_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t0 (Enactment),2022,22.7,6.88,43.49
+TRAJ_MD_0026_2023,TRAJ_MD_0026,1,Electricity and Fuel,DEC_2022_FUEL_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t+1 (Post-Year 1),2023,24.84,9.02,57.02
+TRAJ_MD_0026_2024,TRAJ_MD_0026,1,Electricity and Fuel,DEC_2022_FUEL_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t+2 (Post-Year 2),2024,21.52,5.7,36.03
+TRAJ_MD_0027_2020,TRAJ_MD_0027,1,Electricity and Fuel,DEC_2022_FUEL_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-2 (Pre-Policy),2020,6.15,-0.86,-12.27
+TRAJ_MD_0027_2021,TRAJ_MD_0027,1,Electricity and Fuel,DEC_2022_FUEL_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-1 (Baseline),2021,7.01,0.0,0.0
+TRAJ_MD_0027_2022,TRAJ_MD_0027,1,Electricity and Fuel,DEC_2022_FUEL_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t0 (Enactment),2022,49.72,42.71,609.27
+TRAJ_MD_0027_2023,TRAJ_MD_0027,1,Electricity and Fuel,DEC_2022_FUEL_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+1 (Post-Year 1),2023,16.54,9.53,135.95
+TRAJ_MD_0027_2024,TRAJ_MD_0027,1,Electricity and Fuel,DEC_2022_FUEL_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+2 (Post-Year 2),2024,-0.43,-7.44,-106.13
+TRAJ_MD_0028_2020,TRAJ_MD_0028,1,Electricity and Fuel,DEC_2022_FUEL_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t-2 (Pre-Policy),2020,165.1,-11.58,-6.55
+TRAJ_MD_0028_2021,TRAJ_MD_0028,1,Electricity and Fuel,DEC_2022_FUEL_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t-1 (Baseline),2021,176.68,0.0,0.0
+TRAJ_MD_0028_2022,TRAJ_MD_0028,1,Electricity and Fuel,DEC_2022_FUEL_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t0 (Enactment),2022,264.53,87.85,49.72
+TRAJ_MD_0028_2023,TRAJ_MD_0028,1,Electricity and Fuel,DEC_2022_FUEL_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t+1 (Post-Year 1),2023,308.29,131.61,74.49
+TRAJ_MD_0028_2024,TRAJ_MD_0028,1,Electricity and Fuel,DEC_2022_FUEL_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t+2 (Post-Year 2),2024,306.96,130.28,73.74
+TRAJ_MD_0029_2020,TRAJ_MD_0029,1,Electricity and Fuel,DEC_2022_FUEL_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-2 (Pre-Policy),2020,-4.62,-8.83,-209.74
+TRAJ_MD_0029_2021,TRAJ_MD_0029,1,Electricity and Fuel,DEC_2022_FUEL_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-1 (Baseline),2021,4.21,0.0,0.0
+TRAJ_MD_0029_2022,TRAJ_MD_0029,1,Electricity and Fuel,DEC_2022_FUEL_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t0 (Enactment),2022,-7.35,-11.56,-274.58
+TRAJ_MD_0029_2023,TRAJ_MD_0029,1,Electricity and Fuel,DEC_2022_FUEL_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+1 (Post-Year 1),2023,-2.03,-6.24,-148.22
+TRAJ_MD_0029_2024,TRAJ_MD_0029,1,Electricity and Fuel,DEC_2022_FUEL_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+2 (Post-Year 2),2024,4.99,0.78,18.53
+TRAJ_MD_0030_2020,TRAJ_MD_0030,1,Electricity and Fuel,DEC_2022_FUEL_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t-2 (Pre-Policy),2020,101.0,-3.6,-3.44
+TRAJ_MD_0030_2021,TRAJ_MD_0030,1,Electricity and Fuel,DEC_2022_FUEL_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t-1 (Baseline),2021,104.6,0.0,0.0
+TRAJ_MD_0030_2022,TRAJ_MD_0030,1,Electricity and Fuel,DEC_2022_FUEL_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t0 (Enactment),2022,114.2,9.6,9.18
+TRAJ_MD_0030_2023,TRAJ_MD_0030,1,Electricity and Fuel,DEC_2022_FUEL_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t+1 (Post-Year 1),2023,103.9,-0.7,-0.67
+TRAJ_MD_0030_2024,TRAJ_MD_0030,1,Electricity and Fuel,DEC_2022_FUEL_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t+2 (Post-Year 2),2024,100.8,-3.8,-3.63
+TRAJ_MD_0031_2020,TRAJ_MD_0031,1,Electricity and Fuel,DEC_2022_FUEL_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-2 (Pre-Policy),2020,-5.76,-8.46,-313.33
+TRAJ_MD_0031_2021,TRAJ_MD_0031,1,Electricity and Fuel,DEC_2022_FUEL_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-1 (Baseline),2021,2.7,0.0,0.0
+TRAJ_MD_0031_2022,TRAJ_MD_0031,1,Electricity and Fuel,DEC_2022_FUEL_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t0 (Enactment),2022,1.2,-1.5,-55.56
+TRAJ_MD_0031_2023,TRAJ_MD_0031,1,Electricity and Fuel,DEC_2022_FUEL_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+1 (Post-Year 1),2023,-1.03,-3.73,-138.15
+TRAJ_MD_0031_2024,TRAJ_MD_0031,1,Electricity and Fuel,DEC_2022_FUEL_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+2 (Post-Year 2),2024,4.78,2.08,77.04
+TRAJ_MD_0032_2020,TRAJ_MD_0032,1,Electricity and Fuel,DEC_2022_FUEL_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-2 (Pre-Policy),2020,12.7,-0.4,-3.05
+TRAJ_MD_0032_2021,TRAJ_MD_0032,1,Electricity and Fuel,DEC_2022_FUEL_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-1 (Baseline),2021,13.1,0.0,0.0
+TRAJ_MD_0032_2022,TRAJ_MD_0032,1,Electricity and Fuel,DEC_2022_FUEL_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t0 (Enactment),2022,25.0,11.9,90.84
+TRAJ_MD_0032_2023,TRAJ_MD_0032,1,Electricity and Fuel,DEC_2022_FUEL_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+1 (Post-Year 1),2023,25.9,12.8,97.71
+TRAJ_MD_0032_2024,TRAJ_MD_0032,1,Electricity and Fuel,DEC_2022_FUEL_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+2 (Post-Year 2),2024,23.4,10.3,78.63
+TRAJ_MD_0033_2019,TRAJ_MD_0033,2,Agriculture,DEC_2021_AGRI_01,AG.CON.FERT.ZS,Fertilizer consumption (kg per hectare of arable land),Sector-specific,kg per hectare,t-2 (Pre-Policy),2019,190.04,-108.91,-36.43
+TRAJ_MD_0033_2020,TRAJ_MD_0033,2,Agriculture,DEC_2021_AGRI_01,AG.CON.FERT.ZS,Fertilizer consumption (kg per hectare of arable land),Sector-specific,kg per hectare,t-1 (Baseline),2020,298.95,0.0,0.0
+TRAJ_MD_0033_2021,TRAJ_MD_0033,2,Agriculture,DEC_2021_AGRI_01,AG.CON.FERT.ZS,Fertilizer consumption (kg per hectare of arable land),Sector-specific,kg per hectare,t0 (Enactment),2021,153.94,-145.01,-48.51
+TRAJ_MD_0033_2022,TRAJ_MD_0033,2,Agriculture,DEC_2021_AGRI_01,AG.CON.FERT.ZS,Fertilizer consumption (kg per hectare of arable land),Sector-specific,kg per hectare,t+1 (Post-Year 1),2022,153.94,-145.01,-48.51
+TRAJ_MD_0033_2023,TRAJ_MD_0033,2,Agriculture,DEC_2021_AGRI_01,AG.CON.FERT.ZS,Fertilizer consumption (kg per hectare of arable land),Sector-specific,kg per hectare,t+2 (Post-Year 2),2023,153.94,-145.01,-48.51
+TRAJ_MD_0034_2019,TRAJ_MD_0034,2,Agriculture,DEC_2021_AGRI_01,AG.PRD.CROP.XD,Crop production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t-2 (Pre-Policy),2019,96.03,-10.39,-9.76
+TRAJ_MD_0034_2020,TRAJ_MD_0034,2,Agriculture,DEC_2021_AGRI_01,AG.PRD.CROP.XD,Crop production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t-1 (Baseline),2020,106.42,0.0,0.0
+TRAJ_MD_0034_2021,TRAJ_MD_0034,2,Agriculture,DEC_2021_AGRI_01,AG.PRD.CROP.XD,Crop production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t0 (Enactment),2021,114.69,8.27,7.77
+TRAJ_MD_0034_2022,TRAJ_MD_0034,2,Agriculture,DEC_2021_AGRI_01,AG.PRD.CROP.XD,Crop production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t+1 (Post-Year 1),2022,91.32,-15.1,-14.19
+TRAJ_MD_0034_2023,TRAJ_MD_0034,2,Agriculture,DEC_2021_AGRI_01,AG.PRD.CROP.XD,Crop production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t+2 (Post-Year 2),2023,99.4,-7.02,-6.6
+TRAJ_MD_0035_2019,TRAJ_MD_0035,2,Agriculture,DEC_2021_AGRI_01,AG.PRD.FOOD.XD,Food production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t-2 (Pre-Policy),2019,99.44,-8.05,-7.49
+TRAJ_MD_0035_2020,TRAJ_MD_0035,2,Agriculture,DEC_2021_AGRI_01,AG.PRD.FOOD.XD,Food production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t-1 (Baseline),2020,107.49,0.0,0.0
+TRAJ_MD_0035_2021,TRAJ_MD_0035,2,Agriculture,DEC_2021_AGRI_01,AG.PRD.FOOD.XD,Food production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t0 (Enactment),2021,116.33,8.84,8.22
+TRAJ_MD_0035_2022,TRAJ_MD_0035,2,Agriculture,DEC_2021_AGRI_01,AG.PRD.FOOD.XD,Food production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t+1 (Post-Year 1),2022,94.45,-13.04,-12.13
+TRAJ_MD_0035_2023,TRAJ_MD_0035,2,Agriculture,DEC_2021_AGRI_01,AG.PRD.FOOD.XD,Food production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t+2 (Post-Year 2),2023,101.92,-5.57,-5.18
+TRAJ_MD_0036_2019,TRAJ_MD_0036,2,Agriculture,DEC_2021_AGRI_01,NV.AGR.TOTL.ZS,"Agriculture, forestry, and fishing, value added (% of GDP)",Sector-specific,% of GDP,t-2 (Pre-Policy),2019,7.26,-0.99,-12.0
+TRAJ_MD_0036_2020,TRAJ_MD_0036,2,Agriculture,DEC_2021_AGRI_01,NV.AGR.TOTL.ZS,"Agriculture, forestry, and fishing, value added (% of GDP)",Sector-specific,% of GDP,t-1 (Baseline),2020,8.25,0.0,0.0
+TRAJ_MD_0036_2021,TRAJ_MD_0036,2,Agriculture,DEC_2021_AGRI_01,NV.AGR.TOTL.ZS,"Agriculture, forestry, and fishing, value added (% of GDP)",Sector-specific,% of GDP,t0 (Enactment),2021,8.79,0.54,6.55
+TRAJ_MD_0036_2022,TRAJ_MD_0036,2,Agriculture,DEC_2021_AGRI_01,NV.AGR.TOTL.ZS,"Agriculture, forestry, and fishing, value added (% of GDP)",Sector-specific,% of GDP,t+1 (Post-Year 1),2022,8.45,0.2,2.42
+TRAJ_MD_0036_2023,TRAJ_MD_0036,2,Agriculture,DEC_2021_AGRI_01,NV.AGR.TOTL.ZS,"Agriculture, forestry, and fishing, value added (% of GDP)",Sector-specific,% of GDP,t+2 (Post-Year 2),2023,8.04,-0.21,-2.55
+TRAJ_MD_0037_2019,TRAJ_MD_0037,2,Agriculture,DEC_2021_AGRI_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-2 (Pre-Policy),2019,3.53,-2.62,-42.6
+TRAJ_MD_0037_2020,TRAJ_MD_0037,2,Agriculture,DEC_2021_AGRI_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-1 (Baseline),2020,6.15,0.0,0.0
+TRAJ_MD_0037_2021,TRAJ_MD_0037,2,Agriculture,DEC_2021_AGRI_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t0 (Enactment),2021,7.01,0.86,13.98
+TRAJ_MD_0037_2022,TRAJ_MD_0037,2,Agriculture,DEC_2021_AGRI_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+1 (Post-Year 1),2022,49.72,43.57,708.46
+TRAJ_MD_0037_2023,TRAJ_MD_0037,2,Agriculture,DEC_2021_AGRI_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+2 (Post-Year 2),2023,16.54,10.39,168.94
+TRAJ_MD_0038_2019,TRAJ_MD_0038,2,Agriculture,DEC_2021_AGRI_01,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),Economic,% of GDP,t-2 (Pre-Policy),2019,21.82,6.36,41.14
+TRAJ_MD_0038_2020,TRAJ_MD_0038,2,Agriculture,DEC_2021_AGRI_01,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),Economic,% of GDP,t-1 (Baseline),2020,15.46,0.0,0.0
+TRAJ_MD_0038_2021,TRAJ_MD_0038,2,Agriculture,DEC_2021_AGRI_01,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),Economic,% of GDP,t0 (Enactment),2021,16.92,1.46,9.44
+TRAJ_MD_0038_2022,TRAJ_MD_0038,2,Agriculture,DEC_2021_AGRI_01,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),Economic,% of GDP,t+1 (Post-Year 1),2022,21.56,6.1,39.46
+TRAJ_MD_0038_2023,TRAJ_MD_0038,2,Agriculture,DEC_2021_AGRI_01,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),Economic,% of GDP,t+2 (Post-Year 2),2023,20.6,5.14,33.25
+TRAJ_MD_0039_2019,TRAJ_MD_0039,2,Agriculture,DEC_2021_AGRI_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-2 (Pre-Policy),2019,-0.22,4.4,95.24
+TRAJ_MD_0039_2020,TRAJ_MD_0039,2,Agriculture,DEC_2021_AGRI_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-1 (Baseline),2020,-4.62,0.0,0.0
+TRAJ_MD_0039_2021,TRAJ_MD_0039,2,Agriculture,DEC_2021_AGRI_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t0 (Enactment),2021,4.21,8.83,191.13
+TRAJ_MD_0039_2022,TRAJ_MD_0039,2,Agriculture,DEC_2021_AGRI_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+1 (Post-Year 1),2022,-7.35,-2.73,-59.09
+TRAJ_MD_0039_2023,TRAJ_MD_0039,2,Agriculture,DEC_2021_AGRI_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+2 (Post-Year 2),2023,-2.03,2.59,56.06
+TRAJ_MD_0040_2019,TRAJ_MD_0040,2,Agriculture,DEC_2021_AGRI_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t-2 (Pre-Policy),2019,14.3,-1.7,-10.62
+TRAJ_MD_0040_2020,TRAJ_MD_0040,2,Agriculture,DEC_2021_AGRI_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t-1 (Baseline),2020,16.0,0.0,0.0
+TRAJ_MD_0040_2021,TRAJ_MD_0040,2,Agriculture,DEC_2021_AGRI_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t0 (Enactment),2021,17.5,1.5,9.38
+TRAJ_MD_0040_2022,TRAJ_MD_0040,2,Agriculture,DEC_2021_AGRI_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t+1 (Post-Year 1),2022,27.9,11.9,74.37
+TRAJ_MD_0040_2023,TRAJ_MD_0040,2,Agriculture,DEC_2021_AGRI_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t+2 (Post-Year 2),2023,29.1,13.1,81.88
+TRAJ_MD_0041_2020,TRAJ_MD_0041,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),Economic,% of GDP,t-2 (Pre-Policy),2020,21.63,-2.68,-11.02
+TRAJ_MD_0041_2021,TRAJ_MD_0041,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),Economic,% of GDP,t-1 (Baseline),2021,24.31,0.0,0.0
+TRAJ_MD_0041_2022,TRAJ_MD_0041,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),Economic,% of GDP,t0 (Enactment),2022,25.12,0.81,3.33
+TRAJ_MD_0041_2023,TRAJ_MD_0041,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),Economic,% of GDP,t+1 (Post-Year 1),2023,22.75,-1.56,-6.42
+TRAJ_MD_0041_2024,TRAJ_MD_0041,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),Economic,% of GDP,t+2 (Post-Year 2),2024,22.36,-1.95,-8.02
+TRAJ_MD_0042_2020,TRAJ_MD_0042,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),Economic,% of GDP,t-2 (Pre-Policy),2020,15.46,-1.46,-8.63
+TRAJ_MD_0042_2021,TRAJ_MD_0042,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),Economic,% of GDP,t-1 (Baseline),2021,16.92,0.0,0.0
+TRAJ_MD_0042_2022,TRAJ_MD_0042,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),Economic,% of GDP,t0 (Enactment),2022,21.56,4.64,27.42
+TRAJ_MD_0042_2023,TRAJ_MD_0042,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),Economic,% of GDP,t+1 (Post-Year 1),2023,20.6,3.68,21.75
+TRAJ_MD_0042_2024,TRAJ_MD_0042,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NE.EXP.GNFS.ZS,Exports of goods and services (% of GDP),Economic,% of GDP,t+2 (Post-Year 2),2024,19.76,2.84,16.78
+TRAJ_MD_0043_2020,TRAJ_MD_0043,3,"Customs, Imports and Exports",DEC_2022_CUST_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t-2 (Pre-Policy),2020,13.42,-2.4,-15.17
+TRAJ_MD_0043_2021,TRAJ_MD_0043,3,"Customs, Imports and Exports",DEC_2022_CUST_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t-1 (Baseline),2021,15.82,0.0,0.0
+TRAJ_MD_0043_2022,TRAJ_MD_0043,3,"Customs, Imports and Exports",DEC_2022_CUST_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t0 (Enactment),2022,22.7,6.88,43.49
+TRAJ_MD_0043_2023,TRAJ_MD_0043,3,"Customs, Imports and Exports",DEC_2022_CUST_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t+1 (Post-Year 1),2023,24.84,9.02,57.02
+TRAJ_MD_0043_2024,TRAJ_MD_0043,3,"Customs, Imports and Exports",DEC_2022_CUST_01,TM.VAL.FUEL.ZS.UN,Fuel imports (% of merchandise imports),Sector-specific,% of merchandise imports,t+2 (Post-Year 2),2024,21.52,5.7,36.03
+TRAJ_MD_0044_2020,TRAJ_MD_0044,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-2 (Pre-Policy),2020,-4.62,-8.83,-209.74
+TRAJ_MD_0044_2021,TRAJ_MD_0044,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-1 (Baseline),2021,4.21,0.0,0.0
+TRAJ_MD_0044_2022,TRAJ_MD_0044,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t0 (Enactment),2022,-7.35,-11.56,-274.58
+TRAJ_MD_0044_2023,TRAJ_MD_0044,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+1 (Post-Year 1),2023,-2.03,-6.24,-148.22
+TRAJ_MD_0044_2024,TRAJ_MD_0044,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+2 (Post-Year 2),2024,4.99,0.78,18.53
+TRAJ_MD_0045_2020,TRAJ_MD_0045,3,"Customs, Imports and Exports",DEC_2022_CUST_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-2 (Pre-Policy),2020,6.15,-0.86,-12.27
+TRAJ_MD_0045_2021,TRAJ_MD_0045,3,"Customs, Imports and Exports",DEC_2022_CUST_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-1 (Baseline),2021,7.01,0.0,0.0
+TRAJ_MD_0045_2022,TRAJ_MD_0045,3,"Customs, Imports and Exports",DEC_2022_CUST_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t0 (Enactment),2022,49.72,42.71,609.27
+TRAJ_MD_0045_2023,TRAJ_MD_0045,3,"Customs, Imports and Exports",DEC_2022_CUST_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+1 (Post-Year 1),2023,16.54,9.53,135.95
+TRAJ_MD_0045_2024,TRAJ_MD_0045,3,"Customs, Imports and Exports",DEC_2022_CUST_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+2 (Post-Year 2),2024,-0.43,-7.44,-106.13
+TRAJ_MD_0046_2020,TRAJ_MD_0046,3,"Customs, Imports and Exports",DEC_2022_CUST_01,GC.TAX.TOTL.GD.ZS,Tax revenue (% of GDP),Economic,% of GDP,t-2 (Pre-Policy),2020,7.78,0.41,5.56
+TRAJ_MD_0046_2021,TRAJ_MD_0046,3,"Customs, Imports and Exports",DEC_2022_CUST_01,GC.TAX.TOTL.GD.ZS,Tax revenue (% of GDP),Economic,% of GDP,t-1 (Baseline),2021,7.37,0.0,0.0
+TRAJ_MD_0046_2022,TRAJ_MD_0046,3,"Customs, Imports and Exports",DEC_2022_CUST_01,GC.TAX.TOTL.GD.ZS,Tax revenue (% of GDP),Economic,% of GDP,t0 (Enactment),2022,7.28,-0.09,-1.22
+TRAJ_MD_0046_2023,TRAJ_MD_0046,3,"Customs, Imports and Exports",DEC_2022_CUST_01,GC.TAX.TOTL.GD.ZS,Tax revenue (% of GDP),Economic,% of GDP,t+1 (Post-Year 1),2023,9.88,2.51,34.06
+TRAJ_MD_0046_2024,TRAJ_MD_0046,3,"Customs, Imports and Exports",DEC_2022_CUST_01,GC.TAX.TOTL.GD.ZS,Tax revenue (% of GDP),Economic,% of GDP,t+2 (Post-Year 2),2024,12.3,4.93,66.89
+TRAJ_MD_0047_2020,TRAJ_MD_0047,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t-2 (Pre-Policy),2020,3847.6,-149.36,-3.74
+TRAJ_MD_0047_2021,TRAJ_MD_0047,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t-1 (Baseline),2021,3996.96,0.0,0.0
+TRAJ_MD_0047_2022,TRAJ_MD_0047,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t0 (Enactment),2022,3342.64,-654.32,-16.37
+TRAJ_MD_0047_2023,TRAJ_MD_0047,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t+1 (Post-Year 1),2023,3815.42,-181.54,-4.54
+TRAJ_MD_0047_2024,TRAJ_MD_0047,3,"Customs, Imports and Exports",DEC_2022_CUST_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t+2 (Post-Year 2),2024,4545.36,548.4,13.72
+TRAJ_MD_0048_2020,TRAJ_MD_0048,3,"Customs, Imports and Exports",DEC_2022_CUST_01,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force)",Social,% of labor force,t-2 (Pre-Policy),2020,5.36,0.38,7.63
+TRAJ_MD_0048_2021,TRAJ_MD_0048,3,"Customs, Imports and Exports",DEC_2022_CUST_01,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force)",Social,% of labor force,t-1 (Baseline),2021,4.98,0.0,0.0
+TRAJ_MD_0048_2022,TRAJ_MD_0048,3,"Customs, Imports and Exports",DEC_2022_CUST_01,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force)",Social,% of labor force,t0 (Enactment),2022,4.53,-0.45,-9.04
+TRAJ_MD_0048_2023,TRAJ_MD_0048,3,"Customs, Imports and Exports",DEC_2022_CUST_01,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force)",Social,% of labor force,t+1 (Post-Year 1),2023,4.53,-0.45,-9.04
+TRAJ_MD_0048_2024,TRAJ_MD_0048,3,"Customs, Imports and Exports",DEC_2022_CUST_01,SL.UEM.TOTL.ZS,"Unemployment, total (% of total labor force)",Social,% of labor force,t+2 (Post-Year 2),2024,4.24,-0.74,-14.86
+TRAJ_MD_0049_2019,TRAJ_MD_0049,4,Food Security and Food Prices,DEC_2021_FOOD_01,AG.PRD.FOOD.XD,Food production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t-2 (Pre-Policy),2019,99.44,-8.05,-7.49
+TRAJ_MD_0049_2020,TRAJ_MD_0049,4,Food Security and Food Prices,DEC_2021_FOOD_01,AG.PRD.FOOD.XD,Food production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t-1 (Baseline),2020,107.49,0.0,0.0
+TRAJ_MD_0049_2021,TRAJ_MD_0049,4,Food Security and Food Prices,DEC_2021_FOOD_01,AG.PRD.FOOD.XD,Food production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t0 (Enactment),2021,116.33,8.84,8.22
+TRAJ_MD_0049_2022,TRAJ_MD_0049,4,Food Security and Food Prices,DEC_2021_FOOD_01,AG.PRD.FOOD.XD,Food production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t+1 (Post-Year 1),2022,94.45,-13.04,-12.13
+TRAJ_MD_0049_2023,TRAJ_MD_0049,4,Food Security and Food Prices,DEC_2021_FOOD_01,AG.PRD.FOOD.XD,Food production index (2014-2016 = 100),Sector-specific,Index (2014-2016 = 100),t+2 (Post-Year 2),2023,101.92,-5.57,-5.18
+TRAJ_MD_0050_2019,TRAJ_MD_0050,4,Food Security and Food Prices,DEC_2021_FOOD_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-2 (Pre-Policy),2019,3.53,-2.62,-42.6
+TRAJ_MD_0050_2020,TRAJ_MD_0050,4,Food Security and Food Prices,DEC_2021_FOOD_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-1 (Baseline),2020,6.15,0.0,0.0
+TRAJ_MD_0050_2021,TRAJ_MD_0050,4,Food Security and Food Prices,DEC_2021_FOOD_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t0 (Enactment),2021,7.01,0.86,13.98
+TRAJ_MD_0050_2022,TRAJ_MD_0050,4,Food Security and Food Prices,DEC_2021_FOOD_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+1 (Post-Year 1),2022,49.72,43.57,708.46
+TRAJ_MD_0050_2023,TRAJ_MD_0050,4,Food Security and Food Prices,DEC_2021_FOOD_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+2 (Post-Year 2),2023,16.54,10.39,168.94
+TRAJ_MD_0051_2019,TRAJ_MD_0051,4,Food Security and Food Prices,DEC_2021_FOOD_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t-2 (Pre-Policy),2019,155.53,-9.57,-5.8
+TRAJ_MD_0051_2020,TRAJ_MD_0051,4,Food Security and Food Prices,DEC_2021_FOOD_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t-1 (Baseline),2020,165.1,0.0,0.0
+TRAJ_MD_0051_2021,TRAJ_MD_0051,4,Food Security and Food Prices,DEC_2021_FOOD_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t0 (Enactment),2021,176.68,11.58,7.01
+TRAJ_MD_0051_2022,TRAJ_MD_0051,4,Food Security and Food Prices,DEC_2021_FOOD_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t+1 (Post-Year 1),2022,264.53,99.43,60.22
+TRAJ_MD_0051_2023,TRAJ_MD_0051,4,Food Security and Food Prices,DEC_2021_FOOD_01,FP.CPI.TOTL,Consumer price index (2010 = 100),Economic,Index (2010 = 100),t+2 (Post-Year 2),2023,308.29,143.19,86.73
+TRAJ_MD_0052_2019,TRAJ_MD_0052,4,Food Security and Food Prices,DEC_2021_FOOD_01,NE.CON.PRVT.ZS,Households final consumption expenditure (% of GDP),Social,% of GDP,t-2 (Pre-Policy),2019,62.7,-0.2,-0.32
+TRAJ_MD_0052_2020,TRAJ_MD_0052,4,Food Security and Food Prices,DEC_2021_FOOD_01,NE.CON.PRVT.ZS,Households final consumption expenditure (% of GDP),Social,% of GDP,t-1 (Baseline),2020,62.9,0.0,0.0
+TRAJ_MD_0052_2021,TRAJ_MD_0052,4,Food Security and Food Prices,DEC_2021_FOOD_01,NE.CON.PRVT.ZS,Households final consumption expenditure (% of GDP),Social,% of GDP,t0 (Enactment),2021,61.2,-1.7,-2.7
+TRAJ_MD_0052_2022,TRAJ_MD_0052,4,Food Security and Food Prices,DEC_2021_FOOD_01,NE.CON.PRVT.ZS,Households final consumption expenditure (% of GDP),Social,% of GDP,t+1 (Post-Year 1),2022,69.06,6.16,9.79
+TRAJ_MD_0052_2023,TRAJ_MD_0052,4,Food Security and Food Prices,DEC_2021_FOOD_01,NE.CON.PRVT.ZS,Households final consumption expenditure (% of GDP),Social,% of GDP,t+2 (Post-Year 2),2023,71.13,8.23,13.08
+TRAJ_MD_0053_2019,TRAJ_MD_0053,4,Food Security and Food Prices,DEC_2021_FOOD_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-2 (Pre-Policy),2019,3.83,9.59,166.49
+TRAJ_MD_0053_2020,TRAJ_MD_0053,4,Food Security and Food Prices,DEC_2021_FOOD_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-1 (Baseline),2020,-5.76,0.0,0.0
+TRAJ_MD_0053_2021,TRAJ_MD_0053,4,Food Security and Food Prices,DEC_2021_FOOD_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t0 (Enactment),2021,2.7,8.46,146.88
+TRAJ_MD_0053_2022,TRAJ_MD_0053,4,Food Security and Food Prices,DEC_2021_FOOD_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+1 (Post-Year 1),2022,1.2,6.96,120.83
+TRAJ_MD_0053_2023,TRAJ_MD_0053,4,Food Security and Food Prices,DEC_2021_FOOD_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+2 (Post-Year 2),2023,-1.03,4.73,82.12
+TRAJ_MD_0054_2019,TRAJ_MD_0054,4,Food Security and Food Prices,DEC_2021_FOOD_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-2 (Pre-Policy),2019,11.5,-1.2,-9.45
+TRAJ_MD_0054_2020,TRAJ_MD_0054,4,Food Security and Food Prices,DEC_2021_FOOD_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-1 (Baseline),2020,12.7,0.0,0.0
+TRAJ_MD_0054_2021,TRAJ_MD_0054,4,Food Security and Food Prices,DEC_2021_FOOD_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t0 (Enactment),2021,13.1,0.4,3.15
+TRAJ_MD_0054_2022,TRAJ_MD_0054,4,Food Security and Food Prices,DEC_2021_FOOD_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+1 (Post-Year 1),2022,25.0,12.3,96.85
+TRAJ_MD_0054_2023,TRAJ_MD_0054,4,Food Security and Food Prices,DEC_2021_FOOD_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+2 (Post-Year 2),2023,25.9,13.2,103.94
+TRAJ_MD_0055_2019,TRAJ_MD_0055,4,Food Security and Food Prices,DEC_2021_FOOD_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t-2 (Pre-Policy),2019,14.3,-1.7,-10.62
+TRAJ_MD_0055_2020,TRAJ_MD_0055,4,Food Security and Food Prices,DEC_2021_FOOD_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t-1 (Baseline),2020,16.0,0.0,0.0
+TRAJ_MD_0055_2021,TRAJ_MD_0055,4,Food Security and Food Prices,DEC_2021_FOOD_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t0 (Enactment),2021,17.5,1.5,9.38
+TRAJ_MD_0055_2022,TRAJ_MD_0055,4,Food Security and Food Prices,DEC_2021_FOOD_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t+1 (Post-Year 1),2022,27.9,11.9,74.37
+TRAJ_MD_0055_2023,TRAJ_MD_0055,4,Food Security and Food Prices,DEC_2021_FOOD_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t+2 (Post-Year 2),2023,29.1,13.1,81.88
+TRAJ_MD_0056_2019,TRAJ_MD_0056,4,Food Security and Food Prices,DEC_2021_FOOD_01,NV.AGR.TOTL.ZS,"Agriculture, forestry, and fishing, value added (% of GDP)",Sector-specific,% of GDP,t-2 (Pre-Policy),2019,7.26,-0.99,-12.0
+TRAJ_MD_0056_2020,TRAJ_MD_0056,4,Food Security and Food Prices,DEC_2021_FOOD_01,NV.AGR.TOTL.ZS,"Agriculture, forestry, and fishing, value added (% of GDP)",Sector-specific,% of GDP,t-1 (Baseline),2020,8.25,0.0,0.0
+TRAJ_MD_0056_2021,TRAJ_MD_0056,4,Food Security and Food Prices,DEC_2021_FOOD_01,NV.AGR.TOTL.ZS,"Agriculture, forestry, and fishing, value added (% of GDP)",Sector-specific,% of GDP,t0 (Enactment),2021,8.79,0.54,6.55
+TRAJ_MD_0056_2022,TRAJ_MD_0056,4,Food Security and Food Prices,DEC_2021_FOOD_01,NV.AGR.TOTL.ZS,"Agriculture, forestry, and fishing, value added (% of GDP)",Sector-specific,% of GDP,t+1 (Post-Year 1),2022,8.45,0.2,2.42
+TRAJ_MD_0056_2023,TRAJ_MD_0056,4,Food Security and Food Prices,DEC_2021_FOOD_01,NV.AGR.TOTL.ZS,"Agriculture, forestry, and fishing, value added (% of GDP)",Sector-specific,% of GDP,t+2 (Post-Year 2),2023,8.04,-0.21,-2.55
+TRAJ_MD_0057_2021,TRAJ_MD_0057,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.TAX.TOTL.GD.ZS,Tax revenue (% of GDP),Economic,% of GDP,t-2 (Pre-Policy),2021,7.37,0.09,1.24
+TRAJ_MD_0057_2022,TRAJ_MD_0057,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.TAX.TOTL.GD.ZS,Tax revenue (% of GDP),Economic,% of GDP,t-1 (Baseline),2022,7.28,0.0,0.0
+TRAJ_MD_0057_2023,TRAJ_MD_0057,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.TAX.TOTL.GD.ZS,Tax revenue (% of GDP),Economic,% of GDP,t0 (Enactment),2023,9.88,2.6,35.71
+TRAJ_MD_0057_2024,TRAJ_MD_0057,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.TAX.TOTL.GD.ZS,Tax revenue (% of GDP),Economic,% of GDP,t+1 (Post-Year 1),2024,12.3,5.02,68.96
+TRAJ_MD_0057_2025,TRAJ_MD_0057,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.TAX.TOTL.GD.ZS,Tax revenue (% of GDP),Economic,% of GDP,t+2 (Post-Year 2),2025,15.4,8.12,111.54
+TRAJ_MD_0058_2021,TRAJ_MD_0058,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.REV.XGRT.GD.ZS,"Revenue, excluding grants (% of GDP)",Economic,% of GDP,t-2 (Pre-Policy),2021,8.27,0.05,0.61
+TRAJ_MD_0058_2022,TRAJ_MD_0058,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.REV.XGRT.GD.ZS,"Revenue, excluding grants (% of GDP)",Economic,% of GDP,t-1 (Baseline),2022,8.22,0.0,0.0
+TRAJ_MD_0058_2023,TRAJ_MD_0058,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.REV.XGRT.GD.ZS,"Revenue, excluding grants (% of GDP)",Economic,% of GDP,t0 (Enactment),2023,11.07,2.85,34.67
+TRAJ_MD_0058_2024,TRAJ_MD_0058,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.REV.XGRT.GD.ZS,"Revenue, excluding grants (% of GDP)",Economic,% of GDP,t+1 (Post-Year 1),2024,13.5,5.28,64.23
+TRAJ_MD_0058_2025,TRAJ_MD_0058,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.REV.XGRT.GD.ZS,"Revenue, excluding grants (% of GDP)",Economic,% of GDP,t+2 (Post-Year 2),2025,15.6,7.38,89.78
+TRAJ_MD_0059_2021,TRAJ_MD_0059,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t-2 (Pre-Policy),2021,104.6,-9.6,-8.41
+TRAJ_MD_0059_2022,TRAJ_MD_0059,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t-1 (Baseline),2022,114.2,0.0,0.0
+TRAJ_MD_0059_2023,TRAJ_MD_0059,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t0 (Enactment),2023,103.9,-10.3,-9.02
+TRAJ_MD_0059_2024,TRAJ_MD_0059,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t+1 (Post-Year 1),2024,100.8,-13.4,-11.73
+TRAJ_MD_0059_2025,TRAJ_MD_0059,5,Government Finance and Taxation,DEC_2024_TAX_01,GC.DOD.TOTL.GD.ZS,"Central government debt, total (% of GDP)",Economic,% of GDP,t+2 (Post-Year 2),2025,96.4,-17.8,-15.59
+TRAJ_MD_0060_2021,TRAJ_MD_0060,5,Government Finance and Taxation,DEC_2024_TAX_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-2 (Pre-Policy),2021,7.01,-42.71,-85.9
+TRAJ_MD_0060_2022,TRAJ_MD_0060,5,Government Finance and Taxation,DEC_2024_TAX_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-1 (Baseline),2022,49.72,0.0,0.0
+TRAJ_MD_0060_2023,TRAJ_MD_0060,5,Government Finance and Taxation,DEC_2024_TAX_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t0 (Enactment),2023,16.54,-33.18,-66.73
+TRAJ_MD_0060_2024,TRAJ_MD_0060,5,Government Finance and Taxation,DEC_2024_TAX_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+1 (Post-Year 1),2024,-0.43,-50.15,-100.86
+TRAJ_MD_0060_2025,TRAJ_MD_0060,5,Government Finance and Taxation,DEC_2024_TAX_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+2 (Post-Year 2),2025,-4.76,-54.48,-109.57
+TRAJ_MD_0061_2021,TRAJ_MD_0061,5,Government Finance and Taxation,DEC_2024_TAX_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-2 (Pre-Policy),2021,4.21,11.56,157.28
+TRAJ_MD_0061_2022,TRAJ_MD_0061,5,Government Finance and Taxation,DEC_2024_TAX_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t-1 (Baseline),2022,-7.35,0.0,0.0
+TRAJ_MD_0061_2023,TRAJ_MD_0061,5,Government Finance and Taxation,DEC_2024_TAX_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t0 (Enactment),2023,-2.03,5.32,72.38
+TRAJ_MD_0061_2024,TRAJ_MD_0061,5,Government Finance and Taxation,DEC_2024_TAX_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+1 (Post-Year 1),2024,4.99,12.34,167.89
+TRAJ_MD_0061_2025,TRAJ_MD_0061,5,Government Finance and Taxation,DEC_2024_TAX_01,NY.GDP.MKTP.KD.ZG,GDP growth (annual %),Economic,Annual %,t+2 (Post-Year 2),2025,4.95,12.3,167.35
+TRAJ_MD_0062_2021,TRAJ_MD_0062,5,Government Finance and Taxation,DEC_2024_TAX_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-2 (Pre-Policy),2021,2.7,1.5,125.0
+TRAJ_MD_0062_2022,TRAJ_MD_0062,5,Government Finance and Taxation,DEC_2024_TAX_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-1 (Baseline),2022,1.2,0.0,0.0
+TRAJ_MD_0062_2023,TRAJ_MD_0062,5,Government Finance and Taxation,DEC_2024_TAX_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t0 (Enactment),2023,-1.03,-2.23,-185.83
+TRAJ_MD_0062_2024,TRAJ_MD_0062,5,Government Finance and Taxation,DEC_2024_TAX_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+1 (Post-Year 1),2024,4.78,3.58,298.33
+TRAJ_MD_0062_2025,TRAJ_MD_0062,5,Government Finance and Taxation,DEC_2024_TAX_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+2 (Post-Year 2),2025,6.26,5.06,421.67
+TRAJ_MD_0063_2021,TRAJ_MD_0063,5,Government Finance and Taxation,DEC_2024_TAX_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-2 (Pre-Policy),2021,13.1,-11.9,-47.6
+TRAJ_MD_0063_2022,TRAJ_MD_0063,5,Government Finance and Taxation,DEC_2024_TAX_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-1 (Baseline),2022,25.0,0.0,0.0
+TRAJ_MD_0063_2023,TRAJ_MD_0063,5,Government Finance and Taxation,DEC_2024_TAX_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t0 (Enactment),2023,25.9,0.9,3.6
+TRAJ_MD_0063_2024,TRAJ_MD_0063,5,Government Finance and Taxation,DEC_2024_TAX_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+1 (Post-Year 1),2024,23.4,-1.6,-6.4
+TRAJ_MD_0063_2025,TRAJ_MD_0063,5,Government Finance and Taxation,DEC_2024_TAX_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+2 (Post-Year 2),2025,20.8,-4.2,-16.8
+TRAJ_MD_0064_2021,TRAJ_MD_0064,5,Government Finance and Taxation,DEC_2024_TAX_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t-2 (Pre-Policy),2021,3996.96,654.32,19.57
+TRAJ_MD_0064_2022,TRAJ_MD_0064,5,Government Finance and Taxation,DEC_2024_TAX_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t-1 (Baseline),2022,3342.64,0.0,0.0
+TRAJ_MD_0064_2023,TRAJ_MD_0064,5,Government Finance and Taxation,DEC_2024_TAX_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t0 (Enactment),2023,3815.42,472.78,14.14
+TRAJ_MD_0064_2024,TRAJ_MD_0064,5,Government Finance and Taxation,DEC_2024_TAX_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t+1 (Post-Year 1),2024,4545.36,1202.72,35.98
+TRAJ_MD_0064_2025,TRAJ_MD_0064,5,Government Finance and Taxation,DEC_2024_TAX_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t+2 (Post-Year 2),2025,5002.08,1659.44,49.64
+TRAJ_MD_0065_2020,TRAJ_MD_0065,6,Healthcare and Public Health,DEC_2023_HLTH_01,SH.XPD.CHEX.GD.ZS,Current health expenditure (% of GDP),Social,% of GDP,t-2 (Pre-Policy),2020,4.27,-0.92,-17.73
+TRAJ_MD_0065_2021,TRAJ_MD_0065,6,Healthcare and Public Health,DEC_2023_HLTH_01,SH.XPD.CHEX.GD.ZS,Current health expenditure (% of GDP),Social,% of GDP,t-1 (Baseline),2021,5.19,0.0,0.0
+TRAJ_MD_0065_2022,TRAJ_MD_0065,6,Healthcare and Public Health,DEC_2023_HLTH_01,SH.XPD.CHEX.GD.ZS,Current health expenditure (% of GDP),Social,% of GDP,t0 (Enactment),2022,3.98,-1.21,-23.31
+TRAJ_MD_0065_2023,TRAJ_MD_0065,6,Healthcare and Public Health,DEC_2023_HLTH_01,SH.XPD.CHEX.GD.ZS,Current health expenditure (% of GDP),Social,% of GDP,t+1 (Post-Year 1),2023,3.68,-1.51,-29.09
+TRAJ_MD_0065_2024,TRAJ_MD_0065,6,Healthcare and Public Health,DEC_2023_HLTH_01,SH.XPD.CHEX.GD.ZS,Current health expenditure (% of GDP),Social,% of GDP,t+2 (Post-Year 2),2024,3.85,-1.34,-25.82
+TRAJ_MD_0066_2020,TRAJ_MD_0066,6,Healthcare and Public Health,DEC_2023_HLTH_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-2 (Pre-Policy),2020,6.15,-0.86,-12.27
+TRAJ_MD_0066_2021,TRAJ_MD_0066,6,Healthcare and Public Health,DEC_2023_HLTH_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t-1 (Baseline),2021,7.01,0.0,0.0
+TRAJ_MD_0066_2022,TRAJ_MD_0066,6,Healthcare and Public Health,DEC_2023_HLTH_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t0 (Enactment),2022,49.72,42.71,609.27
+TRAJ_MD_0066_2023,TRAJ_MD_0066,6,Healthcare and Public Health,DEC_2023_HLTH_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+1 (Post-Year 1),2023,16.54,9.53,135.95
+TRAJ_MD_0066_2024,TRAJ_MD_0066,6,Healthcare and Public Health,DEC_2023_HLTH_01,FP.CPI.TOTL.ZG,"Inflation, consumer prices (annual %)",Economic,Annual %,t+2 (Post-Year 2),2024,-0.43,-7.44,-106.13
+TRAJ_MD_0067_2020,TRAJ_MD_0067,6,Healthcare and Public Health,DEC_2023_HLTH_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t-2 (Pre-Policy),2020,16.0,-1.5,-8.57
+TRAJ_MD_0067_2021,TRAJ_MD_0067,6,Healthcare and Public Health,DEC_2023_HLTH_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t-1 (Baseline),2021,17.5,0.0,0.0
+TRAJ_MD_0067_2022,TRAJ_MD_0067,6,Healthcare and Public Health,DEC_2023_HLTH_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t0 (Enactment),2022,27.9,10.4,59.43
+TRAJ_MD_0067_2023,TRAJ_MD_0067,6,Healthcare and Public Health,DEC_2023_HLTH_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t+1 (Post-Year 1),2023,29.1,11.6,66.29
+TRAJ_MD_0067_2024,TRAJ_MD_0067,6,Healthcare and Public Health,DEC_2023_HLTH_01,SI.POV.NAHC,Poverty headcount ratio at national poverty lines (% of population),Social,% of population,t+2 (Post-Year 2),2024,26.2,8.7,49.71
+TRAJ_MD_0068_2020,TRAJ_MD_0068,6,Healthcare and Public Health,DEC_2023_HLTH_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-2 (Pre-Policy),2020,12.7,-0.4,-3.05
+TRAJ_MD_0068_2021,TRAJ_MD_0068,6,Healthcare and Public Health,DEC_2023_HLTH_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t-1 (Baseline),2021,13.1,0.0,0.0
+TRAJ_MD_0068_2022,TRAJ_MD_0068,6,Healthcare and Public Health,DEC_2023_HLTH_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t0 (Enactment),2022,25.0,11.9,90.84
+TRAJ_MD_0068_2023,TRAJ_MD_0068,6,Healthcare and Public Health,DEC_2023_HLTH_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+1 (Post-Year 1),2023,25.9,12.8,97.71
+TRAJ_MD_0068_2024,TRAJ_MD_0068,6,Healthcare and Public Health,DEC_2023_HLTH_01,SI.POV.LMIC,Poverty headcount ratio at $3.65 a day (2017 PPP) (% of population),Social,% of population,t+2 (Post-Year 2),2024,23.4,10.3,78.63
+TRAJ_MD_0069_2020,TRAJ_MD_0069,6,Healthcare and Public Health,DEC_2023_HLTH_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-2 (Pre-Policy),2020,-5.76,-8.46,-313.33
+TRAJ_MD_0069_2021,TRAJ_MD_0069,6,Healthcare and Public Health,DEC_2023_HLTH_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t-1 (Baseline),2021,2.7,0.0,0.0
+TRAJ_MD_0069_2022,TRAJ_MD_0069,6,Healthcare and Public Health,DEC_2023_HLTH_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t0 (Enactment),2022,1.2,-1.5,-55.56
+TRAJ_MD_0069_2023,TRAJ_MD_0069,6,Healthcare and Public Health,DEC_2023_HLTH_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+1 (Post-Year 1),2023,-1.03,-3.73,-138.15
+TRAJ_MD_0069_2024,TRAJ_MD_0069,6,Healthcare and Public Health,DEC_2023_HLTH_01,NE.CON.PRVT.KD.ZG,Households final consumption expenditure (annual % growth),Social,Annual % growth,t+2 (Post-Year 2),2024,4.78,2.08,77.04
+TRAJ_MD_0070_2020,TRAJ_MD_0070,6,Healthcare and Public Health,DEC_2023_HLTH_01,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),Economic,% of GDP,t-2 (Pre-Policy),2020,21.63,-2.68,-11.02
+TRAJ_MD_0070_2021,TRAJ_MD_0070,6,Healthcare and Public Health,DEC_2023_HLTH_01,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),Economic,% of GDP,t-1 (Baseline),2021,24.31,0.0,0.0
+TRAJ_MD_0070_2022,TRAJ_MD_0070,6,Healthcare and Public Health,DEC_2023_HLTH_01,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),Economic,% of GDP,t0 (Enactment),2022,25.12,0.81,3.33
+TRAJ_MD_0070_2023,TRAJ_MD_0070,6,Healthcare and Public Health,DEC_2023_HLTH_01,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),Economic,% of GDP,t+1 (Post-Year 1),2023,22.75,-1.56,-6.42
+TRAJ_MD_0070_2024,TRAJ_MD_0070,6,Healthcare and Public Health,DEC_2023_HLTH_01,NE.IMP.GNFS.ZS,Imports of goods and services (% of GDP),Economic,% of GDP,t+2 (Post-Year 2),2024,22.36,-1.95,-8.02
+TRAJ_MD_0071_2020,TRAJ_MD_0071,6,Healthcare and Public Health,DEC_2023_HLTH_01,GC.REV.XGRT.GD.ZS,"Revenue, excluding grants (% of GDP)",Economic,% of GDP,t-2 (Pre-Policy),2020,8.74,0.47,5.68
+TRAJ_MD_0071_2021,TRAJ_MD_0071,6,Healthcare and Public Health,DEC_2023_HLTH_01,GC.REV.XGRT.GD.ZS,"Revenue, excluding grants (% of GDP)",Economic,% of GDP,t-1 (Baseline),2021,8.27,0.0,0.0
+TRAJ_MD_0071_2022,TRAJ_MD_0071,6,Healthcare and Public Health,DEC_2023_HLTH_01,GC.REV.XGRT.GD.ZS,"Revenue, excluding grants (% of GDP)",Economic,% of GDP,t0 (Enactment),2022,8.22,-0.05,-0.6
+TRAJ_MD_0071_2023,TRAJ_MD_0071,6,Healthcare and Public Health,DEC_2023_HLTH_01,GC.REV.XGRT.GD.ZS,"Revenue, excluding grants (% of GDP)",Economic,% of GDP,t+1 (Post-Year 1),2023,11.07,2.8,33.86
+TRAJ_MD_0071_2024,TRAJ_MD_0071,6,Healthcare and Public Health,DEC_2023_HLTH_01,GC.REV.XGRT.GD.ZS,"Revenue, excluding grants (% of GDP)",Economic,% of GDP,t+2 (Post-Year 2),2024,13.5,5.23,63.24
+TRAJ_MD_0072_2020,TRAJ_MD_0072,6,Healthcare and Public Health,DEC_2023_HLTH_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t-2 (Pre-Policy),2020,3847.6,-149.36,-3.74
+TRAJ_MD_0072_2021,TRAJ_MD_0072,6,Healthcare and Public Health,DEC_2023_HLTH_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t-1 (Baseline),2021,3996.96,0.0,0.0
+TRAJ_MD_0072_2022,TRAJ_MD_0072,6,Healthcare and Public Health,DEC_2023_HLTH_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t0 (Enactment),2022,3342.64,-654.32,-16.37
+TRAJ_MD_0072_2023,TRAJ_MD_0072,6,Healthcare and Public Health,DEC_2023_HLTH_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t+1 (Post-Year 1),2023,3815.42,-181.54,-4.54
+TRAJ_MD_0072_2024,TRAJ_MD_0072,6,Healthcare and Public Health,DEC_2023_HLTH_01,NY.GDP.PCAP.CD,GDP per capita (current US$),Economic,Current US$,t+2 (Post-Year 2),2024,4545.36,548.4,13.72

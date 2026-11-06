@@ -27,11 +27,12 @@ secrets/
 # Large Datasets & Storage (Preserve raw and external downloads locally)
 data/raw/
 data/interim/
-data/processed/
 data/external/
+data/processed/*
+!data/processed/.gitkeep
+!data/processed/multidomain_research_datasets/
 Datasets/
 *.tsv
-*.parquet
 *.jsonl
 *.zip
 *.tar.gz
